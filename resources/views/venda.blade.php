@@ -4,12 +4,15 @@
 
 @section('body')
 
+@if($status === 'Aberto')
 <div class="alert alert-success text-center" role="alert">
     <h3>Caixa Aberto</h3>
 </div>
+@else
 <div class="alert alert-danger text-center" role="alert">
     <h3>Caixa Fechado</h3>
 </div>
+@endif
 
 <div class="row">
     <div class="col-md-6">
