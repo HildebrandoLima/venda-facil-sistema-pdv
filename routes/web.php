@@ -18,10 +18,10 @@ use App\Http\Controllers\VendaController;
 
 //  Venda
 Route::prefix('venda')->group(function () {
-    Route::get('/', [VendaController::class, 'index'])->name('user.list.all');
+    Route::get('/', [VendaController::class, 'index'])->name('venda.listar.todos');
     //Route::get('/listar/{vendaId}', [VendaController::class, 'show'])->name('user.list.details');
     //Route::get('/buscar/{cpf}', [VendaController::class, 'search'])->name('user.list.search');
     //Route::put('/editar/{usuarioId}', [VendaController::class, 'update'])->name('user.edit');
-    //Route::post('/salvar', [VendaController::class, 'store'])->name('user.save');
+    Route::post('/salvar', [VendaController::class, 'store'])->name('venda.salvar');
     //Route::delete('/remover/{usuarioId}', [VendaController::class, 'destroy'])->name('user.remove');
 });
