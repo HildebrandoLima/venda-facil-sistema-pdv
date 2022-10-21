@@ -14,7 +14,7 @@
 </div>
 @endif
 
-<form action="venda/salvar" action="item/salvar" method="post">
+<form action="venda/salvar" method="post">
     @csrf
     <input type="hidden" name="caixa_id" value="1" />
     <input type="hidden" name="user_created_at" value="1" />

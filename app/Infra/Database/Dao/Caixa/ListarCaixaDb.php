@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Support\Helpers\Venda;
+namespace App\Infra\Database\Dao\Caixa;
 
 use App\Infra\Database\Config\DbBase;
 
-class StatusCaixaDb extends DbBase {
+class ListarCaixaDb extends DbBase {
 
   public function getStatusCaixa()
   {
