@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Infra\Repositores\Caixa;
+namespace App\Infra\Repositorios\Caixa;
 
 use App\Infra\Database\Dao\Caixa\ListarCaixaDb;
 use Illuminate\Http\Request;
 
-class CaixaRepositore
+class CaixaRepositorio
 {
-    private ListarCaixaDb   $listarCaixaDb;
+    private ListarCaixaDb $listarCaixaDb;
 
     public function __construct
     (
-        ListarCaixaDb   $listarCaixaDb
+        ListarCaixaDb $listarCaixaDb
     )
     {
-        $this->listarCaixaDb    =   $listarCaixaDb;
+        $this->listarCaixaDb = $listarCaixaDb;
     }
 
     public function getStatusCaixa()

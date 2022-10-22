@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendaController;
 use App\Http\Controllers\CaixaController;
+use App\Http\Controllers\ProdutoController;
 
 
 /*
@@ -18,10 +19,12 @@ use App\Http\Controllers\CaixaController;
 
 //Route::get('/', [VendaController::class, 'index'])->name('index');
 
+Route::get('/caixa', [CaixaController::class, 'index'])->name('caixa');
+Route::get('/caixa/{codigo_barra}', [CaixaController::class, 'index'])->name('itens.listar');
 
-//  Caixa
-Route::prefix('caixa')->group(function () {
-    Route::get('/', [CaixaController::class, 'index'])->name('caixa.listar');
+//  Item
+Route::prefix('item')->group(function () {
+    Route::get('/', [ItemController::class, 'index'])->name('item.listar');
 });
 
 //  Venda
@@ -32,9 +35,4 @@ Route::prefix('venda')->group(function () {
     //Route::put('/editar/{usuarioId}', [VendaController::class, 'update'])->name('user.edit');
     Route::post('/salvar', [VendaController::class, 'store'])->name('venda.salvar');
     //Route::delete('/remover/{usuarioId}', [VendaController::class, 'destroy'])->name('user.remove');
-});
-
-//  Item
-Route::prefix('item')->group(function () {
-    Route::get('/', [ItemController::class, 'index'])->name('item.listar.todos');
 });

@@ -10,7 +10,7 @@ class ListarCaixaDb extends DbBase {
   {
     return $this->db
     ->table('caixa')
-    ->select(['status as status'])
+    ->select(['status'])
     ->get();
   }
 }

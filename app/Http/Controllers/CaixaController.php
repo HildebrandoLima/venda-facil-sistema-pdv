@@ -2,21 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Infra\Repositores\Caixa\CaixaRepositore;
+use App\Infra\Repositorios\Caixa\CaixaRepositorio;
+use App\Infra\Repositorios\Produto\ProdutoRepositorio;
 use Illuminate\Http\Request;
 
 class CaixaController extends Controller
 {
-    private CaixaRepositore $caixaRepositore;
+    private CaixaRepositorio $caixaRepositorio;
+    private ProdutoRepositorio $produtoRepositorio;
 
-    public function __construct(CaixaRepositore   $caixaRepositore)
+    public function __construct(CaixaRepositorio $caixaRepositorio, ProdutoRepositorio $produtoRepositorio)
     {
-        $this->caixaRepositore = $caixaRepositore;
+        $this->caixaRepositorio = $caixaRepositorio;
+        $this->produtoRepositorio = $produtoRepositorio;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $status = $this->caixaRepositore->getStatusCaixa();
-        return view('venda', ['status' => $status[0]->status]);
+        $status = $this->caixaRepositorio->getStatusCaixa();
+        $itens = $this->produtoRepositorio->getProdutoCaixa($request);
+        return view('venda', ['status' => $status[0]->status, 'itens' => $itens]);
     }
 }
