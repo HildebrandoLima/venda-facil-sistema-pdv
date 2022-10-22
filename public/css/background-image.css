@@ -1,0 +1,10 @@
+body {
+    min-height: 100vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background-image: url("https://greenpng.com/wp-content/uploads/2022/09/Desenho-de-pastagem-1024x724.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items: center;
+}
