@@ -44,6 +44,9 @@
                         <input type="number" name="valor" class="form-control" />
                     </div>
                 </div>
+                <div>
+                <img class="imgtitulo" src="image/titulo.jpeg" />
+                </div>
         </div>
 
         <div class="col-md-6 text-right">
@@ -121,6 +124,39 @@
             </div>
         </div>
     </div>
+
+
 </form>
+<div id="menu" class="col menu">
+<button class="btn btn-primary col-sm-1 btmenu" >
+  <i style="font-size:30px;" class="glyphicon glyphicon-th"></i>
+</button>
+<div id="bt" class="btabas">
+<button class="btn btn-primary col-sm">
+    <img src="image/ajuda.png">Ajuda</i>
+    </button>
+<button class="btn btn-primary col-sm">
+<img src="image/user.png">Identif Cliente</i>
+    </button>
+<button class="btn btn-primary col-sm">
+<img src="image/x.png">Cancelar Item</i>
+    </button>
+<button class="btn btn-primary col-sm">
+    <img src="image/pesquisar.png">Consultar Preço</i>
+    </button>
+<button class="btn btn-primary col-sm">
+   <img src="image/desconto.png">Cupom Desconto</i>
+    </button>
+    <button class="btn btn-primary col-sm">
+    <img src="image/quantidade.png">Varias Unidades</i>
+    </button>
+    <button class="btn btn-primary col-sm">
+    <img src="image/dinheiro.png">Fechar Venda</i>
+    </button>
+    <button class="btn btn-primary col-sm">
+    <img src="image/sessao.png">Encerrar Sessão</i>
+</button>
+</div>
+</div>
 
 @endsection
