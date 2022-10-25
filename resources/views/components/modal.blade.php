@@ -15,12 +15,14 @@
        <div class="container">
         <div class="row">
             <div class="row col-6">
-                <h3 class="col-6 fw-bold" >Número da venda:</h3>
-                <h3 class="col-6 linee">53456465465</h3>
-                <h3 class="col-6 fw-bold" >Sub-total:</h3>
-                <h3 class="col-6">R$ 50000</h3>
-                <h4 class="col-6 fw-bold" >Data da Compra:</h4>
-                <h4 class="col-6">04/11/2022</h4>
+                <h3 class="col-5 fw-bold" >Número da venda:</h3>
+                <h3 class="col-3 linee">53456465465</h3>
+                <div class="col-3"></div>
+                <h3 class="col-3 fw-bold" >Sub-total:</h3>
+                <h3 class="col-3">R$ 50000</h3>
+                <div class="col-6"></div>
+                <h4 class="col-4 fw-bold" >Data da Compra:</h4>
+                <h4 class="col-3">04/11/2022</h4>
             </div>
             <div class="row col-6">
                 <h4 class="fw-bold" >Total a paga:</h4>
@@ -54,8 +56,8 @@
       </div>
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Finalizar Venda</button>
+        <button style="width:120px;" type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+        <button style="width:150px;" type="button" class="btn btn-danger" data-bs-dismiss="modal">Finalizar Venda</button>
     </div>
 
     </div>
