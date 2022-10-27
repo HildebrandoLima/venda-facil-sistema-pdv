@@ -17,10 +17,28 @@ class CaixaController extends Controller
         $this->produtoRepositorio = $produtoRepositorio;
     }
 
-    public function index(Request $request)
+    public function status()
     {
         $status = $this->caixaRepositorio->getStatusCaixa();
-        $itens = $this->produtoRepositorio->getProdutoCaixa($request);
-        return view('venda', ['status' => $status[0]->status, 'itens' => $itens]);
+        return view('caixa', $status[0]->status);
+    }
+
+    public function home()
+    {
+        $item = session('item', []);
+        $itens = ['item' => $item];
+        return view('caixa', $itens);
+    }
+
+    public function index(Request $request)
+    {
+        $codigo_barra = $request->codigo_barra;
+        $produto = $this->produtoRepositorio->getProdutoCaixa($codigo_barra);
+        if($produto):
+            $item = session('item', []);
+            array_push($item, $produto);
+            session(['item' => $item]);
+        endif;
+        return $this->home();
     }
 }
