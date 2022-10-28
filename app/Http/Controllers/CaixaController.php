@@ -11,7 +11,11 @@ class CaixaController extends Controller
     private CaixaRepositorio $caixaRepositorio;
     private ProdutoRepositorio $produtoRepositorio;
 
-    public function __construct(CaixaRepositorio $caixaRepositorio, ProdutoRepositorio $produtoRepositorio)
+    public function __construct
+    (
+        CaixaRepositorio $caixaRepositorio,
+        ProdutoRepositorio $produtoRepositorio
+    )
     {
         $this->caixaRepositorio = $caixaRepositorio;
         $this->produtoRepositorio = $produtoRepositorio;
@@ -19,9 +23,10 @@ class CaixaController extends Controller
 
     public function home()
     {
+        $caixa = $this->caixaRepositorio->getCaixa()->toArray();
         $item = session('itens', []);
         $itens = ['itens' => $item];
-        return view('caixa', $itens);
+        return view('caixa', ['itens' => $itens, 'terminal' => $caixa[0]->id, 'status' => $caixa[0]->status]);
     }
 
     public function index(Request $request)

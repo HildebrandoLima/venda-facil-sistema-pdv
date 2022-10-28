@@ -6,11 +6,14 @@ use App\Infra\Database\Config\DbBase;
 
 class ListarCaixaDb extends DbBase {
 
-  public function getStatusCaixa()
+  public function getCaixa()
   {
     return $this->db
     ->table('caixa')
-    ->select(['status'])
+    ->select([
+      'id',
+      'status'
+      ])
     ->get();
   }
 }

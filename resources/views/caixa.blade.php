@@ -8,6 +8,14 @@
 $contador = 1;
 @endphp
 
+@if($status == 'Aberto')
+    <div class="alert alert-success" role="alert">
+@else
+    <div class="alert alert-danger" role="alert">  
+@endif
+        <h3 class="text-center">Caixa {{ $status }}</h3>
+    </div>
+
     <div class="row">
         <div class="col-md-5">
             <img src="{{ asset('images/5954b954deaf2c03413be345.png') }}" width="500" height="500" class=""/>
@@ -49,22 +57,24 @@ $contador = 1;
                                 <h5><p class="text-center">Não há itens nessa venda</p></h5>
                             @else
                             @foreach ($itens as $item)
-                                @foreach ($item as $value)
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">{{ $contador++ }}</th>
-                                        <td>{{ $value->nome }}</td>
-                                        <td>{{ $value->codigo_barra }}</td>
-                                        <td><input type="number" name="total" value="1" size="2" class="form-control" /></td>
-                                        <td><input type="number" name="total" value="1" size="2" class="form-control" /></td>
-                                        <td><input type="number" name="total" value="1" size="2" class="form-control" /></td>
-                                        <td>
-                                            <a href="{{ url('caixa/deletar', $contador) }}">
-                                                <button type="button" class="btn btn-outline-danger">X</button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                @foreach ($item as $indice)
+                                    @foreach ($indice as $value)
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">{{ $contador++ }}</th>
+                                                <td>{{ $value->nome }}</td>
+                                                <td>{{ $value->codigo_barra }}</td>
+                                                <td><input type="number" name="total" value="1" size="2" class="form-control" /></td>
+                                                <td><input type="number" name="total" value="1" size="2" class="form-control" /></td>
+                                                <td><input type="number" name="total" value="1" size="2" class="form-control" /></td>
+                                                <td>
+                                                    <a href="{{ url('caixa/deletar', $contador) }}">
+                                                        <button type="button" class="btn btn-outline-danger">X</button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    @endforeach
                                 @endforeach
                             @endforeach
                             @endif
@@ -78,7 +88,7 @@ $contador = 1;
     <div class="row mt-3">
         <div class="col-md-5">
             <u><b>Sobre o Sistema</b></u><br />
-            <span><b>Terminal: </b>001<br /></span>
+            <span><b>Terminal: </b>00{{ $terminal }}<br /></span>
             <span><b>Operador: </b>0123456789<br /></span>
             <span><b>Cliente: </b>012.345.678-09<br /></span>
             <span><b>17/10/2022 - 13:47:58</b><br /></span>
