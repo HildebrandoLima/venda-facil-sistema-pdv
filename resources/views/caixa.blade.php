@@ -4,9 +4,13 @@
 
 @section('body')
 
+@php
+$contador = 1;
+@endphp
+
     <div class="row">
         <div class="col-md-5">
-            <img src="https://greenpng.com/wp-content/uploads/2022/09/Desenho-de-pastagem-1024x724.jpg" width="500" height="500" class=""/>
+            <img src="{{ asset('images/5954b954deaf2c03413be345.png') }}" width="500" height="500" class=""/>
         </div>
 
         <div class="col-md-7 text-right">
@@ -41,14 +45,11 @@
                                     <th scope="col">Remover</th>
                                 </tr>
                             </thead>
-                            @php
-                            $contador = 1;
-                            @endphp
                             @if($contador == 0)
                                 <h5><p class="text-center">Não há itens nessa venda</p></h5>
                             @else
-                            @foreach ($item as $novoArray)
-                                @foreach ($novoArray as $value)
+                            @foreach ($itens as $item)
+                                @foreach ($item as $value)
                                 <tbody>
                                     <tr>
                                         <th scope="row">{{ $contador++ }}</th>
@@ -57,7 +58,11 @@
                                         <td><input type="number" name="total" value="1" size="2" class="form-control" /></td>
                                         <td><input type="number" name="total" value="1" size="2" class="form-control" /></td>
                                         <td><input type="number" name="total" value="1" size="2" class="form-control" /></td>
-                                        <td><button type="submit" class="btn btn-outline-danger">X</button></td>
+                                        <td>
+                                            <a href="{{ url('caixa/deletar', $contador) }}">
+                                                <button type="button" class="btn btn-outline-danger">X</button>
+                                            </a>
+                                        </td>
                                     </tr>
                                 </tbody>
                                 @endforeach
@@ -71,26 +76,30 @@
     </div>
 
     <div class="row mt-3">
-        <div class="col-md-6">
+        <div class="col-md-5">
             <u><b>Sobre o Sistema</b></u><br />
             <span><b>Terminal: </b>001<br /></span>
             <span><b>Operador: </b>0123456789<br /></span>
-            <span><b>Cliente: </b>0123456789<br /></span>
+            <span><b>Cliente: </b>012.345.678-09<br /></span>
             <span><b>17/10/2022 - 13:47:58</b><br /></span>
         </div>
 
-        <div class="col-md-6 text-right">
-            <div class="row">
-                <div class="col-3">
-                    <label for="TotalItens" class="form-label">Total de Itens</label>
-                    <input type="number" name="total" class="form-control" />
-                </div>
-                <div class="col-3">
-                    <label for="Valor" class="form-label">Valor Total</label>
-                    <input type="number" name="total" class="form-control" />
-                </div>
-                <div class="col-3">
-                    <button type="submit" class="btn btn-primary mt-4">Finalizar Venda</button>
+        <div class="col-md-7 text-right">
+            <div class="card shadow rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <label for="Total" class="form-label">Valor Total</label>
+                            <input type="number" name="total" class="form-control" />
+                        </div>
+                        <div class="col-3">
+                            <label for="Troco" class="form-label">Troco</label>
+                            <input type="number" name="troco" class="form-control" />
+                        </div>
+                        <div class="col-3 mt-3">
+                            <button type="submit" class="btn btn-primary mt-3">Finalizar Venda</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

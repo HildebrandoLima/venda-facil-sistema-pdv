@@ -17,16 +17,10 @@ class CaixaController extends Controller
         $this->produtoRepositorio = $produtoRepositorio;
     }
 
-    public function status()
-    {
-        $status = $this->caixaRepositorio->getStatusCaixa();
-        return view('caixa', $status[0]->status);
-    }
-
     public function home()
     {
-        $item = session('item', []);
-        $itens = ['item' => $item];
+        $item = session('itens', []);
+        $itens = ['itens' => $item];
         return view('caixa', $itens);
     }
 
@@ -35,10 +29,25 @@ class CaixaController extends Controller
         $codigo_barra = $request->codigo_barra;
         $produto = $this->produtoRepositorio->getProdutoCaixa($codigo_barra);
         if($produto):
-            $item = session('item', []);
+            $item = session('itens', []);
             array_push($item, $produto);
-            session(['item' => $item]);
+            session(['itens' => $item]);
         endif;
+        return $this->home();
+    }
+
+    public function update()
+    {
+
+    }
+
+    public function destroy($produtoId)
+    {
+        $item = session('itens', []);
+        if(isset($item[$produtoId])):
+            unset($item[$produtoId]);
+        endif;
+        session(['itens' => $item]);
         return $this->home();
     }
 }
