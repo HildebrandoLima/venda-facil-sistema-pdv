@@ -91,7 +91,7 @@ $contador = 1;
             <span><b>Terminal: </b>00{{ $terminal }}<br /></span>
             <span><b>Operador: </b>0123456789<br /></span>
             <span><b>Cliente: </b>012.345.678-09<br /></span>
-            <span><b>17/10/2022 - 13:47:58</b><br /></span>
+            <span><b>@php echo date('d-m-Y') @endphp - <div class="relogio"></div></b><br /></span>
         </div>
 
         <div class="col-md-7 text-right">
