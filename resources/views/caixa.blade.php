@@ -56,7 +56,7 @@ $contador = 1;
                             </thead>
                             @foreach ($itens as $item)
                                 @foreach ($item as $indice)
-                                    @forelse ($indice as $value)
+                                    @foreach ($indice as $value)
                                         <tbody>
                                             <tr>
                                                 <th scope="row">{{ $contador++ }}</th>
@@ -72,9 +72,7 @@ $contador = 1;
                                                 </td>
                                             </tr>
                                         </tbody>
-                                        @empty
-                                        <h5><p class="text-center">Não há itens nessa venda</p></h5>
-                                    @endforelse
+                                    @endforeach
                                 @endforeach
                             @endforeach
                         </table>
