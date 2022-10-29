@@ -35,10 +35,11 @@ $contador = 1;
 
             <div class="card shadow rounded">
                 <div class="card-body">
-                    <form action="venda/salvar" method="post">
-                        @csrf
-                        <input type="hidden" name="caixa_id" value="1" />
-                        <input type="hidden" name="user_created_at" value="1" />
+
+<form action="venda/salvar" method="post">
+@csrf
+<input type="hidden" name="caixa_id" value="1" />
+<input type="hidden" name="user_created_at" value="1" />
 
                     <div class="table-response table-overflow">
                         <table class="table">
@@ -53,12 +54,9 @@ $contador = 1;
                                     <th scope="col">Remover</th>
                                 </tr>
                             </thead>
-                            @if($contador == 0)
-                                <h5><p class="text-center">Não há itens nessa venda</p></h5>
-                            @else
                             @foreach ($itens as $item)
                                 @foreach ($item as $indice)
-                                    @foreach ($indice as $value)
+                                    @forelse ($indice as $value)
                                         <tbody>
                                             <tr>
                                                 <th scope="row">{{ $contador++ }}</th>
@@ -74,10 +72,11 @@ $contador = 1;
                                                 </td>
                                             </tr>
                                         </tbody>
-                                    @endforeach
+                                        @empty
+                                        <h5><p class="text-center">Não há itens nessa venda</p></h5>
+                                    @endforelse
                                 @endforeach
                             @endforeach
-                            @endif
                         </table>
                     </div>
                 </div>
@@ -99,15 +98,11 @@ $contador = 1;
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3">
-                            <label for="Total" class="form-label">Valor Total</label>
-                            <input type="number" name="total" class="form-control" />
+                            Total: R$ 8,00
+                            <input type="hidden" name="total" value="1" />
                         </div>
                         <div class="col-3">
-                            <label for="Troco" class="form-label">Troco</label>
-                            <input type="number" name="troco" class="form-control" />
-                        </div>
-                        <div class="col-3 mt-3">
-                            <button type="submit" class="btn btn-primary mt-3">
+                            <button type="submit" class="btn btn-primary">
                                 <span class="icon fa fa-money"></span>
                                 Finalizar Venda
                             </button>
