@@ -24,7 +24,7 @@ class CaixaController extends Controller
     public function index(Request $request)
     {
         $codigo_barra = $request->codigo_barra;
-        $produto = $this->produtoRepositorio->getProdutoCaixa($codigo_barra);
+        $produto = $this->produtoRepositorio->getProduto($codigo_barra);
         if($produto):
             $item = session('itens', []);
             array_push($item, $produto);
@@ -33,7 +33,7 @@ class CaixaController extends Controller
         $caixa = $this->caixaRepositorio->getCaixa()->toArray();
         $item = session('itens', []);
         $itens = ['itens' => $item];
-        return view('caixa', ['itens' => $itens, 'terminal' => $caixa[0]->id, 'status' => $caixa[0]->status]);
+        return view('caixa', ['itens' => $itens, 'caixa' => $caixa[0]->id, 'status' => $caixa[0]->status]);
     }
 
     public function update()
