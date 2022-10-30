@@ -17,13 +17,8 @@ class ProdutoRepositorio
         $this->listarProdutoDb = $listarProdutoDb;
     }
 
-    public function getProdutoCaixa($codigo_barra)
+    public function getProduto($codigo_barra)
     {
-        return $this->listarProdutoDb->getProdutoCaixa($codigo_barra);
-    }
-
-    public function getProdutoFind(Request $request)
-    {
-        return $this->listarProdutoDb->getProdutoFind($request->produto_id);
+        return $this->listarProdutoDb->getProduto($codigo_barra);
     }
 }
