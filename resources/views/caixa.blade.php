@@ -23,7 +23,11 @@
 
     <div class="row">
         <div class="col-md-5">
-            <img src="{{ asset('images/5954b954deaf2c03413be345.png') }}" width="500" height="500" class=""/>
+            @if($imagem)
+                <img src="{{ asset('images/' . $imagem) }}" width="500" height="500" class=""/>
+            @else
+                <img src="{{ asset('images/logo.png') }}" width="500" height="300" class=""/>
+            @endif
         </div>
 
         <div class="col-md-7 text-right">
@@ -171,15 +175,18 @@
                 </div>
 
                 <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar Venda</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                    <span class="icon fa fa-xmark"></span>
+                    Cancelar Venda
+                </button>
                 <button type="submit" class="btn btn-success">
-                    <span class="icon fa fa-money"></span>
+                    <span class="icon fa fa-check"></span>
                     Finalizar Venda
                 </button>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 </form>
 
 @endsection

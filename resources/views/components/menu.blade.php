@@ -6,6 +6,16 @@
 </div>
 
 <div id="menu" class="mt-3">
+    <button class="btn btn-success col-sm">
+        <span class="icon fa fa-money"></span>
+        Abrir Caixa
+    </button>
+
+    <button class="btn btn-danger col-sm">
+        <span class="icon fa fa-money"></span>
+        Fechar Caixa
+    </button>
+
     <button class="btn btn-secondary col-sm">
         <span class="icon fa fa-gear"></span>
         Ajuda
@@ -34,7 +44,7 @@
     </button>
 
     <button type="button" class="btn btn-success col-sm" data-bs-toggle="modal" data-bs-target="#pagamentoModal">
-        <span class="icon fa fa-money"></span>
+        <span class="icon fa fa-check"></span>
         Fechar Venda
     </button>
 

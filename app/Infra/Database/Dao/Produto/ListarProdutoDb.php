@@ -15,6 +15,7 @@ class ListarProdutoDb extends DbBase {
         'nome',
         'preco',
         'codigo_barra',
+        'imagem',
         'unidade_medida'
     ])
     ->where('codigo_barra', $codigo_barra)
