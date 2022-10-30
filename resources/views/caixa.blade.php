@@ -111,7 +111,6 @@ $troco = 0;
                         <div class="col-3">
                             <h4>Total a Pagar: R$ {{ number_format($total, 2, ',', ' ') }}</h4>
                             <input type="hidden" name="quantidade_item" value="{{ $contador -1 }}" />
-                            <input type="hidden" name="total" value="{{ $total }}" />
                         </div>
                     </div>
                 </div>
@@ -128,45 +127,48 @@ $troco = 0;
                 </div>
 
                 <div class="modal-body">
-                    <input type="hidden" name="dinheiro" value="22" />
-                    <input type="hidden" name="cartao" value="22" />
+                    <div class="input-group mb-3">
+                        <select name="forma_pagamento" onchange='mostraCampo(this)' class="form-select">
+                            <option selected>Forma de Pagamento</option>
+                            <option value="Dinheiro">Dinheiro</option>
+                            <option value="Pix">Pix</option>
+                            <option value="Crédito">Crédito</option>
+                            <option value="Débito">Débito</option>
+                        </select>
+                        <span class="input-group-text">R$</span>
+                        <select id="cartao" style="display:none" class="form-select">
+                            <option name="parcela" selected>Parcelas</option>
+                            <option value="1">1x</option>
+                            <option value="2">2x</option>
+                            <option value="3">3x</option>
+                        </select>
+                    </div>
 
+                    <div class="input-group mb-3">
+                        <span class="input-group-text icon fa fa-credit-card" id="basic-addon1"></span>
+                        <input type="number" name="numero_cartao" id="cartao" style="display:none" value="xxxxxxxxxxxxxxxxx" class="form-control" placeholder="N° Cartão" />
+                    </div>
 
+                    <div class="input-group mb-3">
+                        <span class="input-group-text icon fa fa-credit-card" id="basic-addon1"></span>
+                        <input type="date" name="data_vencimento" id="cartao" style="display:none" class="form-control" />
+                    </div>
 
+                    <div class="input-group mb-3">
+                        <input type="number" name="valor_pago" placeholder="Pago" class="form-control" />
+                        <span class="input-group-text">R$</span>
+                        <input type="text" name="total" value="{{ number_format($total, 2, '.', ' ') }}" class="form-control" />
+                        <input type="hidden" name="troco" />
+                    </div>
 
-
-
-
-<div class="input-group mb-3">
-    <span class="input-group-text icon fa fa-credit-card" id="basic-addon1"></span>
-    <input type="number" name="numero_cartao" value="xxxx.xxxxx.xxxx.xxxx" class="form-control" placeholder="N° Cartão" />
-</div>
-
-<div class="input-group mb-3">
-<span class="input-group-text">$</span>
-    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-    <span class="input-group-text">.00</span>
-</div>
-
-<div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-    <span class="input-group-text">@</span>
-    <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-</div>
-
-<hr />
-<h4>Total a Pagar: R$ {{ number_format($total, 2, ',', ' ') }}</h4>
-<h4>Pago: R$ {{ number_format($pago, 2, ',', ' ') }}</h4>
-<h4>Troco: R$ {{ number_format($troco, 2, ',', ' ') }}</h4>
-
-
-
-
-                    
+                    <hr />
+                    <h4>Total a Pagar: R$ {{ number_format($total, 2, ',', ' ') }}</h4>
+                    <h4>Pago: R$ {{ number_format($pago, 2, ',', ' ') }}</h4>
+                    <h4>Troco: R$ {{ number_format($troco, 2, ',', ' ') }}</h4>
                 </div>
 
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar Venda</button>
                 <button type="submit" class="btn btn-success">
                     <span class="icon fa fa-money"></span>
                     Finalizar Venda

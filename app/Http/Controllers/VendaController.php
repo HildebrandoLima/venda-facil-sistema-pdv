@@ -25,6 +25,6 @@ class VendaController extends Controller
         if($resultado):
             $request->session()->forget('itens');
         endif;
-        return redirect()->route('caixa');
+        return redirect()->route('caixa')->with('msg', 'Venda Finalizada com Sucesso!!!');
     }
 }
