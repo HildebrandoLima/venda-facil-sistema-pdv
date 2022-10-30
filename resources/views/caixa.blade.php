@@ -141,13 +141,13 @@
                     <div id="cartao" style="display:none">
                         <div class="input-group mb-3">
                             <span class="input-group-text icon fa fa-credit-card"></span>
-                            <input type="number" name="numero_cartao" value="xxxxxxxxxxxxxxxxx" class="form-control" placeholder="N° Cartão" />
+                            <input type="number" name="numero_cartao" class="form-control" placeholder="N° Cartão" />
                         </div>
 
                         <div class="input-group mb-3">
                             <select class="form-select">
                                 <option name="parcela" selected>Parcelas</option>
-                                <option value="0">Nenhuma</option>
+                                <option value="">Nenhuma</option>
                                 <option value="1">1x</option>
                                 <option value="2">2x</option>
                                 <option value="3">3x</option>
