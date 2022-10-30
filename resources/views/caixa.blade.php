@@ -5,12 +5,12 @@
 @section('body')
 
 @php
-$contador = 1;
-$quantidade = 0;
-$sub_total = 0;
-$total = 0;
-$pago = 0;
-$troco = 0;
+    $contador = 1;
+    $quantidade = 0;
+    $sub_total = 0;
+    $total = 0;
+    $pago = 0;
+    $troco = 0;
 @endphp
 
 @if($status == 'Aberto')
@@ -128,6 +128,7 @@ $troco = 0;
 
                 <div class="modal-body">
                     <div class="input-group mb-3">
+                        <span class="input-group-text">R$</span>
                         <select name="forma_pagamento" onchange='mostraCampo(this)' class="form-select">
                             <option selected>Forma de Pagamento</option>
                             <option value="Dinheiro">Dinheiro</option>
@@ -135,23 +136,25 @@ $troco = 0;
                             <option value="Crédito">Crédito</option>
                             <option value="Débito">Débito</option>
                         </select>
-                        <span class="input-group-text">R$</span>
-                        <select id="cartao" style="display:none" class="form-select">
-                            <option name="parcela" selected>Parcelas</option>
-                            <option value="1">1x</option>
-                            <option value="2">2x</option>
-                            <option value="3">3x</option>
-                        </select>
                     </div>
 
-                    <div class="input-group mb-3">
-                        <span class="input-group-text icon fa fa-credit-card" id="basic-addon1"></span>
-                        <input type="number" name="numero_cartao" id="cartao" style="display:none" value="xxxxxxxxxxxxxxxxx" class="form-control" placeholder="N° Cartão" />
-                    </div>
+                    <div id="cartao" style="display:none">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text icon fa fa-credit-card"></span>
+                            <input type="number" name="numero_cartao" value="xxxxxxxxxxxxxxxxx" class="form-control" placeholder="N° Cartão" />
+                        </div>
 
-                    <div class="input-group mb-3">
-                        <span class="input-group-text icon fa fa-credit-card" id="basic-addon1"></span>
-                        <input type="date" name="data_vencimento" id="cartao" style="display:none" class="form-control" />
+                        <div class="input-group mb-3">
+                            <select class="form-select">
+                                <option name="parcela" selected>Parcelas</option>
+                                <option value="0">Nenhuma</option>
+                                <option value="1">1x</option>
+                                <option value="2">2x</option>
+                                <option value="3">3x</option>
+                            </select>
+                            <span class="input-group-text">X</span>
+                            <input type="date" name="data_vencimento" class="form-control" />
+                        </div>
                     </div>
 
                     <div class="input-group mb-3">
