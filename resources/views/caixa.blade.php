@@ -77,6 +77,7 @@
                                         <tbody>
                                             <tr>
                                                 <th scope="row">{{ $contador++ }}</th>
+                                                <input type="hidden" name="produto_id" value="{{ $value->id }}" />
                                                 <td><input type="hidden" name="nome" value="{{ $value->nome }}" />{{ $value->nome }}</td>
                                                 <td><input type="hidden" name="codigo_barra" value="{{ $value->codigo_barra }}" />{{ $value->codigo_barra }}</td>
                                                 <td><input type="hidden" name="quantidade" value="1" />{{ $quantidade }}</td>
@@ -162,7 +163,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <input type="number" name="valor_pago" placeholder="Pago" class="form-control" />
+                        <input type="number" name="valor_pago" value="1" placeholder="Pago" class="form-control" />
                         <span class="input-group-text">R$</span>
                         <input type="text" name="total" value="{{ number_format($total, 2, '.', ' ') }}" class="form-control" />
                         <input type="hidden" name="troco" />

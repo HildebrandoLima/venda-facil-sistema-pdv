@@ -12,6 +12,8 @@ class VendaRepositorio
     private CriarVendaDb $criarVendaDb;
     private CriarItemDb $criarItemDb;
     private CriarPagamentoDb $criarPagamentoDb;
+    private int $vendaId;
+    private array $itens = [];
 
     public function __construct
     (
@@ -25,25 +27,41 @@ class VendaRepositorio
         $this->criarPagamentoDb = $criarPagamentoDb;
     }
 
-    public function criarVenda(Request $request)
+    public function criarVenda(Request $request): bool
     {
-        #dd($itens);
-        #dd(str_replace('+', "", $itens));
-        /*foreach($itens as $a):
-            foreach($a as $b):
-                foreach($b as $v):
-                    str_replace('+', "", $v->nome);
-                    str_replace('+', "", $v->preco);
-                    str_replace('+', "", $v->codigo_barra);
-                    str_replace('+', "", $v->unidade_medida);
-                endforeach;
+        $this->request = $request;
+        $this->sessionItens();
+        $this->criarVendaa();
+        $this->criarItem();
+        $this->criarPagamento();
+        return true;
+    }
+
+    private function sessionItens(): array
+    {
+        $session = $this->request->session()->all();
+        $arrayItens = $session['itens'];
+        foreach($arrayItens as $item):
+            foreach($item as $i):
+                array_push($this->itens, $i);
             endforeach;
         endforeach;
-        */
-        #dd($vv);
-        $vendaId = $this->criarVendaDb->criarVenda($request);
-        $this->criarPagamentoDb->criarPagamento($request, $vendaId);
-        return true;
-        #return $this->criarItemDb->criarItem($vv, $vendaId);
+        return $this->itens;
+    }
+
+    private function criarVendaa(): int
+    {
+        $this->vendaId = $this->criarVendaDb->criarVenda($this->request);
+        return $this->vendaId;
+    }
+
+    private function criarItem(): void
+    {
+        $this->criarItemDb->criarItem($this->request, $this->itens, $this->vendaId);
+    }
+
+    private function criarPagamento(): void
+    {
+        $this->criarPagamentoDb->criarPagamento($this->request, $this->vendaId);
     }
 }
