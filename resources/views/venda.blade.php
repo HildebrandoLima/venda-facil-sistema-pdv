@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div>
-                <img class="imgtitulo" src="image/titulo.jpeg" />
+                <img class="imgtitulo" src="image/logo.png" />
                 </div>
         </div>
 
@@ -135,28 +135,28 @@
 </button>
 <div id="bt" class="btabas">
     <button class="btn btn-primary col-sm">
-        <img src="image/ajuda.png">Ajuda</i>
+        <img height="30" width="30" src="image/chave-inglesa.png">Ajuda</i>
         </button>
     <button class="btn btn-primary col-sm">
-    <img src="image/user.png">Identif Cliente</i>
+    <img height="30" width="30" src="image/avatar-de-perfil.png">Identif Cliente</i>
         </button>
     <button class="btn btn-primary col-sm">
-    <img src="image/x.png">Cancelar Item</i>
+    <img height="30" width="30" src="image/cancelar.png">Cancelar Item</i>
+        </button>
+    <button height="30" width="30" class="btn btn-primary col-sm">
+        <img height="30" width="30" src="image/lupa.png">Consultar Preço</i>
         </button>
     <button class="btn btn-primary col-sm">
-        <img src="image/pesquisar.png">Consultar Preço</i>
-        </button>
-    <button class="btn btn-primary col-sm">
-    <img src="image/desconto.png">Cupom Desconto</i>
+    <img height="30" width="30" src="image/tag-de-porcentagem.png">Cupom Desconto</i>
         </button>
         <button class="btn btn-primary col-sm">
-        <img src="image/quantidade.png">Varias Unidades</i>
+        <img height="30" width="30" src="image/botao-adicionar.png">Varias Unidades</i>
         </button>
         <button  type="button" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary col-sm">
-        <img src="image/dinheiro.png">Fechar Venda</i>
+        <img height="30" width="30" src="image/dinheiro.png">Fechar Venda</i>
         </button>
         <button class="btn btn-primary col-sm">
-        <img src="image/sessao.png">Encerrar Sessão</i>
+        <a onclick="location.href='login.blade.php'" onclick="event.preventDefault();"><img height="30" width="30" src="image/sair.png">Encerrar Sessão</a>
     </button>
 </div>
 
