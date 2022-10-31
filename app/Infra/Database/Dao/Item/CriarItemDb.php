@@ -4,26 +4,27 @@ namespace App\Infra\Database\Dao\Item;
 
 use Illuminate\Http\Request;
 use App\Infra\Database\Config\DbBase;
-use App\Models\Item;
 
 class CriarItemDb extends DbBase {
 
-  public function criarItem($vendaId, $itens)
+  public function criarItem(Request $request, array $itens, int $vendaId): bool
   {
-    foreach ($itens as $i):
-      $item = new Item();
-      $item->nome = $i->nome;
-      $item->preco = $i->preco;
-      $item->codigo_barra = $i->codigo_barra;
-      $item->quantidade = $i->quantidade;
-      $item->unidade_medida = $i->unidade_medida;
-      $item->valor_unitario = $i->valor_unitario;
-      $item->sub_total = $i->sub_total;
-      $item->valor_total = $i->valor_total;
-      $item->venda_id = $vendaId;
-      $item->user_created_at = $i->user_created_at;
-      $item->created_at = date("Y-m-d H:i:s");
-      $item->save();
+    foreach ($itens as $item):
+      $this->db
+      ->table('item')
+      ->insert([
+        'nome' => $item->nome,
+        'preco' => $item->preco,
+        'codigo_barra' => $item->codigo_barra,
+        'quantidade' => $request->quantidade,
+        'sub_total' => $request->sub_total,
+        'total' => $request->total,
+        'unidade_medida' => $item->unidade_medida,
+        'venda_id' => $vendaId,
+        'produto_id' => $request->produto_id,
+        'user_created_at' => $request->user_created_at,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
     endforeach;
     return true;
   }

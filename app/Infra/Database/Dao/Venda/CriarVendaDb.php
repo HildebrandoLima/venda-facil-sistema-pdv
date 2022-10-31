@@ -7,7 +7,7 @@ use App\Infra\Database\Config\DbBase;
 
 class CriarVendaDb extends DbBase {
 
-  public function criarVenda(Request $request)
+  public function criarVenda(Request $request): int
   {
     return $this->db
     ->table('venda')

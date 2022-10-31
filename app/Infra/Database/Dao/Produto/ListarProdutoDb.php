@@ -7,18 +7,12 @@ use App\Infra\Database\Config\DbBase;
 
 class ListarProdutoDb extends DbBase {
 
-  public function getProduto($codigo_barra)
+  public function getProduto(Request $request)
   {
     return $this->db
     ->table('produto')
-    ->select([
-        'nome',
-        'preco',
-        'codigo_barra',
-        'imagem',
-        'unidade_medida'
-    ])
-    ->where('codigo_barra', $codigo_barra)
+    ->select(['id', 'nome', 'preco', 'codigo_barra', 'imagem', 'unidade_medida'])
+    ->where('codigo_barra', $request->codigo_barra)
     ->get();
   }
 }

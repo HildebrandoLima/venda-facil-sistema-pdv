@@ -23,8 +23,7 @@ class CaixaController extends Controller
 
     public function index(Request $request)
     {
-        $codigo_barra = $request->codigo_barra;
-        $produto = $this->produtoRepositorio->getProduto($codigo_barra);
+        $produto = $this->produtoRepositorio->getProduto($request);
         if($produto):
             $item = session('itens', []);
             array_push($item, $produto);

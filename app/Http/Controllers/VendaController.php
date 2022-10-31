@@ -19,8 +19,6 @@ class VendaController extends Controller
 
     public function store(Request $request)
     {
-        #dd($request);
-        #$itens = session('itens', []);
         $resultado = $this->vendaRepositorio->criarVenda($request);
         if($resultado):
             $request->session()->forget('itens');

@@ -7,9 +7,9 @@ use App\Infra\Database\Config\DbBase;
 
 class CriarPagamentoDb extends DbBase {
 
-  public function criarPagamento(Request $request, $vendaId)
+  public function criarPagamento(Request $request, int $vendaId): bool
   {
-    return $this->db
+    $this->db
     ->table('pagamento')
     ->insert([
         'cartao' => $request->numero_cartao ? '1' : '0',
@@ -24,5 +24,6 @@ class CriarPagamentoDb extends DbBase {
         'user_created_at' => $request->user_created_at,
         'created_at' => date("Y-m-d H:i:s")
     ]);
+    return true;
   }
 }
