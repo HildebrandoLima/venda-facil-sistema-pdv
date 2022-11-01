@@ -26,7 +26,7 @@
             @if($imagem)
                 <img src="{{ asset('images/' . $imagem) }}" width="500" height="500" class=""/>
             @else
-                <img src="{{ asset('images/logo.png') }}" width="500" height="300" class=""/>
+                <img src="{{ asset('images/logo.png') }}" width="550" height="350" class=""/>
             @endif
         </div>
 
