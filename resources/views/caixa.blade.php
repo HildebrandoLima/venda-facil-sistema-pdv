@@ -69,7 +69,7 @@
 
                                     @php
                                         $quantidade = 2;
-                                        $sub_total = $value->preco * $quantidade;
+                                        $sub_total = $value->preco_venda * $quantidade;
                                         $total += $sub_total;
                                         $troco = $pago - $total;
                                     @endphp
@@ -81,7 +81,7 @@
                                                 <td><input type="hidden" name="nome" value="{{ $value->nome }}" />{{ $value->nome }}</td>
                                                 <td><input type="hidden" name="codigo_barra" value="{{ $value->codigo_barra }}" />{{ $value->codigo_barra }}</td>
                                                 <td><input type="hidden" name="quantidade" value="1" />{{ $quantidade }}</td>
-                                                <td><input type="hidden" name="preco" value="{{ $value->preco }}" />{{ number_format($value->preco, 2, ',', ' ') }}</td>
+                                                <td><input type="hidden" name="preco" value="{{ $value->preco_venda }}" />{{ number_format($value->preco_venda, 2, ',', ' ') }}</td>
                                                 <td><input type="hidden" name="sub_total" value="{{ $sub_total }}" />{{ number_format($sub_total, 2, ',', ' ') }}</td>
                                                 <td>
                                                     <a href="{{ url('caixa/deletar', $contador) }}">

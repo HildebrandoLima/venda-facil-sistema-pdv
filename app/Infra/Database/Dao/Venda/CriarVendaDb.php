@@ -13,7 +13,7 @@ class CriarVendaDb extends DbBase {
     ->table('venda')
     ->insertGetId([
         'numero_venda' => random_int(100000000, 999999999),
-        'quantidade_item' => $request->quantidade_item,
+        'quantidade' => $request->quantidade_item,
         'total' => $request->total,
         'caixa_id' => $request->caixa_id,
         'usuario_id' => $request->usuario_id ? $request->usuario_id : 0,

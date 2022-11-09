@@ -14,7 +14,7 @@ class CriarItemDb extends DbBase {
       ->table('item')
       ->insert([
         'nome' => $item->nome,
-        'preco' => $item->preco,
+        'preco' => $item->preco_venda,
         'codigo_barra' => $item->codigo_barra,
         'quantidade' => $request->quantidade,
         'sub_total' => $request->sub_total,
