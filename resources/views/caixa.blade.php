@@ -16,7 +16,7 @@
 @if($status == 'Aberto')
     <div class="alert alert-success" role="alert">
 @else
-    <div class="alert alert-danger" role="alert">  
+    <div class="alert alert-danger" role="alert">
 @endif
         <h3 class="text-center">Caixa {{ $status }}</h3>
     </div>
@@ -122,6 +122,35 @@
             </div>
         </div>
     </div>
+            <div class="modal fade" id="abreCaixaModal" tabindex="-1" aria-labelledby="pagamentoModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="pagamentoModalLabel">Abertura de Caixa</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <hr>
+                        <form>
+                        <label align="center">Saldo inicial</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">R$</span>
+                            <input type="text" name="total" value="" class="form-control" />
+                            <input type="hidden" name="troco" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                <span class="icon fa fa-xmark"></span>
+                             Cancelar
+                            </button>
+                            <button type="submit" class="btn btn-success">
+                                <span class="icon fa fa-check"></span>
+                                Iniciar Caixa
+                            </button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
     <div class="modal fade" id="pagamentoModal" tabindex="-1" aria-labelledby="pagamentoModalLabel" aria-hidden="true">
         <div class="modal-dialog">

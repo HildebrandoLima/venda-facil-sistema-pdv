@@ -6,7 +6,7 @@
 </div>
 
 <div id="menu" class="mt-3">
-    <button class="btn btn-success col-sm">
+    <button type="button"  class="btn btn-success col-sm" data-bs-toggle="modal" data-bs-target="#abreCaixaModal">
         <span class="icon fa fa-money"></span>
         Abrir Caixa
     </button>

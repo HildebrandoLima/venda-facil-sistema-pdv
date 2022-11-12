@@ -38,6 +38,7 @@ class CaixaController extends Controller
     public function update()
     {
 
+
     }
 
     public function destroy($produtoId)

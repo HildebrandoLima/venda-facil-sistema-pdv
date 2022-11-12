@@ -10,4 +10,9 @@ Route::prefix('caixa')->group(function () {
     Route::get('/', [CaixaController::class, 'index'])->name('caixa');
     Route::get('/deletar/{produtoId}', [CaixaController::class, 'destroy'])->name('remover');
     Route::post('/venda/salvar', [VendaController::class, 'store'])->name('salvar');
+    //Route::post('/venda/salvar', [VendaController::class, 'store'])->name('salvar');
+
 });
+
+
+//dados-> $request-> all ();
