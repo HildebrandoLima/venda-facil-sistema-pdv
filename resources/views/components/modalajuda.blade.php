@@ -16,13 +16,9 @@
           </div>
 
           <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
               <span class="icon fa fa-xmark"></span>
-              Cancelar Venda
-          </button>
-          <button type="submit" class="btn btn-success">
-              <span class="icon fa fa-check"></span>
-              Finalizar Venda
+              Fechar
           </button>
           </div>
       </div>

@@ -6,15 +6,20 @@
 </div>
 
 <div id="menu" class="mt-3">
+    @if($status == 'Fechado')
+
     <button class="btn btn-success col-sm">
         <span class="icon fa fa-money"></span>
         Abrir Caixa
     </button>
 
+    @else
+
     <button class="btn btn-danger col-sm">
         <span class="icon fa fa-money"></span>
         Fechar Caixa
     </button>
+    @endif
 
     <button type="button" class="btn btn-secondary col-sm" data-bs-toggle="modal" data-bs-target="#ajudaModal">
         <span class="icon fa fa-gear"></span>
