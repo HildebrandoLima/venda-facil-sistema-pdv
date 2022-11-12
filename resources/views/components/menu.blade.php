@@ -1,4 +1,4 @@
-<div class="text-left">
+<div class="text-left mt-3">
     <button type="button" class="btn btn-primary text-left" onclick="Mudarestado('menu')">
         <span class="icon fa fa-bars"></span>
         Menu
@@ -16,7 +16,7 @@
         Fechar Caixa
     </button>
 
-    <button class="btn btn-secondary col-sm">
+    <button type="button" class="btn btn-secondary col-sm" data-bs-toggle="modal" data-bs-target="#ajudaModal">
         <span class="icon fa fa-gear"></span>
         Ajuda
     </button>
