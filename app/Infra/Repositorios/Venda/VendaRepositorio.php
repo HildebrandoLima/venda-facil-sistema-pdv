@@ -5,6 +5,7 @@ namespace App\Infra\Repositorios\Venda;
 use App\Infra\Database\Dao\Venda\CriarVendaDb;
 use App\Infra\Database\Dao\Item\CriarItemDb;
 use App\Infra\Database\Dao\Pagamento\CriarPagamentoDb;
+use App\Support\Helpers\MapeadorItens;
 use Illuminate\Http\Request;
 
 class VendaRepositorio
@@ -12,6 +13,7 @@ class VendaRepositorio
     private CriarVendaDb $criarVendaDb;
     private CriarItemDb $criarItemDb;
     private CriarPagamentoDb $criarPagamentoDb;
+    private MapeadorItens $mapeadorItens;
     private int $vendaId;
     private array $itens = [];
 
@@ -19,12 +21,14 @@ class VendaRepositorio
     (
         CriarVendaDb $criarVendaDb,
         CriarItemDb $criarItemDb,
-        CriarPagamentoDb $criarPagamentoDb
+        CriarPagamentoDb $criarPagamentoDb,
+        MapeadorItens $mapeadorItens
     )
     {
         $this->criarVendaDb = $criarVendaDb;
         $this->criarItemDb = $criarItemDb;
         $this->criarPagamentoDb = $criarPagamentoDb;
+        $this->mapeadorItens = $mapeadorItens;
     }
 
     public function criarVenda(Request $request): bool
@@ -39,13 +43,7 @@ class VendaRepositorio
 
     private function sessionItens(): array
     {
-        $session = $this->request->session()->all();
-        $arrayItens = $session['itens'];
-        foreach($arrayItens as $item):
-            foreach($item as $i):
-                array_push($this->itens, $i);
-            endforeach;
-        endforeach;
+        $this->itens = $this->mapeadorItens->sessionItens($this->request);
         return $this->itens;
     }
 
