@@ -1,4 +1,4 @@
-<div class="text-left">
+<div class="text-left mt-3">
     <button type="button" class="btn btn-primary text-left" onclick="Mudarestado('menu')">
         <span class="icon fa fa-bars"></span>
         Menu
@@ -6,17 +6,22 @@
 </div>
 
 <div id="menu" class="mt-3">
+    @if($status == 'Fechado')
+
     <button class="btn btn-success col-sm">
         <span class="icon fa fa-money"></span>
         Abrir Caixa
     </button>
 
+    @else
+
     <button class="btn btn-danger col-sm">
         <span class="icon fa fa-money"></span>
         Fechar Caixa
     </button>
+    @endif
 
-    <button class="btn btn-secondary col-sm">
+    <button type="button" class="btn btn-secondary col-sm" data-bs-toggle="modal" data-bs-target="#ajudaModal">
         <span class="icon fa fa-gear"></span>
         Ajuda
     </button>

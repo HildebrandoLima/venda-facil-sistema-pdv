@@ -20,6 +20,13 @@
 @endif
         <h3 class="text-center">Caixa {{ $status }}</h3>
     </div>
+    <div class="alert alert-secondary" role="alert">
+    @if(isset($descricao))
+        <h3 class="text-center">{{ $descricao }}</h3>
+    @else
+        <h3 class="text-center">Nenhum produto bipado</h3>
+    @endif
+    </div>
 
     <div class="row">
         <div class="col-md-5">
@@ -102,11 +109,6 @@
 
 <div class="row mt-3">
         <div class="col-md-5">
-            <u><b>Sobre o Sistema</b></u><br />
-            <span><b>Caixa: </b>00{{ $caixa }}<br /></span>
-            <span><b>Operador: </b>0123456789<br /></span>
-            <span><b>Cliente: </b>012.345.678-09<br /></span>
-            <span><b>@php echo date('d-m-Y') @endphp <div class="relogio"></div></b><br /></span>
         </div>
 
         <div class="col-md-7 text-right">
