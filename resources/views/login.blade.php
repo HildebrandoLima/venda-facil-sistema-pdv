@@ -15,8 +15,8 @@
         </div>
         </br>
         <h2 style="font-family: Montserrat, sans-serif; font-size: 3vh;">Acesso ao Sistema</h2>
-        <form name="loginform" id="loginform">
-
+        <form method="POST"  name="loginform" action="{{ route('login.entrar') }}" id="loginform">
+        @csrf
         <h3 class="field_label" aria-label="Matrícula de Funcionário ou Usuário" data-balloon-pos="right">Matrícula/Usuário</h3>
 		<input type="text" name="log" id="user_login" class="input" value="" size="20" autocapitalize="off" autocomplete="username" required/>
         </br>
@@ -37,3 +37,5 @@
         <footer style="font-family: Montserrat, sans-serif; font-size: 1vw; font-weight: bold;">Todos os direitos registrados - VendaFácil © 2022</footer>
     </body>
 </html>
+
+@method('POST')

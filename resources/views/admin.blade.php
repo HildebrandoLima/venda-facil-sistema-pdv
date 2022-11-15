@@ -1,10 +1,9 @@
 @extends('components.main')
 
-@section('title', 'VendaFácil')
 
 <body>
     <div id="session_info" align="right">
-        <script type="text/javascript" src="/js/current_time.js"></script>
+
         <!--SCRIPT PARA RETORNAR A HORA EM TEMPO REAL-->
     </div>
 
@@ -14,7 +13,7 @@
     <div class="page_estructure">
 
         <div id="logo">
-            <img src="/.media/logo.png" style="width: 20vw;">
+            <img src="/image/logo.png" style="width: 20vw;">
         </div>
 
         <h1 id="page_caption">Painel de Administrador</h1>
@@ -43,7 +42,7 @@
                     <table>
                         <tr>
                             <td>
-                                <img src="/.media/consultar-operador.png" style="height: 11vh" />
+                                <img src="/image/avatar-de-perfil.png" style="height: 11vh" />
                             </td>
                             <td>
                                 <font style="font-family: Montserrat,sans-serif; font-size:4vh; font-weight: 900;">
@@ -76,7 +75,7 @@
                     <table>
                         <tr>
                             <td>
-                                <img src="/.media/atualizar-estoque.png" style="height: 11vh" />
+                                <img src="/image/atualizar-estoque.png" style="height: 11vh" />
                             </td>
                             <td>
                                 <font style="font-family: Montserrat,sans-serif; font-size:4vh; font-weight: bolder;">
@@ -93,7 +92,7 @@
                     <table>
                         <tr>
                             <td>
-                                <img src="/.media/cadastrar-cliente.png" style="height: 11vh" />
+                                <img src="/image/cadastrar-cliente.png" style="height: 11vh" />
                             </td>
                             <td>
                                 <font style="font-family: Montserrat,sans-serif; font-size:4vh; font-weight: bolder;">
@@ -161,7 +160,7 @@
                         <div id="identificador">
                             <p class="input_label" style="margin-top: 6vh;">Identificador:</p>
                             <input type="search" id="nome" class="identificador_input" required />
-                            <button id="search_bt"><img src="/.media/lupa.png" style="width: 1.5vw;" /></button>
+                            <button id="search_bt"><img src="/image/lupa.png" style="width: 1.5vw;" /></button>
                         </div>
 
                         <div id="id_type">
@@ -238,7 +237,7 @@
                         <div id="identificador">
                             <p class="input_label" style="margin-top: 6vh;">Identificador:</p>
                             <input type="search" id="nome" class="identificador_input" required />
-                            <button id="search_bt"><img src="/.media/lupa.png" style="width: 1.5vw;" /></button>
+                            <button id="search_bt"><img src="/image/lupa.png" style="width: 1.5vw;" /></button>
                         </div>
 
                         <div id="id_type" style="margin-top: 7.8vh; margin-left: 2vw;">
@@ -306,7 +305,7 @@
                             <p class="input_label" style="margin-top: 5vh;">Código de Barras</p>
                             <input type="number" id="codigobarra" class="codigo_barra" required />
                             <span style="float: right;">
-                                <button id="seaarch_bt"><img src="/.media/lupa.png" style="width: 1.5vw"></button>
+                                <button id="seaarch_bt"><img src="/image/lupa.png" style="width: 1.5vw"></button>
                             </span>
                         </div>
 
@@ -368,7 +367,7 @@
                                 <table style="margin-top: 1vh;">
                                     <tr>
                                         <td>
-                                            <img src="/.media/adicionar-produto.png" style="height: 6.5vh" />
+                                            <img src="/image/adicionar-produto.png" style="height: 6.5vh" />
                                         </td>
                                         <td>
                                             <font
@@ -385,7 +384,7 @@
                                 <table style="margin-top: 1vh;">
                                     <tr>
                                         <td>
-                                            <img src="/.media/botao-editar.png" style="height: 6vh" />
+                                            <img src="/image/botao-editar.png" style="height: 6vh" />
                                         </td>
                                         <td>
                                             <font
@@ -509,7 +508,3 @@
 <footer style="font-family: Montserrat, sans-serif; font-size: 1vw; font-weight: bold;">Todos os direitos registrados -
     VendaFácil © 2022</footer>
 
-
-
-
-@endsection

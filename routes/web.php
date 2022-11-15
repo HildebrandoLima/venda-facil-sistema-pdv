@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendaController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,17 @@ use App\Http\Controllers\VendaController;
 //Route::get('/', [VendaController::class, 'index'])->name('index');
 
 //  Venda
+
+Route::prefix('/')->group(function () {
+    Route::get('/', [LoginController::class, 'index']);
+    Route::post('/entrar', [LoginController::class, 'entrar'])->name('login.entrar');
+    });
+
+Route::prefix('admin')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+        Route::post('/entrar', [AdminController::class, 'entrar'])->name('admin.entrar');
+        });
+
 Route::prefix('venda')->group(function () {
     Route::get('/', [VendaController::class, 'index'])->name('venda.listar.todos');
     //Route::get('/listar/{vendaId}', [VendaController::class, 'show'])->name('user.list.details');
