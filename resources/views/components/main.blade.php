@@ -16,7 +16,7 @@
     <body>
         <div class="container mt-3">
             @if(session('msg'))
-            <div class="alert alert-secondary mt-3" role="alert">
+            <div class="alert alert-success mt-3" role="alert">
                 <h3 class="text-center">{{ session('msg') }}</h3>
             </div>
             @endif

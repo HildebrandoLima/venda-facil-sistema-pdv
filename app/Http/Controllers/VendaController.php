@@ -17,7 +17,7 @@ class VendaController extends Controller
         $this->vendaRepositorio = $vendaRepositorio;
     }
 
-    public function store(Request $request)
+    public function criarVenda(Request $request)
     {
         $resultado = $this->vendaRepositorio->criarVenda($request);
         if($resultado):

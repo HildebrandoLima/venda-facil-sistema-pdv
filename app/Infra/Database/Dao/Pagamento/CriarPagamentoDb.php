@@ -5,8 +5,8 @@ namespace App\Infra\Database\Dao\Pagamento;
 use Illuminate\Http\Request;
 use App\Infra\Database\Config\DbBase;
 
-class CriarPagamentoDb extends DbBase {
-
+class CriarPagamentoDb extends DbBase
+{
   public function criarPagamento(Request $request, int $vendaId): bool
   {
     $this->db

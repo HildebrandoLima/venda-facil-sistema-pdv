@@ -21,32 +21,31 @@ class CaixaController extends Controller
         $this->produtoRepositorio = $produtoRepositorio;
     }
 
-    public function index(Request $request)
+    public function caixa(Request $request)
     {
+        $caixa = $this->caixaRepositorio->getCaixa()->toArray();
         $produto = $this->produtoRepositorio->getProduto($request);
-        if($produto):
+        $item = session('itens', []);
+        $data = ['itens' => $item];
+        return view('caixa', $data, ['caixa' => $caixa[0]->id, 'status' => $caixa[0]->status, 'imagem' => @$produto[0]->imagem, 'descricao' => @$produto[0]->descricao]);
+    }
+
+    public function adicionarItem(Request $request)
+    {
+        $buscar_produto = $this->produtoRepositorio->getProduto($request);
+        if($buscar_produto):
             $item = session('itens', []);
-            array_push($item, $produto);
+            array_push($item, $buscar_produto);
             session(['itens' => $item]);
         endif;
-        $caixa = $this->caixaRepositorio->getCaixa()->toArray();
-        $item = session('itens', []);
-        $itens = ['itens' => $item];
-        return view('caixa', ['itens' => $itens, 'caixa' => $caixa[0]->id, 'descricao' => @$produto[0]->descricao, 'imagem' => @$produto[0]->imagem, 'status' => $caixa[0]->status]);
+        return redirect()->route('caixa');
     }
 
-    public function update()
+    public function removerItem(int $produtoId)
     {
-
-    }
-
-    public function destroy($produtoId)
-    {
-        $item = session('itens', []);
-        if(isset($item[$produtoId])):
-            unset($item[$produtoId]);
-        endif;
-        session(['itens' => $item]);
+        $item = session()->get('itens');
+        unset($item[$produtoId]);
+        session()->put(['itens', $item]);
         return redirect()->route('caixa');
     }
 }

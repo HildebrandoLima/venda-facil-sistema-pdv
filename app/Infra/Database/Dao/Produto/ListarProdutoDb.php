@@ -5,8 +5,8 @@ namespace App\Infra\Database\Dao\Produto;
 use Illuminate\Http\Request;
 use App\Infra\Database\Config\DbBase;
 
-class ListarProdutoDb extends DbBase {
-
+class ListarProdutoDb extends DbBase
+{
   public function getProduto(Request $request)
   {
     return $this->db

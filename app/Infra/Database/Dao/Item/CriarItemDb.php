@@ -5,8 +5,8 @@ namespace App\Infra\Database\Dao\Item;
 use Illuminate\Http\Request;
 use App\Infra\Database\Config\DbBase;
 
-class CriarItemDb extends DbBase {
-
+class CriarItemDb extends DbBase
+{
   public function criarItem(Request $request, array $itens, int $vendaId): bool
   {
     foreach ($itens as $item):
