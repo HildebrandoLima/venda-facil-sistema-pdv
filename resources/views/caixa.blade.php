@@ -4,21 +4,6 @@
 
 @section('body')
 
-@if($status == 'Aberto')
-    <div class="alert alert-success" role="alert">
-@else
-    <div class="alert alert-danger" role="alert">  
-@endif
-        <h3 class="text-center">Caixa {{ $status }}</h3>
-    </div>
-    <div class="alert alert-secondary" role="alert">
-    @if(isset($descricao))
-        <h3 class="text-center">{{ $descricao }}</h3>
-    @else
-        <h3 class="text-center">Nenhum produto bipado</h3>
-    @endif
-    </div>
-
     <div class="row">
         <div class="col-md-5">
             @if(isset($imagem))
