@@ -21,31 +21,24 @@ class CaixaController extends Controller
         $this->produtoRepositorio = $produtoRepositorio;
     }
 
-    public function caixa(Request $request)
+    public function caixa()
     {
-        $caixa = $this->caixaRepositorio->getCaixa()->toArray();
-        $produto = $this->produtoRepositorio->getProduto($request);
-        $item = session('itens', []);
-        $data = ['itens' => $item];
-        return view('caixa', $data, ['caixa' => $caixa[0]->id, 'status' => $caixa[0]->status, 'imagem' => @$produto[0]->imagem, 'descricao' => @$produto[0]->descricao]);
+        $caixa = $this->caixaRepositorio->buscaCaixa()->toArray();
+        $item = $this->produtoRepositorio->listarVendaItemTemporario($caixa[0]->id)->toArray();
+        return view('caixa', ['caixa' => $caixa[0]->id, 'status' => $caixa[0]->status, 'descricao' => end($item)->descricao, 'imagem' => end($item)->imagem, 'itens' => $item]);
     }
 
     public function adicionarItem(Request $request)
     {
-        $buscar_produto = $this->produtoRepositorio->getProduto($request);
-        if($buscar_produto):
-            $item = session('itens', []);
-            array_push($item, $buscar_produto);
-            session(['itens' => $item]);
+        $produto = $this->produtoRepositorio->getProduto($request);
+        if($produto):
+           $this->produtoRepositorio->bipagemProduto($produto);
         endif;
         return redirect()->route('caixa');
     }
 
-    public function removerItem(int $produtoId)
+    public function removerItem(Request $request)
     {
-        $item = session()->get('itens');
-        unset($item[$produtoId]);
-        session()->put(['itens', $item]);
         return redirect()->route('caixa');
     }
 }

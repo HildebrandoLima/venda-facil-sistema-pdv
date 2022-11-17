@@ -8,12 +8,6 @@ class ListarCaixaDb extends DbBase
 {
   public function getCaixa()
   {
-    return $this->db
-    ->table('caixa')
-    ->select([
-      'id',
-      'status'
-      ])
-    ->get();
+    return $this->db->table('caixa')->select(['id', 'status'])->get();
   }
 }

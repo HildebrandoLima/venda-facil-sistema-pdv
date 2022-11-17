@@ -8,11 +8,11 @@ class MapeadorProduto
 {
     private array $produto = [];
 
-    public function mapperProduto(Request $request): array
+    public function mapeadorProduto($data): array
     {
-        foreach($request->codigo_barra as $item):
-            foreach($item as $p):
-                array_push($this->produto, $p);
+        foreach($data as $p):
+            foreach($p as $value):
+                array_push($this->produto, $value);
             endforeach;
         endforeach;
         return $this->produto;

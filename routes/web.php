@@ -13,7 +13,8 @@ use App\Http\Controllers\VendaController;
 
 Route::prefix('caixa')->group(function () {
     Route::get('/', [CaixaController::class, 'caixa'])->name('caixa');
-    Route::post('/adicionar', [CaixaController::class, 'adicionarItem'])->name('adicionar');
+    Route::post('/buscar', [CaixaController::class, 'adicionarItem'])->name('buscar');
+    //oute::post('/adicionar', [CaixaController::class, 'adicionarItem'])->name('adicionar');
     Route::post('/venda/salvar', [VendaController::class, 'criarVenda'])->name('venda');
     Route::delete('/deletar/{produtoId}', [CaixaController::class, 'removerItem'])->name('remover');
 });
