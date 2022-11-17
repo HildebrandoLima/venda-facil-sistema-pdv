@@ -16,7 +16,7 @@
 @if($status == 'Aberto')
     <div class="alert alert-success" role="alert">
 @else
-    <div class="alert alert-danger" role="alert">  
+    <div class="alert alert-danger" role="alert">
 @endif
         <h3 class="text-center">Caixa {{ $status }}</h3>
     </div>
@@ -124,7 +124,6 @@
             </div>
         </div>
     </div>
-
     <div class="modal fade" id="pagamentoModal" tabindex="-1" aria-labelledby="pagamentoModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

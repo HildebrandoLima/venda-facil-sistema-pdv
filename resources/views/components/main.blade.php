@@ -27,6 +27,7 @@
         <footer class="fixed-bottom">
             <div class="container">
                 @extends('components.menu')
+                @extends('components.modalabrircaixa')
                 @extends('components.modalajuda')
             </div>
         </footer>
