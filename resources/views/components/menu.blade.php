@@ -8,14 +8,14 @@
 <div id="menu" class="mt-3">
     @if($status == 'Fechado')
 
-    <button class="btn btn-success col-sm">
+    <button class="btn btn-success col-sm" data-bs-toggle="modal" data-bs-target="#abreCaixaModal">
         <span class="icon fa fa-money"></span>
         Abrir Caixa
     </button>
 
     @else
 
-    <button class="btn btn-danger col-sm">
+    <button class="btn btn-danger col-sm" data-bs-toggle="modal" data-bs-target="#fechaCaixaModal">
         <span class="icon fa fa-money"></span>
         Fechar Caixa
     </button>

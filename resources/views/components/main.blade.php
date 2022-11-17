@@ -28,6 +28,7 @@
             <div class="container">
                 @extends('components.menu')
                 @extends('components.modalabrircaixa')
+                @extends('components.modalfecharcaixa')
                 @extends('components.modalajuda')
             </div>
         </footer>
