@@ -32,7 +32,7 @@ class CaixaController extends Controller
         $caixa = $this->caixaRepositorio->getCaixa()->toArray();
         $item = session('itens', []);
         $itens = ['itens' => $item];
-        return view('caixa', ['itens' => $itens, 'caixa' => $caixa[0]->id, 'imagem' => @$produto[0]->imagem, 'status' => $caixa[0]->status]);
+        return view('caixa', ['itens' => $itens, 'caixa' => $caixa[0]->id, 'descricao' => @$produto[0]->descricao, 'imagem' => @$produto[0]->imagem, 'status' => $caixa[0]->status]);
     }
 
     public function update()
