@@ -104,7 +104,6 @@
             </div>
         </div>
     </div>
-
     <div class="modal fade" id="pagamentoModal" tabindex="-1" aria-labelledby="pagamentoModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
