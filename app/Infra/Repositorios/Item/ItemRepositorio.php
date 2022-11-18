@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infra\Repositorios\Produto;
+namespace App\Infra\Repositorios\Item;
 
 use App\Infra\Database\Dao\Produto\ListarProdutoDb;
 use App\Infra\Database\Dao\Item\CriarVendaItemTemporarioDb;
@@ -9,7 +9,7 @@ use App\Infra\Database\Dao\Item\VerificarItemExisteDb;
 use App\Support\Helpers\MapeadorProduto;
 use Illuminate\Http\Request;
 
-class ProdutoRepositorio
+class ItemRepositorio
 {
     private ListarProdutoDb $listarProdutoDb;
     private CriarVendaItemTemporarioDb $criarVendaItemTemporarioDb;

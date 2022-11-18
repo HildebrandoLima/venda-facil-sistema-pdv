@@ -2,8 +2,6 @@
 
 namespace App\Support\Helpers;
 
-use Illuminate\Http\Request;
-
 class MapeadorProduto
 {
     private array $produto = [];

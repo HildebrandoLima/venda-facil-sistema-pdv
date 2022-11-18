@@ -17,7 +17,7 @@ class CriarVendaItemTemporarioDb extends DbBase
             'descricao' => $item[4],
             'quantidade' => 1,
             'imagem' => $item[5],
-            'sub_total' => 1,
+            'sub_total' => $item[2],
             'unidade_medida' => $item[6],
             'caixa_id' => 1,
             'user_created_at' => 1
