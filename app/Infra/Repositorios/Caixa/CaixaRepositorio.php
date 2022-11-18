@@ -17,7 +17,7 @@ class CaixaRepositorio
         $this->listarCaixaDb = $listarCaixaDb;
     }
 
-    public function getCaixa()
+    public function buscaCaixa()
     {
         return $this->listarCaixaDb->getCaixa();
     }

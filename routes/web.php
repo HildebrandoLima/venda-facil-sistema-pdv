@@ -8,12 +8,10 @@ use App\Http\Controllers\MovimentaController;
 //Route::get('/', [VendaController::class, 'index'])->name('index');
 
 Route::prefix('caixa')->group(function () {
-    Route::get('/', [CaixaController::class, 'index'])->name('caixa');
-    Route::get('/deletar/{produtoId}', [CaixaController::class, 'destroy'])->name('remover');
-    Route::post('/venda/salvar', [VendaController::class, 'store'])->name('salvar');
-    Route::post('/movimentar/abrirCaixa', [MovimentaController::class, 'store'])->name('abrirCaixa');
-
+    Route::get('/', [CaixaController::class, 'caixa'])->name('caixa');
+    Route::post('/buscar', [CaixaController::class, 'adicionarItem'])->name('buscar');
+    //oute::post('/adicionar', [CaixaController::class, 'adicionarItem'])->name('adicionar');
+    Route::post('/venda/salvar', [VendaController::class, 'criarVenda'])->name('venda');
+    Route::delete('/deletar/{produtoId}', [CaixaController::class, 'removerItem'])->name('remover');
+    Route::post('/movimentar/abrirCaixa', [MovimentaController::class, 'abrirCaixa'])->name('abrirCaixa');
 });
-
-
-//dados-> $request-> all ();

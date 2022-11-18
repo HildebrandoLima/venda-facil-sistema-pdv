@@ -8,7 +8,7 @@
 <div id="menu" class="mt-3">
     @if($status == 'Fechado')
 
-    <button class="btn btn-success col-sm">
+    <button class="btn btn-success col-sm" data-bs-toggle="modal" data-bs-target="#abrirCaixaModal">
         <span class="icon fa fa-money"></span>
         Abrir Caixa
     </button>

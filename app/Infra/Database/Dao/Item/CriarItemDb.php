@@ -2,27 +2,25 @@
 
 namespace App\Infra\Database\Dao\Item;
 
-use Illuminate\Http\Request;
 use App\Infra\Database\Config\DbBase;
 
-class CriarItemDb extends DbBase {
-
-  public function criarItem(Request $request, array $itens, int $vendaId): bool
+class CriarItemDb extends DbBase
+{
+  public function criarItem(array $itens, int $vendaId, int $userCreatedAt): bool
   {
     foreach ($itens as $item):
       $this->db
       ->table('item')
       ->insert([
         'nome' => $item->nome,
-        'preco' => $item->preco_venda,
+        'preco' => $item->preco,
         'codigo_barra' => $item->codigo_barra,
-        'quantidade' => $request->quantidade,
-        'sub_total' => $request->sub_total,
-        'total' => $request->total,
+        'quantidade' => $item->quantidade,
+        'sub_total' => $item->sub_total,
         'unidade_medida' => $item->unidade_medida,
         'venda_id' => $vendaId,
-        'produto_id' => $request->produto_id,
-        'user_created_at' => $request->user_created_at,
+        'produto_id' => 1,
+        'user_created_at' => $userCreatedAt,
         'created_at' => date("Y-m-d H:i:s")
       ]);
     endforeach;
