@@ -25,7 +25,7 @@ class CaixaController extends Controller
     {
         $caixa = $this->caixaRepositorio->buscaCaixa()->toArray();
         $item = $this->produtoRepositorio->listarVendaItemTemporario($caixa[0]->id)->toArray();
-        return view('caixa', ['caixa' => $caixa[0]->id, 'status' => $caixa[0]->status, 'descricao' => end($item)->descricao, 'imagem' => end($item)->imagem, 'itens' => $item]);
+        return view('caixa', ['caixa' => $caixa[0]->id, 'status' => $caixa[0]->status, 'descricao' => @end($item)->descricao, 'imagem' => @end($item)->imagem, 'itens' => $item]);
     }
 
     public function adicionarItem(Request $request)
