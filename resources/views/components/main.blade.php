@@ -37,7 +37,7 @@
                 </div>
             @else
                 <div class="alert alert-secondary" role="alert">
-                    <h3 class="text-center">Nenhum produto bipado</h3>
+                    <h3 class="text-center">Nenhum Produto Bipado</h3>
                 </div>
             @endif
 

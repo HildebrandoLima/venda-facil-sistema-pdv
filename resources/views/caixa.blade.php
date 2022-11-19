@@ -14,15 +14,7 @@
         </div>
 
         <div class="col-md-7 text-right">
-            <form action="caixa/buscar" method="post">
-                @csrf
-                <div class="input-group">
-                    <div class="form-outline">
-                        <input type="number" name="codigo_barra" id="codigo_barra" placeholder="Código de Barras" class="form-control" />
-                    </div>
-                    <button type="submit" class="btn btn-primary">+</button>
-                  </div>
-            </form>
+            @include('components.bipagemproduto')
 
             <h5><p>Resumo da Venda</p></h5>
 
@@ -91,80 +83,30 @@
         <div class="col-md-5">
         </div>
 
-        <div class="col-md-7 text-right">
+        <div class="col-md-7">
             <div class="card shadow rounded">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-sm-3 text-left">
                             <h4>Total a Pagar: R$ {{ number_format(@$total, 2, ',', ' ') }}</h4>
                             <input type="hidden" name="quantidade_item" value="{{ @$produto -1 }}" />
+                            <input type="hidden" name="total" value="{{ @$total }}" />
+                        </div>
+                        <div class="col-sm-8 mt-3 text-right">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button type="submit" class="btn btn-success">
+                                <span class="icon fa fa-check"></span>
+                                Finalizar Venda
+                            </button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="pagamentoModal" tabindex="-1" aria-labelledby="pagamentoModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="pagamentoModalLabel">Pagamento</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">R$</span>
-                        <select name="forma_pagamento" onchange='mostraCampo(this)' class="form-select">
-                            <option selected>Forma de Pagamento</option>
-                            <option value="Dinheiro">Dinheiro</option>
-                            <option value="Pix">Pix</option>
-                            <option value="Crédito">Crédito</option>
-                            <option value="Débito">Débito</option>
-                        </select>
-                    </div>
-
-                    <div id="cartao" style="display:none">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text icon fa fa-credit-card"></span>
-                            <input type="number" name="numero_cartao" class="form-control" placeholder="N° Cartão" />
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <select class="form-select">
-                                <option name="parcela" selected>Parcelas</option>
-                                <option value="">Nenhuma</option>
-                                <option value="1">1x</option>
-                                <option value="2">2x</option>
-                                <option value="3">3x</option>
-                            </select>
-                            <span class="input-group-text">X</span>
-                            <input type="date" name="data_vencimento" class="form-control" />
-                        </div>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <input type="number" name="valor_pago" value="1" placeholder="Pago" class="form-control" />
-                        <span class="input-group-text">R$</span>
-                        <input type="text" name="total" value="{{ number_format(@$total, 2, '.', ' ') }}" class="form-control" />
-                        <input type="hidden" name="troco" />
-                    </div>
-
-                    <hr />
-                    <h4>Total a Pagar: R$ {{ number_format(@$total, 2, ',', ' ') }}</h4>
-                    <h4>Pago: R$ {{ number_format(@$pago, 2, ',', ' ') }}</h4>
-                    <h4>Troco: R$ {{ number_format(@$troco, 2, ',', ' ') }}</h4>
-                </div>
-
-                <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
-                    <span class="icon fa fa-xmark"></span>
-                    Cancelar Venda
-                </button>
-                <button type="submit" class="btn btn-success">
-                    <span class="icon fa fa-check"></span>
-                    Finalizar Venda
-                </button>
                 </div>
             </div>
         </div>
