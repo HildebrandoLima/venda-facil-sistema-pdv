@@ -57,8 +57,9 @@ class MovimentacaoRepositorio
         if($this->request->status === "Aberto"):
             $status = "Aberto";
             $this->statusCaixaDb->statusCaixa($caixaId, $status);
+        else:
+            $status = "Fechado";
+            $this->statusCaixaDb->statusCaixa($caixaId, $status);
         endif;
-        $status = "Fechado";
-        $this->statusCaixaDb->statusCaixa($caixaId, $status);  
     }
 }
