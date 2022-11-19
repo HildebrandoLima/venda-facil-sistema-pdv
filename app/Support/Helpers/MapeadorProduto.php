@@ -8,8 +8,8 @@ class MapeadorProduto
 
     public function mapeadorProduto($data): array
     {
-        foreach($data as $p):
-            foreach($p as $value):
+        foreach ($data as $p):
+            foreach ($p as $value):
                 array_push($this->produto, $value);
             endforeach;
         endforeach;

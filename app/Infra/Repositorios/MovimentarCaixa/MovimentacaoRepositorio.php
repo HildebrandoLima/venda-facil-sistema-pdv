@@ -54,10 +54,10 @@ class MovimentacaoRepositorio
     private function statusCaixa(): void
     {
         $caixaId = $this->request->caixa_id;
-        if($this->request->status === "Aberto"):
+        if ($this->request->status === "Aberto"):
             $status = "Aberto";
             $this->statusCaixaDb->statusCaixa($caixaId, $status);
-        else:
+        elseif ($this->request->status === "Fechado"):
             $status = "Fechado";
             $this->statusCaixaDb->statusCaixa($caixaId, $status);
         endif;
