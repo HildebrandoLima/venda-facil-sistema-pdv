@@ -48,10 +48,10 @@
         Várias Unidades
     </button>
 
-    <button type="button" class="btn btn-success col-sm" data-bs-toggle="modal" data-bs-target="#pagamentoModal">
+    <!-- <button type="submit" class="btn btn-success">
         <span class="icon fa fa-check"></span>
-        Fechar Venda
-    </button>
+        Finalizar Venda
+    </button> -->
 
     <button class="btn btn-danger col-sm">
         <span class="icon fa fa-arrow-right"></span>

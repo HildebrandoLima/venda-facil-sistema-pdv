@@ -19,10 +19,12 @@ class VendaController extends Controller
 
     public function criarVenda(Request $request)
     {
-        $resultado = $this->vendaRepositorio->criarVenda($request);
-        if($resultado):
-            $request->session()->forget('itens');
-        endif;
-        return redirect()->route('caixa')->with('msg', 'Venda Finalizada com Sucesso!!!');
+        $data = $this->vendaRepositorio->criarVenda($request);
+        return $this->pagamento($data);
+    }
+
+    public function pagamento($data)
+    {
+        return view('pagamento', ['total' => $data['total'], 'vendaId' => $data['vendaId']]);
     }
 }
