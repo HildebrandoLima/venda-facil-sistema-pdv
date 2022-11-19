@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-md-5">
-            @if(isset($imagem))
+            @if (isset($imagem))
                 <img src="{{ asset('images/' . $imagem) }}" width="500" height="500" class=""/>
             @else
                 <img src="{{ asset('images/logo.png') }}" width="550" height="350" class=""/>
@@ -27,7 +27,7 @@
 <input type="hidden" name="user_created_at" value="1" />
 
                     <div class="table-response table-overflow">
-                        @if(isset($itens) && count($itens) > 0)
+                        @if (isset($itens) && count($itens) > 0)
                         <table class="table">
                             <thead>
                                 <tr>

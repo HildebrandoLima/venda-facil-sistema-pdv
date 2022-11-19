@@ -14,6 +14,7 @@ Route::prefix('caixa')->group(function () {
     Route::post('/venda/salvar', [VendaController::class, 'criarVenda'])->name('venda');
     Route::delete('/deletar/{produtoId}', [CaixaController::class, 'removerItem'])->name('remover');
     Route::post('/movimentar/abrirCaixa', [MovimentaController::class, 'abrirCaixa'])->name('abrirCaixa');
+    Route::put('/movimentar/fecharCaixa', [MovimentaController::class, 'fecharCaixa'])->name('fecharCaixa');
 });
 
 Route::post('venda/pagar', [PagamentoController::class, 'criarPagamento'])->name('pagamento');
