@@ -3,51 +3,47 @@
 namespace App\Http\Controllers;
 
 use App\Infra\Repositorios\Caixa\CaixaRepositorio;
-use App\Infra\Repositorios\Produto\ProdutoRepositorio;
+use App\Infra\Repositorios\Item\ItemRepositorio;
 use Illuminate\Http\Request;
 
 class CaixaController extends Controller
 {
     private CaixaRepositorio $caixaRepositorio;
-    private ProdutoRepositorio $produtoRepositorio;
+    private ItemRepositorio $itemRepositorio;
 
     public function __construct
     (
         CaixaRepositorio $caixaRepositorio,
-        ProdutoRepositorio $produtoRepositorio
+        ItemRepositorio $itemRepositorio
     )
     {
         $this->caixaRepositorio = $caixaRepositorio;
-        $this->produtoRepositorio = $produtoRepositorio;
+        $this->itemRepositorio = $itemRepositorio;
     }
 
-    public function index(Request $request)
+    public function caixa()
     {
-        $produto = $this->produtoRepositorio->getProduto($request);
+        $caixa = $this->caixaRepositorio->buscaCaixa()->toArray();
+        $item = $this->itemRepositorio->listarVendaItemTemporario($caixa[0]->id)->toArray();
+        return view('caixa', ['caixa' => $caixa[0]->id, 'status' => $caixa[0]->status, 'descricao' => @end($item)->descricao, 'imagem' => @end($item)->imagem, 'itens' => $item]);
+    }
+
+    public function adicionarItem(Request $request)
+    {
+        $produto = $this->itemRepositorio->getProduto($request);
         if($produto):
-            $item = session('itens', []);
-            array_push($item, $produto);
-            session(['itens' => $item]);
+           $this->itemRepositorio->bipagemProduto($produto);
         endif;
-        $caixa = $this->caixaRepositorio->getCaixa()->toArray();
-        $item = session('itens', []);
-        $itens = ['itens' => $item];
-        return view('caixa', ['itens' => $itens, 'caixa' => $caixa[0]->id, 'descricao' => @$produto[0]->descricao, 'imagem' => @$produto[0]->imagem, 'status' => $caixa[0]->status]);
+        return redirect()->route('caixa');
     }
 
-    public function update()
+    public function alterarQuantidadeItem(Request $request)
     {
-
-
+        return redirect()->route('caixa');
     }
 
-    public function destroy($produtoId)
+    public function removerItem(Request $request)
     {
-        $item = session('itens', []);
-        if(isset($item[$produtoId])):
-            unset($item[$produtoId]);
-        endif;
-        session(['itens' => $item]);
         return redirect()->route('caixa');
     }
 }

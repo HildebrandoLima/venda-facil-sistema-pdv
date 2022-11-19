@@ -17,10 +17,12 @@ class MovimentaController extends Controller
         $this->movimentacaoRepositorio = $movimentacaoRepositorio;
     }
 
-    public function abrirCaixa(Request $request){
+    public function abrirCaixa(Request $request)
+    {
         $this->movimentacaoRepositorio->abrirCaixa($request);
-        return redirect()->route('caixa')->with('msg', 'Caixa Aberto com Sucesso!!!');
+        return redirect()->route('caixa')->with('msg', 'Caixa Aberto com Sucesso');
     }
+
     public function fecharCaixa(Request $request)
     {
         $this->movimentacaoRepositorio->fecharCaixa($request);

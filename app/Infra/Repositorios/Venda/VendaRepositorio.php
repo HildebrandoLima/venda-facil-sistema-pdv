@@ -2,51 +2,62 @@
 
 namespace App\Infra\Repositorios\Venda;
 
+use Illuminate\Http\Request;
 use App\Infra\Database\Dao\Venda\CriarVendaDb;
 use App\Infra\Database\Dao\Item\CriarItemDb;
-use App\Infra\Database\Dao\Pagamento\CriarPagamentoDb;
-use Illuminate\Http\Request;
+use App\Infra\Database\Dao\Item\ListarVendaItemTemporarioDb;
+use App\Infra\Database\Dao\Item\RemoverVendaItemTemporarioDb;
+use App\Support\Helpers\MapeadorCodigoItem;
+use Illuminate\Support\Collection;
 
 class VendaRepositorio
 {
     private CriarVendaDb $criarVendaDb;
     private CriarItemDb $criarItemDb;
-    private CriarPagamentoDb $criarPagamentoDb;
-    private int $vendaId;
+    private ListarVendaItemTemporarioDb $listarVendaItemTemporarioDb;
+    private RemoverVendaItemTemporarioDb $removerVendaItemTemporarioDb;
+    private MapeadorCodigoItem $mapeadorCodigoItem;
     private array $itens = [];
+    private array $codigoItens = [];
+    private int $vendaId;
 
     public function __construct
     (
         CriarVendaDb $criarVendaDb,
         CriarItemDb $criarItemDb,
-        CriarPagamentoDb $criarPagamentoDb
+        ListarVendaItemTemporarioDb $listarVendaItemTemporarioDb,
+        RemoverVendaItemTemporarioDb $removerVendaItemTemporarioDb,
+        MapeadorCodigoItem $mapeadorCodigoItem
     )
     {
         $this->criarVendaDb = $criarVendaDb;
         $this->criarItemDb = $criarItemDb;
-        $this->criarPagamentoDb = $criarPagamentoDb;
+        $this->listarVendaItemTemporarioDb = $listarVendaItemTemporarioDb;
+        $this->removerVendaItemTemporarioDb = $removerVendaItemTemporarioDb;
+        $this->mapeadorCodigoItem = $mapeadorCodigoItem;
     }
 
-    public function criarVenda(Request $request): bool
+    public function criarVenda(Request $request): Collection
     {
         $this->request = $request;
-        $this->sessionItens();
+        $this->recuperaItens();
+        $this->mapeadorCodigoItem();
         $this->criarVendaa();
         $this->criarItem();
-        $this->criarPagamento();
-        return true;
+        $this->removerItem();
+        return $this->recuperarPagamento();
     }
 
-    private function sessionItens(): array
+    private function recuperaItens(): array
     {
-        $session = $this->request->session()->all();
-        $arrayItens = $session['itens'];
-        foreach($arrayItens as $item):
-            foreach($item as $i):
-                array_push($this->itens, $i);
-            endforeach;
-        endforeach;
+        $this->itens = $this->listarVendaItemTemporarioDb->listarVendaItemTemporario($this->request->caixa_id)->toArray();
         return $this->itens;
+    }
+
+    private function mapeadorCodigoItem(): array
+    {
+        $this->codigoItens = $this->mapeadorCodigoItem->mapeadorCodigoItem($this->itens);
+        return $this->codigoItens;
     }
 
     private function criarVendaa(): int
@@ -57,11 +68,21 @@ class VendaRepositorio
 
     private function criarItem(): void
     {
-        $this->criarItemDb->criarItem($this->request, $this->itens, $this->vendaId);
+        $userCreatedAt = $this->request->user_created_at;
+        $this->criarItemDb->criarItem($this->itens, $this->vendaId, $userCreatedAt);
     }
 
-    private function criarPagamento(): void
+    private function removerItem(): void
     {
-        $this->criarPagamentoDb->criarPagamento($this->request, $this->vendaId);
+        $this->removerVendaItemTemporarioDb->removerVendaItemTemporario($this->codigoItens);
+    }
+
+    private function recuperarPagamento(): Collection
+    {
+        $data = collect([
+            'total' => $this->request->total,
+            'vendaId' => $this->vendaId
+        ]);
+        return $data;
     }
 }
