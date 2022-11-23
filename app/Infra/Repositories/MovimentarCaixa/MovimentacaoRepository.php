@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infra\Repository\MovimentarCaixa;
+namespace App\Infra\Repositories\MovimentarCaixa;
 
 use App\Infra\Database\Dao\MovimentaCaixa\AbrirCaixaDb;
 use App\Infra\Database\Dao\MovimentaCaixa\FecharCaixaDb;

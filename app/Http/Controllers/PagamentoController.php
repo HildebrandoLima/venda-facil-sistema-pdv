@@ -3,23 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Infra\Repositorios\Pagamento\PagamentoRepositorio;
+use App\Infra\Repositories\Pagamento\PagamentoRepository;
 
 class PagamentoController extends Controller
 {
-    private PagamentoRepositorio $pagamentoRepositorio;
+    private PagamentoRepository $pagamentoRepository;
 
     public function __construct
     (
-        PagamentoRepositorio $pagamentoRepositorio
+        PagamentoRepository $pagamentoRepository
     )
     {
-        $this->pagamentoRepositorio = $pagamentoRepositorio;
+        $this->pagamentoRepository = $pagamentoRepository;
     }
 
     public function criarPagamento(Request $request)
     {
-        $this->pagamentoRepositorio->criarPagamento($request);
+        $this->pagamentoRepository->criarPagamento($request);
         return redirect()->route('caixa')->with('msg', 'Venda Finalizada com Sucesso.');
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Infra\Repositorios\Caixa;
+namespace App\Infra\Repositories\Caixa;
 
 use App\Infra\Database\Dao\Caixa\ListarCaixaDb;
-use Illuminate\Http\Request;
 
-class CaixaRepositorio
+class CaixaRepository
 {
     private ListarCaixaDb $listarCaixaDb;
 

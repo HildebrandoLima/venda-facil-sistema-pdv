@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Infra\Repositorios\Venda\VendaRepositorio;
+use App\Infra\Repositories\Venda\VendaRepository;
 use Illuminate\Http\Request;
 
 class VendaController extends Controller
 {
-    private VendaRepositorio $vendaRepositorio;
+    private VendaRepository $vendaRepository;
 
     public function __construct
     (
-        VendaRepositorio $vendaRepositorio
+        VendaRepository $vendaRepository
     )
     {
-        $this->vendaRepositorio = $vendaRepositorio;
+        $this->vendaRepository = $vendaRepository;
     }
 
     public function criarVenda(Request $request)
     {
-        $data = $this->vendaRepositorio->criarVenda($request);
+        $data = $this->vendaRepository->criarVenda($request);
         return $this->pagamento($data);
     }
 

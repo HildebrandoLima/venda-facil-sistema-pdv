@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Infra\Repositorios\Pagamento;
+namespace App\Infra\Repositories\Pagamento;
 
-use Illuminate\Http\Request;
 use App\Infra\Database\Dao\Pagamento\CriarPagamentoDb; 
+use Illuminate\Http\Request;
 
-class PagamentoRepositorio
+class PagamentoRepository
 {
     private CriarPagamentoDb $criarPagamentoDb;
 

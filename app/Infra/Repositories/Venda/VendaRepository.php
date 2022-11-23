@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infra\Repository\Venda;
+namespace App\Infra\Repositories\Venda;
 
 use App\Infra\Database\Dao\Venda\CriarVendaDb;
 use App\Infra\Database\Dao\Item\CriarItemDb;
