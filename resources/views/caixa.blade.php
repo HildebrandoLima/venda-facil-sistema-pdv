@@ -4,6 +4,8 @@
 
 @section('body')
 
+@include('components.cabecalho')
+
     <div class="row">
         <div class="col-md-5">
             @if (isset($imagem))
