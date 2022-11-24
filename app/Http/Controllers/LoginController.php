@@ -14,16 +14,26 @@ class LoginController extends Controller
 
     public function logar(Request $request)
     {
-        if(Auth::attempt(['matricula' => $request->matricula, 'password' => $request->password])):
-            $request->session()->regenerate();
-            dd('Logado!');
-        else:
-            dd('Error ao Logar!');
+        $matricula = $request->input('matricula');
+        $senha = $request->input('senha');
+        $credencial = ['matricula' => $matricula, 'password' => $senha];
+
+        if (Auth::attempt($credencial)):
+            if (Auth::check()):
+                $request->session()->regenerate();
+                return redirect()->intended('caixa');
+            endif;
         endif;
+
+        return back()->withErrors([
+            'email' => 'As credenciais fornecidas não correspondem aos nossos registros.',
+        ])->onlyInput('email');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        #
+        //Auth::logout();
+        $request->session()->invalidate();
+        return redirect()->route('login')->with('Saido');
     }
 }

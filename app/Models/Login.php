@@ -2,24 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable;
 
-class Login extends Authenticatable
+class Login extends Model implements Authenticatable
 {
+    protected $table = 'login';
+
     protected $fillable = [
         'matricula',
-        'senha',
+        'password',
         'usuario_id',
         'caixa_id',
         'created_at',
         'updated_at',
     ];
-
-    protected $hidden = [
-        'senha',
-    ];
-
-    protected $casts = [];
 
     public function getAuthIdentifierName()
     {
@@ -33,7 +30,7 @@ class Login extends Authenticatable
 
     public function getAuthPassword()
     {
-        return $this->senha;   
+        return $this->password;
     }
 
     public function getRememberToken()

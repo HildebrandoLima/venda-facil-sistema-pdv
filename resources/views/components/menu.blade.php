@@ -50,8 +50,11 @@
         Finalizar Venda
     </button> -->
 
-    <button class="btn btn-danger col-sm">
-        <span class="icon fa fa-arrow-right"></span>
-        Encerrar Sessão
-    </button>
+    <form action="{{ route('sair') }}" method="post" class="btn col-sm">
+        @csrf
+        <button class="btn btn-danger">
+            <span class="icon fa fa-arrow-right"></span>
+            Encerrar Sessão
+        </button>
+    </form>
 </div>
