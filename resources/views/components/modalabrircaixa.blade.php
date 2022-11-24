@@ -7,7 +7,7 @@
             </div>
 
             <div class="modal-body">
-            <form action="/caixa/movimentar/abrirCaixa" method="post">
+            <form action="{{ route('abrir') }}" method="post">
                 @csrf
                 <input type="hidden" name="caixa_id" value="{{ $caixa }}" />
                 <input type="hidden" name="user_created_at" value="1" />

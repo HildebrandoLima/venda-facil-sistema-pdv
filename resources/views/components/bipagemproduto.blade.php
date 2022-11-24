@@ -1,4 +1,4 @@
-<form action="caixa/buscar" method="post">
+<form action="{{ route('buscar') }}" method="post">
     @csrf
     <div class="input-group">
         <div class="form-outline">

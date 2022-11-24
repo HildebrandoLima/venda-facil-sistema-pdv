@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form action="/caixa/movimentar/fecharCaixa" method="post">
+            <form action="{{ route('fechar') }}" method="post">
             @csrf
             @method('PUT')
             <input type="hidden" name="caixa_id" value="{{ $caixa }}" />
