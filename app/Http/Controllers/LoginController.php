@@ -23,17 +23,14 @@ class LoginController extends Controller
                 $request->session()->regenerate();
                 return redirect()->intended('caixa');
             endif;
+        else:
+            return redirect()->route('login')->with('msg', 'Dados incoreetos.');
         endif;
-
-        return back()->withErrors([
-            'email' => 'As credenciais fornecidas não correspondem aos nossos registros.',
-        ])->onlyInput('email');
     }
 
     public function logout(Request $request)
     {
-        //Auth::logout();
         $request->session()->invalidate();
-        return redirect()->route('login')->with('Saido');
+        return redirect()->route('login')->with('msg', 'Deslogado com sucesso.');
     }
 }

@@ -50,11 +50,12 @@
         Finalizar Venda
     </button> -->
 
-    <form action="{{ route('sair') }}" method="post" class="btn col-sm">
-        @csrf
-        <button class="btn btn-danger">
+    <a href="{{ route('sair') }}">
+        <button class="btn btn-danger col-sm">
+        
             <span class="icon fa fa-arrow-right"></span>
             Encerrar Sessão
-        </button>
-    </form>
+       
+    </button>
+    </a>
 </div>

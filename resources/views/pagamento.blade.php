@@ -12,6 +12,7 @@
         <script type="text/javascript" src={{ asset('js/relogio.js') }}></script>
         <link rel="stylesheet" href="{{ asset('css/background-image.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ asset('css/barra-vertical.css') }}" type="text/css">
+        <title>Pagamento</title>
     </head>
     <body>
 

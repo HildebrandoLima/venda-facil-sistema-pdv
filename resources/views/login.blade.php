@@ -12,10 +12,17 @@
         <script type="text/javascript" src={{ asset('js/relogio.js') }}></script>
         <link rel="stylesheet" href="{{ asset('css/background-image.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ asset('css/barra-vertical.css') }}" type="text/css">
+        <title>Login</title>
     </head>
     <body>
 
         <div class="container mt-3">
+            @if(session('msg'))
+            <div class="alert alert-success mt-3" role="alert">
+                <h3 class="text-center">{{ session('msg') }}</h3>
+            </div>
+            @endif
+
             <form action="{{ route('logar') }}" method="post">
                 @csrf
                 <input type="text" name="matricula" value="0123456789" />

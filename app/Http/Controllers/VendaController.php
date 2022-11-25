@@ -25,6 +25,10 @@ class VendaController extends Controller
 
     public function pagamento($data)
     {
-        return view('pagamento', ['total' => $data['total'], 'vendaId' => $data['vendaId']]);
+        if (session()->exists('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d')):
+            return view('pagamento', ['total' => $data['total'], 'vendaId' => $data['vendaId']]);
+        else:
+            return redirect()->route('login')->with('msg', 'É preciso está logado.');
+        endif;
     }
 }
