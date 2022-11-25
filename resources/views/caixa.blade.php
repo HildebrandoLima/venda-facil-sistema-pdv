@@ -4,6 +4,8 @@
 
 @section('body')
 
+@include('components.cabecalho')
+
     <div class="row">
         <div class="col-md-5">
             @if (isset($imagem))
@@ -21,7 +23,7 @@
             <div class="card shadow rounded">
                 <div class="card-body">
 
-<form action="/caixa/venda/salvar" method="post">
+<form action="{{ route('venda') }}" method="post">
 @csrf
 <input type="hidden" name="caixa_id" value="{{ $caixa }}" />
 <input type="hidden" name="user_created_at" value="1" />
