@@ -2,11 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CaixaController;
-use App\Http\Controllers\VendaController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovimentaController;
 use App\Http\Controllers\PagamentoController;
+use App\Http\Controllers\VendaController;
 
-//Route::get('/', [VendaController::class, 'index'])->name('index');
+
+Route::get('/', [LoginController::class, 'login'])->name('login');
+Route::post('/logar', [LoginController::class, 'logar'])->name('logar');
+Route::get('/sair', [LoginController::class, 'logout'])->name('sair');
 
 Route::prefix('caixa')->group(function () {
     Route::get('/', [CaixaController::class, 'caixa'])->name('caixa');

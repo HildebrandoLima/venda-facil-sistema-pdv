@@ -14,16 +14,23 @@ class LoginController extends Controller
 
     public function logar(Request $request)
     {
-        if(Auth::attempt(['matricula' => $request->matricula, 'password' => $request->password])):
-            $request->session()->regenerate();
-            dd('Logado!');
+        $matricula = $request->input('matricula');
+        $senha = $request->input('senha');
+        $credenciais = ['matricula' => $matricula, 'password' => $senha];
+
+        if (Auth::attempt($credenciais)):
+            if (Auth::check()):
+                $request->session()->regenerate();
+                return redirect()->intended('caixa');
+            endif;
         else:
-            dd('Error ao Logar!');
+            return redirect()->route('login')->with('msg', 'Dados incoreetos.');
         endif;
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        #
+        $request->session()->invalidate();
+        return redirect()->route('login')->with('msg', 'Deslogado com sucesso.');
     }
 }
