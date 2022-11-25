@@ -16,13 +16,14 @@
         <script type="text/javascript" src={{ asset('js/scriptLoading') }}></script>
     </head>
     <body>
-        @extends('components.Loading')
+
         <div class="container mt-3">
             @yield('body')
         </div>
 
         <footer class="fixed-bottom">
             <div class="container">
+                @extends('components.loading')
                 @extends('components.menu')
                 @extends('components.modalabrircaixa')
                 @extends('components.modalfecharcaixa')
