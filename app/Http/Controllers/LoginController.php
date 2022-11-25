@@ -16,9 +16,9 @@ class LoginController extends Controller
     {
         $matricula = $request->input('matricula');
         $senha = $request->input('senha');
-        $credencial = ['matricula' => $matricula, 'password' => $senha];
+        $credenciais = ['matricula' => $matricula, 'password' => $senha];
 
-        if (Auth::attempt($credencial)):
+        if (Auth::attempt($credenciais)):
             if (Auth::check()):
                 $request->session()->regenerate();
                 return redirect()->intended('caixa');
