@@ -40,11 +40,10 @@
         <img src="image/desconto.png">Cupom Desconto</i>
     </button> -->
 
-    <button class="btn btn-warning col-sm">
+    <button type="button" class="btn btn-warning col-sm" data-bs-toggle="modal" data-bs-target="#addItemModal">
         <span class="icon fa fa-plus"></span>
         Várias Unidades
     </button>
-
     <!-- <button type="submit" class="btn btn-success">
         <span class="icon fa fa-check"></span>
         Finalizar Venda
