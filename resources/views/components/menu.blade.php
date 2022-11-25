@@ -40,7 +40,7 @@
         <img src="image/desconto.png">Cupom Desconto</i>
     </button> -->
 
-    <button type="button" class="btn btn-warning col-sm" data-bs-toggle="modal" data-bs-target="#addItemModal">
+    <button type="button" class="btn btn-warning col-sm" data-bs-toggle="modal" data-bs-target="#adicionarItemModal">
         <span class="icon fa fa-plus"></span>
         Várias Unidades
     </button>
@@ -49,8 +49,10 @@
         Finalizar Venda
     </button> -->
 
-    <button class="btn btn-danger col-sm">
-        <span class="icon fa fa-arrow-right"></span>
-        Encerrar Sessão
-    </button>
+    <a href="{{ route('sair') }}">
+        <button class="btn btn-danger col-sm">
+            <span class="icon fa fa-arrow-right"></span>
+            Encerrar Sessão
+        </button>
+    </a>
 </div>
