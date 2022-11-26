@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<<<<<<< HEAD
-=======
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +15,6 @@
         <title>Pagamento</title>
     </head>
     <body>
->>>>>>> 83de8bf8a9e7814194efbbdedce22881978729ee
 
 <head>
     <meta charset="utf-8">
@@ -35,7 +32,6 @@
 </head>
 
 <body>
-
     <div class="row">
         <div class="col-lg-8">
             <!-- ============== COMPONENT PAY =============== -->
@@ -181,10 +177,8 @@
     </script>
 </body>
 
-<<<<<<< HEAD
 </html>
-=======
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>
 </html>
->>>>>>> 83de8bf8a9e7814194efbbdedce22881978729ee
