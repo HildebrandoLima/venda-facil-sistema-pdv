@@ -9,14 +9,13 @@
             <div class="modal-body">
             <form action="{{ route('abrir') }}" method="post">
                 @csrf
-                <input type="hidden" name="caixa_id" value="{{ $caixa }}" />
-                <input type="hidden" name="user_created_at" value="1" />
+                <input type="hidden" name="caixa_id" value="{{ session()->get('caixa_id') }}" />
+                <input type="hidden" name="user_created_at" value="{{ session()->get('matricula') }}" />
                 <input type="hidden" name="status" value="Aberto" />
 
                 <div class="input-group mb-3">
                     <span class="input-group-text">R$</span>
                     <input type="number" name="saldo_inicial" placeholder="Saldo inicial" class="form-control" required />
-
                 </div>
             </div>
 

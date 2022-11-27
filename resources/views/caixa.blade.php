@@ -25,8 +25,8 @@
 
 <form action="{{ route('venda') }}" method="post">
 @csrf
-<input type="hidden" name="caixa_id" value="{{ $caixa }}" />
-<input type="hidden" name="user_created_at" value="1" />
+<input type="hidden" name="caixa_id" value="{{ session()->get('caixa_id') }}" />
+<input type="hidden" name="user_created_at" value="{{ session()->get('matricula') }}" />
 
                     <div class="table-response table-overflow">
                         @if (isset($itens) && count($itens) > 0)

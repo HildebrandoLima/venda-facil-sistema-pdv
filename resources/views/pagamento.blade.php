@@ -118,7 +118,7 @@
         <form action="{{ route('pagamento') }}" method="post">
             @csrf
             <input type="hidden" name="venda_id" value="{{ $vendaId }}">
-            <input type="hidden" name="user_created_at" value="1">
+            <input type="hidden" name="user_created_at" value="{{ session()->get('matricula') }}">
             <div class="row">
                 <div class="col mb-6">
                     <div class="input-group mb-3">

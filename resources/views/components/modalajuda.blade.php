@@ -8,8 +8,8 @@
 
           <div class="modal-body">
             <h5><b>Sobre o Sistema</b></h5>
-            <span><b>Caixa: </b>00{{ $caixa }}<br /></span>
-            <span><b>Operador: </b>0123456789<br /></span>
+            <span><b>Caixa: </b>00{{ session()->get('caixa_id') }}<br /></span>
+            <span><b>Operador: </b>{{ session()->get('matricula') }}<br /></span>
             <span><b>Cliente: </b>012.345.678-09<br /></span>
             <span><b>Data: </b>@php echo date('d-m-Y') @endphp<br /></span>
             <span><b>Hora: </b><div class="relogio"></div></b><br /></span>

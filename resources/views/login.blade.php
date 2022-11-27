@@ -25,8 +25,8 @@
 
             <form action="{{ route('logar') }}" method="post">
                 @csrf
-                <input type="text" name="matricula" value="0123456789" />
-                <input type="password" name="senha" value="123456" />
+                <input type="text" name="matricula" />
+                <input type="password" name="senha" />
                 <button type="submit" class="btn btn-success">
                     <span class="icon fa fa-check"></span>
                     Entrar

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Infra\Repositories\Caixa\CaixaRepository;
 use App\Infra\Repositories\Item\ItemRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class CaixaController extends Controller
 {
@@ -29,7 +28,7 @@ class CaixaController extends Controller
             $item = $this->itemRepository->listarVendaItemTemporario($caixa[0]->id)->toArray();
             return view('caixa', ['caixa' => $caixa[0]->id, 'status' => $caixa[0]->status, 'descricao' => @end($item)->descricao, 'imagem' => @end($item)->imagem, 'itens' => $item]);
         else:
-            return redirect()->route('login')->with('msg', 'É preciso está logado.');
+            return redirect()->route('login')->with('msg', 'É preciso estar logado.');
         endif;
     }
 

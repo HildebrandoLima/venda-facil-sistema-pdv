@@ -2,11 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Infra\Repositories\Login\LoginRepository;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    private LoginRepository $loginRepository;
+
+    public function __construct
+    (
+        LoginRepository $loginRepository
+    )
+    {
+        $this->loginRepository = $loginRepository;
+    }
+
     public function login()
     {
         return view('login');
@@ -19,12 +30,25 @@ class LoginController extends Controller
         $credenciais = ['matricula' => $matricula, 'password' => $senha];
 
         if (Auth::attempt($credenciais)):
+
             if (Auth::check()):
                 $request->session()->regenerate();
-                return redirect()->intended('caixa');
+                $dados = $this->loginRepository->login($request);
+
+                session()->put([
+                    'matricula' => $dados[0]->matricula,
+                    'caixa_id' => $dados[0]->caixa_id,
+                    'descricao' => $dados[0]->descricao
+                ]);
+
+                if (session()->get('descricao') === 'Operador de Caixa'):
+                    return redirect()->intended('caixa');
+                else:
+                    return redirect()->intended('admin');
+                endif;
             endif;
         else:
-            return redirect()->route('login')->with('msg', 'Dados incoreetos.');
+            return redirect()->route('login')->with('msg', 'Dados incorretos.');
         endif;
     }
 
