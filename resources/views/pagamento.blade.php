@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>@yield('title')</title>
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/logo.png') }}">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">	
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'/>
         <script type="text/javascript" src={{ asset('js/exibirInput.js') }}></script>
         <script type="text/javascript" src={{ asset('js/menu.js') }}></script>
@@ -37,7 +37,7 @@
             <!-- ============== COMPONENT PAY =============== -->
             <article class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Método de Pagamento</h5>
+                    <h5 class="card-title"></h5>
                     <div class="accordion" id="accordion_payment">
                         <article class="accordion-item">
                             <h6 class="accordion-header">
@@ -48,10 +48,12 @@
                             <div id="collapseOne" data-bs-parent="#accordion_payment"
                                 class="accordion-collapse collapse show">
                                 <div class="accordion-body">
-                                    <p class="text-center text-muted"> Connect your PayPal account and use it to pay
-                                        your bills. <br> You'll be redirected to PayPal to add your billing information.
-                                        <br><br> <a href="#"> <img
-                                                src="bootstrap5-ecommerce/images/misc/btn-paypal.webp" height="32"> </a>
+                                    <p class="text-center text-muted"> Direcione a camara do seu celular para o QR-CODE abaixo para pagamento em Pix.
+                                        <br><br> <a href="#">
+                                        <img src=
+                "https://chart.googleapis.com/chart?cht=qr&chl=Hello+World&chs=500x500&chld=L|0"
+                        class="qr-code img-thumbnail img-responsive" />
+                                    </a>
                                     </p>
                                 </div>
                             </div>
@@ -77,11 +79,12 @@
             <!-- ============== COMPONENT PAYMENT MINI =============== -->
             <article class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Forma de Pagamento</h5>
+                    <h5 class="card-title"></h5>
                     <form role="form">
                         <div class="col mb-3"> <label class="form-label">Nome ou Cartão</label> <input type="text"
                                 class="form-control" name="username" placeholder="Ex. João Carlos" required=""> </div>
                         <!-- col end.// -->
+                    <div id="forma_pagamento_cartao" >
                         <div class="col mb-3"> <label class="form-label">Numero do Cartão</label>
                             <div class="input-group"> <input type="text" class="form-control" id="cardNumber"
                                     name="cardNumber"> <span class="input-group-text"> <i class="fab fa-cc-visa"></i>
@@ -106,6 +109,7 @@
                                 </label> <input class="form-control" id="cvv" required="" type="text"
                                     style="width: 110px;"> </div> <!-- col end.// -->
                         </div> <!-- row end.// --> <button class="btn w-100 btn-success">Pay $230</button>
+                    </div>
                     </form>
                 </div>
             </article><!-- ============== COMPONENT PAYMENT MINI .// =============== -->
