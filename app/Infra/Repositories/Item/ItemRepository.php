@@ -6,6 +6,7 @@ use App\Infra\Database\Dao\Produto\ListarProdutoDb;
 use App\Infra\Database\Dao\Item\CriarVendaItemTemporarioDb;
 use App\Infra\Database\Dao\Item\ListarVendaItemTemporarioDb;
 use App\Infra\Database\Dao\Item\VerificarItemExisteDb;
+use App\Infra\Database\Dao\Item\QuantidadeItemDb;
 use App\Support\Helpers\MapeadorProduto;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,7 @@ class ItemRepository
     private ListarVendaItemTemporarioDb $listarVendaItemTemporarioDb;
     private VerificarItemExisteDb $verificarItemExisteDb;
     private MapeadorProduto $mapeadorProduto;
+    private QuantidadeItemDb $quantidadeItemDb;
     private $produto;
     private $item;
 
@@ -25,7 +27,8 @@ class ItemRepository
         CriarVendaItemTemporarioDb $criarVendaItemTemporarioDb,
         ListarVendaItemTemporarioDb $listarVendaItemTemporarioDb,
         VerificarItemExisteDb $verificarItemExisteDb,
-        MapeadorProduto $mapeadorProduto
+        MapeadorProduto $mapeadorProduto,
+        QuantidadeItemDb $quantidadeItemDb
     )
     {
         $this->listarProdutoDb = $listarProdutoDb;
@@ -33,6 +36,7 @@ class ItemRepository
         $this->listarVendaItemTemporarioDb = $listarVendaItemTemporarioDb;
         $this->verificarItemExisteDb = $verificarItemExisteDb;
         $this->mapeadorProduto = $mapeadorProduto;
+        $this->quantidadeItemDb = $quantidadeItemDb;
     }
 
     public function getProduto(Request $request)
@@ -62,10 +66,15 @@ class ItemRepository
     private function criarVendaItemTemporario(): void
     {
         $resultado = $this->verificarItemExisteDb->verificarItemExiste($this->request);
-        if(!$resultado):
+        $quantidade = 1;
+        $subtotal = 0;
+
+        if (!$resultado):
             $this->criarVendaItemTemporarioDb->criarVendaItemTemporario($this->item);
         else:
-            redirect()->route('caixa')->with('msg', 'Produto já bipado. Adicione mais um!!!');
+            $quantidade += $quantidade;
+            $subtotal = $this->item[2] * $quantidade;
+            $this->quantidadeItemDb->quantidadeItem($this->request,$quantidade, $subtotal);
         endif;
     }
 }
