@@ -7,7 +7,6 @@ use App\Infra\Database\Config\DbBase;
 
 class QuantidadeItemDb extends DbBase
 {
-  
     public function quantidadeItem(Request $request, $quantidade, $subtotal): bool
     {
       return $this->db
