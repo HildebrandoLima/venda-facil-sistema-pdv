@@ -20,6 +20,8 @@ class ItemRepository
     private QuantidadeItemDb $quantidadeItemDb;
     private $produto;
     private $item;
+    private $quantidade = 0;
+    private $subtotal = 0;
 
     public function __construct
     (
@@ -53,7 +55,7 @@ class ItemRepository
 
     public function listarVendaItemTemporario(int $caixa)
     {
-        return $this->listarVendaItemTemporarioDb->listarVendaItemTemporario($caixa);
+        return $this->listarVendaItemTemporarioDb->listarVendaItemTemporario('', $caixa);
     }
 
     private function mapeadorProduto(): array
@@ -66,15 +68,14 @@ class ItemRepository
     private function criarVendaItemTemporario(): void
     {
         $resultado = $this->verificarItemExisteDb->verificarItemExiste($this->request);
-        $quantidade = 1;
-        $subtotal = 0;
-
         if (!$resultado):
             $this->criarVendaItemTemporarioDb->criarVendaItemTemporario($this->item);
         else:
-            $quantidade += $quantidade;
-            $subtotal = $this->item[2] * $quantidade;
-            $this->quantidadeItemDb->quantidadeItem($this->request,$quantidade, $subtotal);
+            $codigo_barra = $this->request->codigo_barra;
+            $resultado = $this->listarVendaItemTemporarioDb->listarVendaItemTemporario($codigo_barra, 0)->toArray();
+            $this->quantidade = $resultado[0]->quantidade + 1;
+            $this->subtotal = $resultado[0]->preco * $resultado[0]->quantidade;
+            $this->quantidadeItemDb->quantidadeItem($this->request, $this->quantidade, $this->subtotal);
         endif;
     }
 }

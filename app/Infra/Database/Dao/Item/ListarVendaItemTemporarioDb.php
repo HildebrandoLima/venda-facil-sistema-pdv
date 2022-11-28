@@ -6,7 +6,7 @@ use App\Infra\Database\Config\DbBase;
 
 class ListarVendaItemTemporarioDb extends DbBase
 {
-    public function listarVendaItemTemporario(int $caixa)
+    public function listarVendaItemTemporario(string $codigo_barra, int $caixa)
     {
         return $this->db
         ->table('venda_item_temporario')
@@ -22,6 +22,7 @@ class ListarVendaItemTemporarioDb extends DbBase
             'unidade_medida'
         ])
         ->where('caixa_id', $caixa)
+        ->orWhere('codigo_barra', $codigo_barra)
         ->get();
     }
 }
