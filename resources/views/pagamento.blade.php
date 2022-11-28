@@ -164,7 +164,7 @@
                     <span class="input-group-text">X</span>
                     <input type="date" name="data_vencimento" class="form-control" />
                     <span class="input-group-text">R$</span>
-                    <input type="text" name="total" value="{{ number_format($total, 2, '.', ' ') }}"
+                    <input type="text" id='total_pagar' name="total" value="{{ number_format($total, 2, '.', ' ') }}"
                         class="form-control" />
                 </div>
             </div>
