@@ -24,9 +24,9 @@ function hideOrShowCartao(el){
 
 
 //coloquei meu pix pra testar, testa ai com 10 conto kkkkk
-const payload = pix.getPayload();
-var valorPagar = document.getElementById('total_pagar').value;
 
+var valorPagar = document.getElementById('total_pagar').value;
+const payload = pix.getPayload();
 const pix = new Pix(
     ">maxwor123@gmail.com<",
     ">Venda<",
