@@ -50,7 +50,7 @@ class VendaRepository
 
     private function recuperaItens(): array
     {
-        $this->itens = $this->listarVendaItemTemporarioDb->listarVendaItemTemporario($this->request->caixa_id)->toArray();
+        $this->itens = $this->listarVendaItemTemporarioDb->listarVendaItemTemporario('', $this->request->caixa_id)->toArray();
         return $this->itens;
     }
 
