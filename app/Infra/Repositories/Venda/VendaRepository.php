@@ -81,6 +81,7 @@ class VendaRepository
     {
         $data = collect([
             'total' => $this->request->total,
+            'valorPago' => $this->request->valor_pago,
             'vendaId' => $this->vendaId
         ]);
         return $data;
