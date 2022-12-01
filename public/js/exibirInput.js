@@ -1,9 +1,9 @@
 function mostraCampo(el) {
-    var inputOutros = document.getElementById('cartao');
-    if (el.value === 'Crédito' || el.value === 'Débito') {
-        inputOutros.style.display = "block";
+    var inputCartao = document.getElementById('cartao');
+    if (el.value === '1') {
+        inputCartao.style.display = "block";
     }
     else {
-        inputOutros.style.display = "none";
+        inputCartao.style.display = "none";
     }
 }
