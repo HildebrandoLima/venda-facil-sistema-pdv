@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CriarNFeDb extends DbBase
 {
-    public function criarNFe(Request $request)
+    public function criarNFe(Request $request, int $vendaId)
     {
         $NFeId = $this->db
         ->table('nfe')
@@ -20,7 +20,7 @@ class CriarNFeDb extends DbBase
             'informacao_complementar' => '',
             'assinatura_digital' => '',
             'motivo_nfe' => '', 
-            'venda_id' => $request->vendaId,
+            'venda_id' => $vendaId,
             'user_created_at' => $request->user_created_at,
             'created_at' => date('Y-d-m')
         ]);

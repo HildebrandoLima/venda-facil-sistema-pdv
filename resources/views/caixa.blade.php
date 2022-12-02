@@ -90,7 +90,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-3 text-left">
-                            <input type="text" name="valor_pago" class="form-control" />
+                            <input type="text" name="valor_pago" placeholder="Digite o Valor Pago" class="form-control" />
                             <h4>Total a Pagar: R$ {{ number_format(@$total, 2, ',', ' ') }}</h4>
                             <input type="hidden" name="quantidade_item" value="{{ @$produto -1 }}" />
                             <input type="hidden" name="total" value="{{ @$total }}" />

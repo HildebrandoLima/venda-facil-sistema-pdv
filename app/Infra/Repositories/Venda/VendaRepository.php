@@ -7,7 +7,6 @@ use App\Infra\Database\Dao\Item\CriarItemDb;
 use App\Infra\Database\Dao\Item\ListarVendaItemTemporarioDb;
 use App\Infra\Database\Dao\Item\RemoverVendaItemTemporarioDb;
 use App\Support\Helpers\MapeadorCodigoItem;
-use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
 
 class VendaRepository
@@ -37,7 +36,7 @@ class VendaRepository
         $this->mapeadorCodigoItem = $mapeadorCodigoItem;
     }
 
-    public function criarVenda(Request $request): Collection
+    public function criarVenda(Request $request): bool
     {
         $this->request = $request;
         $this->recuperaItens();
@@ -45,7 +44,8 @@ class VendaRepository
         $this->criarVendaa();
         $this->criarItem();
         $this->removerItem();
-        return $this->recuperarPagamento();
+        $this->recuperarPagamento();
+        return true;
     }
 
     private function recuperaItens(): array
@@ -77,13 +77,12 @@ class VendaRepository
         $this->removerVendaItemTemporarioDb->removerVendaItemTemporario($this->codigoItens);
     }
 
-    private function recuperarPagamento(): Collection
+    private function recuperarPagamento(): void
     {
-        $data = collect([
+        session()->put([
             'total' => $this->request->total,
             'valorPago' => $this->request->valor_pago,
             'vendaId' => $this->vendaId
         ]);
-        return $data;
     }
 }

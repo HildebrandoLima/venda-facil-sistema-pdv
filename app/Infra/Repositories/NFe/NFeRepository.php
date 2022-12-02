@@ -21,9 +21,10 @@ class NFeRepository
         $this->listarNFeDb = $listarNFeDb;
     }
 
-    public function criarNFe(Request $request)
+    public function criarNFe(Request $request, int $vendaId)
     {
-        return $this->criarNFeDb->criarNFe($request);
+        $nfe = $this->criarNFeDb->criarNFe($request, $vendaId);
+        return $nfe;
     }
 
     public function listarNFe(Request $request)
