@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Infra\Repositories\Pagamento\PagamentoRepository;
 use App\Infra\Repositories\NFe\NFeRepository;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PagamentoController extends Controller
 {
@@ -34,11 +35,18 @@ class PagamentoController extends Controller
     {
         $this->pagamentoRepository->criarPagamento($request);
         $vendaId = session()->get('vendaId');
-        //$nfe = 
-        $this->nfeRepository->criarNFe($request, $vendaId);
+        $nfeId = $this->nfeRepository->criarNFe($request, $vendaId);
+        $this->encerrarSessao();
+        $nfe = $this->nfeRepository->listarNFe($nfeId);
+        $pdf = PDF::loadView('reports.nfe', ['nfe' => $nfe]);
+        $pdf->download('nfe.pdf');
+        return redirect()->route('caixa')->with('msg', 'Venda Finalizada com Sucesso.');
+    }
+
+    private function encerrarSessao()
+    {
         session()->forget('total');
         session()->forget('valorPago');
         session()->forget('vendaId');
-        return redirect()->route('caixa')->with('msg', 'Venda Finalizada com Sucesso.');
     }
 }

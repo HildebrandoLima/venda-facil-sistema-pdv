@@ -18,13 +18,14 @@
 @php
     $troco = 0;
     $troco = session()->get('valorPago') - session()->get('total');
+    $valorPago = session()->get('valorPago');
 @endphp
 
     <body>
         <div class="container mt-3">
             <h5 class="card-title text-center">Método de Pagamento</h5>
                 <div class="row">
-                    @if(isset($troco))
+                    @if(isset($valorPago))
                         <aside class="col-lg-15 mt-3">
                             <form action="{{ route('salvarpagamento') }}" method="post">
                             @csrf

@@ -9,7 +9,7 @@ class CriarNFeDb extends DbBase
 {
     public function criarNFe(Request $request, int $vendaId)
     {
-        $NFeId = $this->db
+        $nfeId = $this->db
         ->table('nfe')
         ->insertGetId([
             'data_emissao' => date('Y-d-m'),
@@ -24,6 +24,6 @@ class CriarNFeDb extends DbBase
             'user_created_at' => $request->user_created_at,
             'created_at' => date('Y-d-m')
         ]);
-        return $NFeId;
+        return $nfeId;
     }
 }

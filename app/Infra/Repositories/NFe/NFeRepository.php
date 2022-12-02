@@ -27,8 +27,8 @@ class NFeRepository
         return $nfe;
     }
 
-    public function listarNFe(Request $request)
+    public function listarNFe(int $nfeId)
     {
-        return $this->listarNFeDb->listarNFe($request);
+        return $this->listarNFeDb->listarNFe($nfeId);
     }
 }
