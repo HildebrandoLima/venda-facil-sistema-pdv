@@ -37,7 +37,7 @@ class LoginController extends Controller
 
                 session()->put([
                     'matricula' => $dados[0]->matricula,
-                    'caixa_id' => $dados[0]->caixa_id,
+                    'caixaId' => $dados[0]->caixa_id,
                     'descricao' => $dados[0]->descricao
                 ]);
 
