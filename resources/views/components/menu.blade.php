@@ -44,6 +44,10 @@
         <span class="icon fa fa-plus"></span>
         Várias Unidades
     </button>
+    <button type="button" class="btn btn-warning col-sm" data-bs-toggle="modal" data-bs-target="#buscarProdutoModal">
+        <span class="icon fa fa-search"></span>
+        Buscar Produto
+    </button>
     <!-- <button type="submit" class="btn btn-success">
         <span class="icon fa fa-check"></span>
         Finalizar Venda

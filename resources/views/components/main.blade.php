@@ -28,6 +28,7 @@
                 @extends('components.modalfecharcaixa')
                 @extends('components.modalajuda')
                 @extends('components.modaladicionarunidade')
+                @extends('components.modalbuscarproduto')
             </div>
         </footer>
 
