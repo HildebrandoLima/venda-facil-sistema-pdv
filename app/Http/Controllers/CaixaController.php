@@ -23,7 +23,7 @@ class CaixaController extends Controller
 
     public function caixa()
     {
-        if (session()->exists('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d')):
+        if (session()->exists('matricula')):
             $caixa = $this->caixaRepository->buscaCaixa()->toArray();
             $item = $this->itemRepository->listarVendaItemTemporario($caixa[0]->id)->toArray();
             return view('caixa', ['caixa' => $caixa[0]->id, 'status' => $caixa[0]->status, 'descricao' => @end($item)->descricao, 'imagem' => @end($item)->imagem, 'itens' => $item]);

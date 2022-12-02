@@ -23,7 +23,7 @@ class PagamentoController extends Controller
 
     public function pagamento()
     {
-        if (session()->exists('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d')):
+        if (session()->exists('matricula')):
             return view('pagamento');
         else:
             return redirect()->route('login')->with('msg', 'É preciso estar logado.');
@@ -36,11 +36,9 @@ class PagamentoController extends Controller
         $vendaId = session()->get('vendaId');
         //$nfe = 
         $this->nfeRepository->criarNFe($request, $vendaId);
-
         session()->forget('total');
         session()->forget('valorPago');
         session()->forget('vendaId');
-        //$this->nfeRepository->listarNFe($nfe);
         return redirect()->route('caixa')->with('msg', 'Venda Finalizada com Sucesso.');
     }
 }
