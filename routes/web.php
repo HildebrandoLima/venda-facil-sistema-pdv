@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CaixaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovimentaController;
+use App\Http\Controllers\NFeController;
 use App\Http\Controllers\PagamentoController;
 use App\Http\Controllers\VendaController;
 
@@ -24,4 +25,9 @@ Route::prefix('caixa')->group(function () {
 Route::prefix('pagamento')->group(function () {
     Route::get('/', [PagamentoController::class, 'pagamento'])->name('pagamento');
     Route::post('venda/pagar', [PagamentoController::class, 'criarPagamento'])->name('salvarpagamento');
+});
+
+Route::prefix('nfe')->group(function () {
+    Route::get('/', [NFeController::class, 'criarNFe'])->name('nfe');
+    Route::get('/{vendaId}', [NFeController::class, 'gerarNFe'])->name('gerarnfe');
 });

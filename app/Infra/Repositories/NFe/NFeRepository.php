@@ -21,14 +21,14 @@ class NFeRepository
         $this->listarNFeDb = $listarNFeDb;
     }
 
-    public function criarNFe(Request $request, int $vendaId)
+    public function criarNFe(int $vendaId, string $matricula)
     {
-        $nfe = $this->criarNFeDb->criarNFe($request, $vendaId);
+        $nfe = $this->criarNFeDb->criarNFe($vendaId, $matricula);
         return $nfe;
     }
 
-    public function listarNFe(int $nfeId)
+    public function listarNFe(int $vendaId)
     {
-        return $this->listarNFeDb->listarNFe($nfeId);
+        return $this->listarNFeDb->listarNFe($vendaId);
     }
 }

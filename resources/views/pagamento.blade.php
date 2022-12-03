@@ -112,8 +112,7 @@
                                                         <span class="input-group-text"><i class="icon fa fa-credit-card"></i></span>
                                                         <div id="cartao" style="display:none">
                                                             <select name="parcela" class="form-select">
-                                                                <option value="0" selected>Parcelas</option>
-                                                                <option value="1">1x</option>
+                                                                <option value="1" selected>Parcelas</option>
                                                                 <option value="2">2x</option>
                                                                 <option value="3">3x</option>
                                                             </select>

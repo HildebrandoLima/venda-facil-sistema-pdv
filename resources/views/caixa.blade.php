@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-5">
             @if (isset($imagem))
-                <img src="{{ asset('images/' . $imagem) }}" width="500" height="500" class=""/>
+                <img src="{{ asset('images/' . $imagem) }}" width="500" height="450" class=""/>
             @else
                 <img src="{{ asset('images/logo.png') }}" width="550" height="350" class=""/>
             @endif
