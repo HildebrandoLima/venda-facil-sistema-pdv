@@ -7,6 +7,7 @@ use App\Infra\Database\Dao\Item\CriarVendaItemTemporarioDb;
 use App\Infra\Database\Dao\Item\ListarVendaItemTemporarioDb;
 use App\Infra\Database\Dao\Item\VerificarItemExisteDb;
 use App\Infra\Database\Dao\Item\QuantidadeItemDb;
+use App\Infra\Database\Dao\Item\RemoverVendaItemTemporarioDb;
 use App\Support\Helpers\MapeadorProduto;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,7 @@ class ItemRepository
     private VerificarItemExisteDb $verificarItemExisteDb;
     private MapeadorProduto $mapeadorProduto;
     private QuantidadeItemDb $quantidadeItemDb;
+    private RemoverVendaItemTemporarioDb $removerVendaItemTemporarioDb;
     private $produto;
     private $item;
     private $quantidade = 0;
@@ -30,7 +32,8 @@ class ItemRepository
         ListarVendaItemTemporarioDb $listarVendaItemTemporarioDb,
         VerificarItemExisteDb $verificarItemExisteDb,
         MapeadorProduto $mapeadorProduto,
-        QuantidadeItemDb $quantidadeItemDb
+        QuantidadeItemDb $quantidadeItemDb,
+        RemoverVendaItemTemporarioDb $removerVendaItemTemporarioDb
     )
     {
         $this->listarProdutoDb = $listarProdutoDb;
@@ -39,6 +42,7 @@ class ItemRepository
         $this->verificarItemExisteDb = $verificarItemExisteDb;
         $this->mapeadorProduto = $mapeadorProduto;
         $this->quantidadeItemDb = $quantidadeItemDb;
+        $this->removerVendaItemTemporarioDb = $removerVendaItemTemporarioDb;
     }
 
     public function getProduto(Request $request)
@@ -77,5 +81,10 @@ class ItemRepository
             $this->subtotal = $resultado[0]->preco * $resultado[0]->quantidade;
             $this->quantidadeItemDb->quantidadeItem($this->request, $this->quantidade, $this->subtotal);
         endif;
+    }
+
+    public function removerVendaItemTemporario(int $itemId): bool
+    {
+        return $this->removerVendaItemTemporarioDb->removerVendaItemTemporario($itemId);
     }
 }

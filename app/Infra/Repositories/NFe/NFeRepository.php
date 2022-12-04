@@ -4,7 +4,6 @@ namespace App\Infra\Repositories\NFe;
 
 use App\Infra\Database\Dao\NFe\CriarNFeDb;
 use App\Infra\Database\Dao\NFe\ListarNFeDb;
-use Illuminate\Http\Request;
 
 class NFeRepository
 {

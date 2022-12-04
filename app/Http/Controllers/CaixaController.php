@@ -42,14 +42,4 @@ class CaixaController extends Controller
         endif;
         return redirect()->route('caixa');
     }
-
-    public function alterarQuantidadeItem(Request $request)
-    {
-        return redirect()->route('caixa');
-    }
-
-    public function removerItem(Request $request)
-    {
-        return redirect()->route('caixa');
-    }
 }

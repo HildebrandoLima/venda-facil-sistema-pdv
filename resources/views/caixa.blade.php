@@ -64,7 +64,7 @@
                                         <td><input type="hidden" name="preco" value="{{ $item->preco }}" />{{ number_format($item->preco, 2, ',', ' ') }}</td>
                                         <td><input type="hidden" name="sub_total" value="{{ $sub_total }}" />{{ number_format($sub_total, 2, ',', ' ') }}</td>
                                         <td>
-                                            <a href="{{ url('caixa/deletar', ['produtoId' => 0]) }}">
+                                            <a href="{{ route('remover', $item->id) }}">
                                                 <button type="button" class="btn btn-danger">X</button>
                                             </a>
                                         </td>
