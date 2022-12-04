@@ -2,23 +2,23 @@
 
 namespace App\Infra\Repositories\Usuario;
 
-use App\Infra\Database\Dao\Usuario\IdentificarCLienteDb;
+use App\Infra\Database\Dao\Usuario\IdentificarClienteDb;
 use Illuminate\Http\Request;
 
 class UsuarioRepository
 {
-    private IdentificarCLienteDb $identificarCLienteDb;
+    private IdentificarClienteDb $identificarClienteDb;
 
     public function __construct
     (
-        IdentificarCLienteDb $identificarCLienteDb
+        IdentificarClienteDb $identificarClienteDb
     )
     {
-        $this->identificarCLienteDb = $identificarCLienteDb;
+        $this->identificarClienteDb = $identificarClienteDb;
     }
 
-    public function identificarCLiente(Request $request)
+    public function identificarCliente(Request $request)
     {
-        return $this->identificarCLienteDb->identificarCLiente($request);
+        return $this->identificarClienteDb->identificarCliente($request);
     }
 }

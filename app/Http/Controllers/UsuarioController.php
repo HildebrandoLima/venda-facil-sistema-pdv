@@ -19,7 +19,7 @@ class UsuarioController extends Controller
 
     public function identificarCliente(Request $request)
     {
-        $usuarioId = $this->usuarioRepository->identificarCLiente($request);
+        $usuarioId = $this->usuarioRepository->identificarCliente($request);
         session()->put([
             'usuarioId' => $usuarioId[0]->id
         ]);

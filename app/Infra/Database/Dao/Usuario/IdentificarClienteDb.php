@@ -5,9 +5,9 @@ namespace App\Infra\Database\Dao\Usuario;
 use App\Infra\Database\Config\DbBase;
 use Illuminate\Http\Request;
 
-class IdentificarCLienteDb extends DbBase
+class IdentificarClienteDb extends DbBase
 {
-    public function identificarCLiente(Request $request)
+    public function identificarCliente(Request $request)
     {
         return $this->db
         ->table('usuario')
