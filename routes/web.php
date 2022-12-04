@@ -22,9 +22,12 @@ Route::prefix('caixa')->group(function () {
     Route::put('/movimentar/fecharCaixa', [MovimentaController::class, 'fecharCaixa'])->name('fechar');
 });
 
-Route::post('venda/pagar', [PagamentoController::class, 'criarPagamento'])->name('pagamento');
+Route::prefix('pagamento')->group(function () {
+    Route::get('/', [PagamentoController::class, 'pagamento'])->name('pagamento');
+    Route::post('venda/pagar', [PagamentoController::class, 'criarPagamento'])->name('salvarpagamento');
+});
 
 Route::prefix('nfe')->group(function () {
-    Route::get('/', [NFeController::class, 'exibirNFe'])->name('exibir');
-    Route::post('/salvar', [NFeController::class, 'criarNFe'])->name('criar');
+    Route::get('/', [NFeController::class, 'criarNFe'])->name('nfe');
+    Route::get('/{vendaId}', [NFeController::class, 'gerarNFe'])->name('gerarnfe');
 });

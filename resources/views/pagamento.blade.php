@@ -17,7 +17,8 @@
 
 @php
     $troco = 0;
-    $troco = $valorPago - $total;
+    $troco = session()->get('valorPago') - session()->get('total');
+    $valorPago = session()->get('valorPago');
 @endphp
 
     <body>
@@ -26,9 +27,9 @@
                 <div class="row">
                     @if(isset($valorPago))
                         <aside class="col-lg-15 mt-3">
-                            <form action="{{ route('pagamento') }}" method="post">
+                            <form action="{{ route('salvarpagamento') }}" method="post">
                             @csrf
-                            <input type="hidden" name="venda_id" value="{{ $vendaId }}" />
+                            <input type="hidden" name="venda_id" value="{{ session()->get('vendaId') }}" />
                             <input type="hidden" name="user_created_at" value="{{ session()->get('matricula') }}" />
                                 <article class="card">
                                     <div class="card-body">
@@ -36,7 +37,7 @@
                                             <div class="col mb-3">
                                                 <label class="form-label">Total</label>
                                                 <div class="input-group">
-                                                    <input type="number" name="total" value="{{ $total }}" class="form-control" required />
+                                                    <input type="number" name="total" value="{{ session()->get('total') }}" class="form-control" required />
                                                     <span class="input-group-text"><i class="icon fa fa-money"></i></span>
                                                 </div>
                                             </div>
@@ -44,7 +45,7 @@
                                             <div class="col mb-3">
                                                 <label class="form-label">Pago</label>
                                                 <div class="input-group">
-                                                    <input type="text" name="valor_pago" value="{{ $valorPago }}" class="form-control" required />
+                                                    <input type="text" name="valor_pago" value="{{ session()->get('valorPago') }}" class="form-control" required />
                                                     <span class="input-group-text"><i class="icon fa fa-money"></i></span>
                                                 </div>
                                             </div>
@@ -68,18 +69,18 @@
                                                     <span class="input-group-text"><i class="icon fa fa-money"></i></span>
                                                 </div>
                                             </div>
-                                        <button class="btn w-100 btn-success">Total a Pagar R${{ number_format($total, 2, ',', ' ') }}</button>
+                                        <button class="btn w-100 btn-success">Total a Pagar R${{ number_format(session()->get('total'), 2, ',', ' ') }}</button>
                                     </div>
                                 </article>
                             </form>
                         </aside>
                     @else
                         <aside class="col-lg-15 mt-3">
-                            <form action="{{ route('pagamento') }}" method="post">
+                            <form action="{{ route('salvarpagamento') }}" method="post">
                             @csrf
-                            <input type="hidden" name="venda_id" value="{{ $vendaId }}" />
+                            <input type="hidden" name="venda_id" value="{{ session()->get('vendaId') }}" />
                             <input type="hidden" name="user_created_at" value="{{ session()->get('matricula') }}" />
-                            <input type="hidden" name="total" value="{{ $total }}" />
+                            <input type="hidden" name="total" value="{{ session()->get('total') }}" />
                             <input type="hidden" name="identificador_metodo_pagamento_id" value="102" />
                                 <article class="card">
                                     <div class="card-body">
@@ -111,8 +112,7 @@
                                                         <span class="input-group-text"><i class="icon fa fa-credit-card"></i></span>
                                                         <div id="cartao" style="display:none">
                                                             <select name="parcela" class="form-select">
-                                                                <option value="0" selected>Parcelas</option>
-                                                                <option value="1">1x</option>
+                                                                <option value="1" selected>Parcelas</option>
                                                                 <option value="2">2x</option>
                                                                 <option value="3">3x</option>
                                                             </select>
@@ -120,7 +120,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        <button class="btn w-100 btn-success">Total a Pagar R${{ number_format($total, 2, ',', ' ') }}</button>
+                                        <button class="btn w-100 btn-success">Total a Pagar R${{ number_format(session()->get('total'), 2, ',', ' ') }}</button>
                                     </div>
                                 </article>
                             </form>

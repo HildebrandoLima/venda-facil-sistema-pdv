@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-5">
             @if (isset($imagem))
-                <img src="{{ asset('images/' . $imagem) }}" width="500" height="500" class=""/>
+                <img src="{{ asset('images/' . $imagem) }}" width="500" height="450" class=""/>
             @else
                 <img src="{{ asset('images/logo.png') }}" width="550" height="350" class=""/>
             @endif
@@ -90,7 +90,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-3 text-left">
-                            <input type="text" name="valor_pago" class="form-control" />
+                            <input type="text" name="valor_pago" placeholder="Digite o Valor Pago" class="form-control" />
                             <h4>Total a Pagar: R$ {{ number_format(@$total, 2, ',', ' ') }}</h4>
                             <input type="hidden" name="quantidade_item" value="{{ @$produto -1 }}" />
                             <input type="hidden" name="total" value="{{ @$total }}" />
