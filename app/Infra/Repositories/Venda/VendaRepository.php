@@ -74,7 +74,7 @@ class VendaRepository
 
     private function removerItem(): void
     {
-        $this->removerVendaItemTemporarioDb->removerVendaItemTemporario($this->codigoItens);
+        $this->removerVendaItemTemporarioDb->removerVendaItensTemporarios($this->codigoItens);
     }
 
     private function recuperarPagamento(): void
