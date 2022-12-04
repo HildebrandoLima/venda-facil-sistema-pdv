@@ -24,7 +24,9 @@ class CaixaController extends Controller
     public function caixa()
     {
         if (session()->exists('matricula')):
-            $caixa = $this->caixaRepository->buscaCaixa()->toArray();
+            $caixaId = session()->get('caixaId');
+            $caixa = $this->caixaRepository->buscaCaixa($caixaId)->toArray();
+
             $item = $this->itemRepository->listarVendaItemTemporario($caixa[0]->id)->toArray();
             return view('caixa', ['caixa' => $caixa[0]->id, 'status' => $caixa[0]->status, 'descricao' => @end($item)->descricao, 'imagem' => @end($item)->imagem, 'itens' => $item]);
         else:
