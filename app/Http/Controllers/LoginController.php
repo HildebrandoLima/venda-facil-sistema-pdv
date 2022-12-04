@@ -48,7 +48,7 @@ class LoginController extends Controller
                 endif;
             endif;
         else:
-            return redirect()->route('login')->with('msg', 'Dados incorretos.');
+            return redirect()->route('login')->with('error', 'Senha ou Matrícula incorreta.');
         endif;
     }
 
