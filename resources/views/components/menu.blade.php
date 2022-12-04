@@ -6,6 +6,11 @@
 </div>
 
 <div id="menu" class="mt-3">
+    <button type="button" class="btn btn-secondary col-sm" data-bs-toggle="modal" data-bs-target="#ajudaModal">
+        <span class="icon fa fa-gear"></span>
+        Ajuda
+    </button>
+
     @if($status == 'Fechado')
     <button class="btn btn-success col-sm" data-bs-toggle="modal" data-bs-target="#abrirCaixaModal">
         <span class="icon fa fa-money"></span>
@@ -18,22 +23,14 @@
     </button>
     @endif
 
-    <button type="button" class="btn btn-secondary col-sm" data-bs-toggle="modal" data-bs-target="#ajudaModal">
-        <span class="icon fa fa-gear"></span>
-        Ajuda
-    </button>
-
-    <!-- <button class="btn btn-primary col-sm">
-        <img src="image/user.png">Identif Cliente</i>
-    </button> -->
-
-    <!-- <button class="btn btn-primary col-sm">
-        <img src="image/x.png">Cancelar Item</i>
-    </button> -->
-
-    <button class="btn btn-info col-sm">
+    <button class="btn btn-warning col-sm">
         <span class="icon fa fa-search"></span>
         Consultar Preço
+    </button>
+
+    <button type="button" class="btn btn-info col-sm" data-bs-toggle="modal" data-bs-target="#itentificarClienteModal">
+        <span class="icon fa fa-user"></span>
+        Identificar Cliente
     </button>
 
     <!--<button class="btn btn-primary col-sm">
@@ -44,10 +41,6 @@
         <span class="icon fa fa-plus"></span>
         Várias Unidades
     </button>
-    <!-- <button type="submit" class="btn btn-success">
-        <span class="icon fa fa-check"></span>
-        Finalizar Venda
-    </button> -->
 
     <a href="{{ route('sair') }}">
         <button class="btn btn-danger col-sm">
