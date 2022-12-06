@@ -21,7 +21,8 @@ class UsuarioController extends Controller
     {
         $usuarioId = $this->usuarioRepository->identificarCliente($request);
         session()->put([
-            'usuarioId' => $usuarioId[0]->id
+            'usuarioId' => $usuarioId[0]->id,
+            'cpf' => $request->cpf
         ]);
         return redirect()->route('caixa');
     }

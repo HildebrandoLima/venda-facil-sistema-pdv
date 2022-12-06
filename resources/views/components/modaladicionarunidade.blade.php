@@ -25,7 +25,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     Fechar
                 </button>
-                <button type="submit" class="btn btn-success">
+                <button type="submit" class="btn btn-success" id="confirmar">
                     Adicionar Item
                 </button>
             </div>

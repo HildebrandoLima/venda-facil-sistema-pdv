@@ -9,9 +9,9 @@
     <div class="row">
         <div class="col-md-5">
             @if (isset($imagem))
-                <img src="{{ asset('images/' . $imagem) }}" width="500" height="450" class=""/>
+                <img src="{{ asset('images/' . $imagem) }}" width="500" height="450" class="mt-3"/>
             @else
-                <img src="{{ asset('images/logo.png') }}" width="550" height="350" class=""/>
+                <img src="{{ asset('images/carrinho-compras.png') }}" width="450" height="300" class="mt-3"/>
             @endif
         </div>
 
@@ -25,7 +25,7 @@
 
 <form action="{{ route('venda') }}" method="post">
 @csrf
-<input type="hidden" name="caixa_id" value="{{ session()->get('caixaId') }}" />
+<input type="hidden" name="caixa_id" value="{{ session()->get('caixaId') }}" required />
 <input type="hidden" name="user_created_at" value="{{ session()->get('matricula') }}" />
 <input type="hidden" name="usuario_id" value="{{ session()->get('usuarioId') }}" />
 
@@ -66,7 +66,7 @@
                                         <td><input type="hidden" name="sub_total" value="{{ $sub_total }}" />{{ number_format($sub_total, 2, ',', ' ') }}</td>
                                         <td>
                                             <a href="{{ route('remover', $item->id) }}">
-                                                <button type="button" class="btn btn-danger">X</button>
+                                                <button type="button" id="removerItem" class="btn btn-danger">X</button>
                                             </a>
                                         </td>
                                     </tr>
@@ -105,7 +105,7 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <button type="submit" class="btn btn-success">
+                            <button type="submit" id="finalizarVenda" class="btn btn-success">
                                 <span class="icon fa fa-check"></span>
                                 Finalizar Venda
                             </button>

@@ -29,7 +29,7 @@
                         @csrf
                         <div class="col-md-6">
                             <label for="validationCustom01" class="form-label">Matrícula</label>
-                            <input type="text" name="matricula" placeholder="Matrícula" class="form-control" id="validationCustom01" required>
+                            <input type="text" name="matricula" placeholder="Matrícula" class="form-control" id="validationCustom01" autofocus required />
                             <div class="invalid-feedback">
                                 Matrícula é obrigatória.
                             </div>
@@ -37,7 +37,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="validationCustom02" class="form-label">Senha</label>
-                            <input type="password" name="senha" placeholder="Senha" id="validationCustom02" class="form-control" required>
+                            <input type="password" name="senha" placeholder="Senha" id="validationCustom02" class="form-control" required />
                             <div class="invalid-feedback">
                                 Senha é obrigatória.
                             </div>
