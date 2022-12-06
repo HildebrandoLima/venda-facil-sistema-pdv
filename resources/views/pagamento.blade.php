@@ -69,7 +69,7 @@
                                                     <span class="input-group-text"><i class="icon fa fa-money"></i></span>
                                                 </div>
                                             </div>
-                                        <button class="btn w-100 btn-success">Total a Pagar R${{ number_format(session()->get('total'), 2, ',', ' ') }}</button>
+                                        <button class="btn w-100 btn-success" id="realizarPagamento" autofocus>Total a Pagar R${{ number_format(session()->get('total'), 2, ',', ' ') }}</button>
                                     </div>
                                 </article>
                             </form>
@@ -120,7 +120,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        <button class="btn w-100 btn-success">Total a Pagar R${{ number_format(session()->get('total'), 2, ',', ' ') }}</button>
+                                        <button class="btn w-100 btn-success" id="realizarPagamento" autofocus>Total a Pagar R${{ number_format(session()->get('total'), 2, ',', ' ') }}</button>
                                     </div>
                                 </article>
                             </form>

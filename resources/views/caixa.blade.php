@@ -25,7 +25,7 @@
 
 <form action="{{ route('venda') }}" method="post">
 @csrf
-<input type="hidden" name="caixa_id" value="{{ session()->get('caixaId') }}" />
+<input type="hidden" name="caixa_id" value="{{ session()->get('caixaId') }}" required />
 <input type="hidden" name="user_created_at" value="{{ session()->get('matricula') }}" />
 <input type="hidden" name="usuario_id" value="{{ session()->get('usuarioId') }}" />
 
@@ -105,7 +105,7 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <button type="submit" class="btn btn-success">
+                            <button type="submit" id="finalizarVenda" class="btn btn-success">
                                 <span class="icon fa fa-check"></span>
                                 Finalizar Venda
                             </button>

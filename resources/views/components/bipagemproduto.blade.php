@@ -8,7 +8,7 @@
         <button type="submit" class="btn btn-primary" disabled>+</button>
         @else
         <div class="form-outline">
-            <input type="number" name="codigo_barra" id="codigo_barra" placeholder="Digite o Código de Barras" class="form-control" />
+            <input type="number" name="codigo_barra" id="codigo_barra" placeholder="Digite o Código de Barras" class="form-control" autofocus/>
         </div>
         <button type="submit" class="btn btn-primary">+</button>
         @endif
