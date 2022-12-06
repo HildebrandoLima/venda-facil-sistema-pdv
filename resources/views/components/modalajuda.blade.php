@@ -59,6 +59,10 @@
                       <td>Shif+u</td>
                     </tr>
                     <tr>
+                      <td>Remover Item</td>
+                      <td>Shif+r</td>
+                    </tr>
+                    <tr>
                       <td>Finalizar Venda</td>
                       <td>Shif+v</td>
                     </tr>

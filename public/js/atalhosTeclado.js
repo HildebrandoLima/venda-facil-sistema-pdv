@@ -33,7 +33,14 @@ $(document).bind('keypress', function (event) {
     }
 });
 
-// Alt + v
+// Shift + r
+$(document).bind('keypress', function (event) {
+    if (event.which === 82 && event.shiftKey) {
+        $("#removerItem").click();
+    }
+});
+
+// Shift + v
 $(document).bind('keypress', function (event) {
     if (event.which === 86 && event.shiftKey) {
         $("#finalizarVenda").click();
