@@ -21,7 +21,7 @@
                     <span class="icon fa fa-xmark"></span>
                     Fechar
                 </button>
-                <button type="submit" class="btn btn-success">
+                <button type="submit" class="btn btn-success" id="confirmar">
                     <span class="icon fa fa-check"></span>
                     Confirmar
                 </button>

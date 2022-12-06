@@ -25,7 +25,7 @@
                     <span class="icon fa fa-xmark"></span>
                     Cancelar
                 </button>
-                <button type="submit" class="btn btn-success">
+                <button type="submit" class="btn btn-success" id="confirmar">
                     <span class="icon fa fa-check"></span>
                     Fechar Caixa
                 </button>
