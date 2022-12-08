@@ -41,9 +41,9 @@
                 <div class="card shadow rounded mt-3">
                     <div class="card-body">
                         <div class="input-group mb-3">
-                            <input type="text" value="QTD: {{ $data['quantidade'] ?? 0 }}" class="form-control" />
-                            <input type="text" value="V(U) R${{ number_format($data['preco'] ?? 0, 2, ',', ' ') }}" class="form-control" />
-                            <input type="text" value="V(T) R${{ number_format($data['preco'] ?? 0, 2, ',', ' ') }}" class="form-control" />
+                            <input type="text" value="QTD: {{ $data['quantidade'] ?? 0 }}" class="form-control" disabled />
+                            <input type="text" value="V(U) R${{ number_format($data['preco'] ?? 0, 2, ',', ' ') }}" class="form-control" disabled />
+                            <input type="text" value="V(T) R${{ number_format($data['preco'] ?? 0, 2, ',', ' ') }}" class="form-control" disabled />
                         </div>
                     </div>
                 </div>
@@ -131,10 +131,13 @@
                                     <input type="hidden" name="usuario_id" value="{{ session()->get('usuarioId') }}" />
                                     <input type="hidden" name="user_created_at" value="{{ session()->get('matricula') }}" />
 
-                                    <button type="submit" id="finalizarVenda" class="btn btn-success">
-                                        <span class="icon fa fa-check"></span>
-                                        Finalizar Venda
-                                    </button>
+                                    <div class="input-group mb-3">
+                                        <input type="number" name="valor_pago" placeholder="A Pagar" class="form-control" />
+                                        <button type="submit" id="finalizarVenda" class="btn btn-success">
+                                            <span class="icon fa fa-check"></span>
+                                            Finalizar Venda
+                                        </button>         
+                                    </div>
                                 </form>
                             </div>
                         </div>

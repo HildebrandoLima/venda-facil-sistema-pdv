@@ -9,7 +9,7 @@
     Fechar Caixa
 </button>
 @endif
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <button type="button" class="btn btn-secondary col-sm" data-bs-toggle="modal" data-bs-target="#ajudaModal">
     <span class="icon fa fa-gear"></span>
     Ajuda
@@ -33,7 +33,7 @@
     <span class="icon fa fa-plus"></span>
     Várias Unidades
 </button>
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="{{ route('sair') }}">
     <button id="sair" class="btn btn-danger col-sm">
         <span class="icon fa fa-arrow-right"></span>
