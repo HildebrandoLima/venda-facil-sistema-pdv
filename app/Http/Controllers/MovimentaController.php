@@ -26,6 +26,7 @@ class MovimentaController extends Controller
     public function fecharCaixa(Request $request)
     {
         $this->movimentacaoRepository->fecharCaixa($request);
+        session()->forget('movimentacaoId');
         return redirect()->route('caixa')->with('msg', 'Caixa Fechado com Sucesso!!!');
     }
 }
