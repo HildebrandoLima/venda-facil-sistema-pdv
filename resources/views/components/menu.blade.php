@@ -1,8 +1,3 @@
-<button type="button" class="btn btn-secondary col-sm" data-bs-toggle="modal" data-bs-target="#ajudaModal">
-    <span class="icon fa fa-gear"></span>
-    Ajuda
-</button>
-
 @if($data['status'] == 'Fechado')
 <button class="btn btn-success col-sm" data-bs-toggle="modal" data-bs-target="#abrirCaixaModal">
     <span class="icon fa fa-money"></span>
@@ -14,6 +9,11 @@
     Fechar Caixa
 </button>
 @endif
+
+<button type="button" class="btn btn-secondary col-sm" data-bs-toggle="modal" data-bs-target="#ajudaModal">
+    <span class="icon fa fa-gear"></span>
+    Ajuda
+</button>
 
 <button class="btn btn-warning col-sm">
     <span class="icon fa fa-search"></span>

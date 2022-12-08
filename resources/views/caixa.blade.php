@@ -28,48 +28,23 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col">
+                <div class="card shadow rounded mt-3">
+                    <div class="card-body d-flex justify-content-center">
                         @if (isset($data['imagem']))
-                            <img src="{{ asset('images/' . $data['imagem']) }}" width="400" height="400" class="mt-3"/>
-                        @else
-                            <img src="{{ asset('images/carrinho-compras.png') }}" width="450" height="300" class="mt-3"/>
-                        @endif
-                    </div>
-                    <div class="col">
-                        <div class="card shadow rounded mt-3">
-                            <div class="card-body">
-                                <h4>QTD: {{ $data['quantidade'] ?? 0 }}</h4>
-                            </div>
-                        </div>
-                        <div class="card shadow rounded mt-3">
-                            <div class="card-body">
-                                <h4>V(U) R${{ number_format($data['preco'] ?? 0, 2, ',', ' ') }}</h4>
-                            </div>
-                        </div>
-                        <div class="card shadow rounded mt-3">
-                            <div class="card-body">
-                                <h4>V(T) R${{ number_format($data['preco'] ?? 0, 2, ',', ' ') }}</h4>
-                            </div>
-                        </div>
+                        <img src="{{ asset('images/' . $data['imagem']) }}" width="400" height="400" class="mt-3"/>
+                    @else
+                        <img src="{{ asset('images/carrinho-compras.png') }}" width="450" height="300" class="mt-3"/>
+                    @endif
                     </div>
                 </div>
 
                 <div class="card shadow rounded mt-3">
                     <div class="card-body">
-                        <form action="{{ route('venda') }}" method="post">
-                            @csrf
-                            <input type="hidden" name="quantidade_item" value="{{ @$produto -1 }}" />
-                            <input type="hidden" name="total" value="{{ @$total }}" />
-                            <input type="hidden" name="caixa_id" value="{{ session()->get('caixaId') }}" required />
-                            <input type="hidden" name="usuario_id" value="{{ session()->get('usuarioId') }}" />
-                            <input type="hidden" name="user_created_at" value="{{ session()->get('matricula') }}" />
-
-                            <button type="submit" id="finalizarVenda" class="btn btn-success">
-                                <span class="icon fa fa-check"></span>
-                                Finalizar Venda
-                            </button>
-                        </form>
+                        <div class="input-group mb-3">
+                            <input type="text" value="QTD: {{ $data['quantidade'] ?? 0 }}" class="form-control" />
+                            <input type="text" value="V(U) R${{ number_format($data['preco'] ?? 0, 2, ',', ' ') }}" class="form-control" />
+                            <input type="text" value="V(T) R${{ number_format($data['preco'] ?? 0, 2, ',', ' ') }}" class="form-control" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -87,13 +62,13 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Iem</th>
-                                        <th scope="col">Cod de Barra</th>
-                                        <th scope="col">Produto</th>
-                                        <th scope="col">Qtd</th>
+                                        <th scope="col">ITEM</th>
+                                        <th scope="col">COD BARRA</th>
+                                        <th scope="col">PRODUTO</th>
+                                        <th scope="col">QTD</th>
                                         <th scope="col">V(U)</th>
                                         <th scope="col">V(T)</th>
-                                        <th scope="col">Remover</th>
+                                        <th scope="col">REMOVER</th>
                                     </tr>
                                 </thead>
                                 @foreach ($itens as $key => $item)
@@ -134,10 +109,11 @@
                                     <h4 class="text-center">Caixa {{ $data['status'] }}</h4>
                                 </div>
                                 @else
-                                <div class="alert alert-danger mt-3" role="alert">  
+                                <div class="alert alert-danger mt-3" role="alert">
                                     <h4 class="text-center">Caixa {{ $data['status'] }}</h4>
                                 </div>
                                 @endif
+                                <br />
                             </div>
                         </div>
                     </div>
@@ -146,6 +122,20 @@
                             <div class="card-body">
                                 <h4>Total de Itens: {{ @$produto -1 }}</h4>
                                 <h4>Total a Pagar R${{ number_format(@$total, 2, ',', ' ') }}</h4>
+
+                                <form action="{{ route('venda') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="quantidade_item" value="{{ @$produto -1 }}" />
+                                    <input type="hidden" name="total" value="{{ @$total }}" />
+                                    <input type="hidden" name="caixa_id" value="{{ session()->get('caixaId') }}" required />
+                                    <input type="hidden" name="usuario_id" value="{{ session()->get('usuarioId') }}" />
+                                    <input type="hidden" name="user_created_at" value="{{ session()->get('matricula') }}" />
+
+                                    <button type="submit" id="finalizarVenda" class="btn btn-success">
+                                        <span class="icon fa fa-check"></span>
+                                        Finalizar Venda
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
