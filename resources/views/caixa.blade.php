@@ -6,6 +6,12 @@
 
 @include('components.cabecalho')
 
+@extends('components.modalajuda')
+@extends('components.modalabrircaixa')
+@extends('components.modalfecharcaixa')
+@extends('components.modalidentificarcliente')
+@extends('components.modaladicionarunidade')
+
 @php
     $produto = 1;
     $sub_total = 0;
@@ -14,7 +20,7 @@
 
 <div class="row">
     <div class="col-sm-6">
-        <div class="card">
+        <div class="card shadow rounded">
             <div class="card-body">
                 <div class="card shadow rounded">
                     <div class="card-body">
