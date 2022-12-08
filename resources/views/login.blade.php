@@ -14,7 +14,9 @@
         </div>
         @endif
 
-        <form action="{{ route('logar') }}" method="post" class="row g-3 needs-validation" novalidate>
+        <p><img src="{{ asset('images/logo.png') }}" width="800" height="300" class="mt-3"/></p>
+
+        <form action="{{ route('logar') }}" method="post" class="row g-3 needs-validation mt-3" novalidate>
             @csrf
             <div class="col-md-6">
                 <label for="validationCustom01" class="form-label">Matrícula</label>
