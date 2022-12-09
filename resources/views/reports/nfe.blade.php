@@ -20,15 +20,15 @@
                 </thead>
             </table>
             -----------------------------------------------------------------------------------------------------
-            <center><b>CUPOM NÃO FISCAL</b></center>
+            <center><b>***CUPOM NÃO FISCAL***</b></center>
             -----------------------------------------------------------------------------------------------------
             <p class="text-center"><b>DETALHE VENDA</b></p>
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">ITEM</th>
-                        <th scope="col">DESCRIÇÃO</th>
                         <th scope="col">COD DE BARRAS</th>
+                        <th scope="col">DESCRIÇÃO</th>
                         <th scope="col">QTD</th>
                         <th scope="col">V (U)</th>
                         <th scope="col">X</th>
@@ -39,8 +39,8 @@
                     @foreach ($data['itens'] as $item)
                     <tr>
                         <th scope="row">00{{ $itemId++ }}</th>
-                        <td>{{ $item->nome }}</td>
                         <td>{{ $item->codigo_barra }}</td>
+                        <td>{{ $item->nome }}</td>
                         <td>{{ $item->quantidade }}</td>
                         <td>R${{ number_format($item->preco, 2, ',', ' ') }}</td>
                         <td>X</td>
@@ -118,6 +118,7 @@
         </div>
         @endif
     </body>
+
     <style type="text/css">
         .container {
             background-color:#ffffff;

@@ -19,6 +19,7 @@ class ItemController extends Controller
 
     public function alterarQuantidadeItem(Request $request)
     {
+        $this->itemRepository->quantidadeItem($request);
         return redirect()->route('caixa');
     }
 

@@ -6,18 +6,45 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form action="" method="post">
-            @csrf
-            @method('PUT')
-            <input type="hidden" name="item_id" value="" />
-
             <div class="modal-body">
-                <div class="input-group mb-3">
-                    <input type="number" name="quantidade" placeholder="Quantidade" class="form-control" />
-                </div>
-
-                <div class="input-group mb-3">
-                    <input type="number" name="sub_total" placeholder="Sub Total" class="form-control" />
+                <div class="table-response table-overflow">
+                    @if (isset($itens) && count($itens) > 0)
+                    <form action="{{ route('mudar') }}" method="post">
+                        @csrf
+                        @method('PUT')
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ITEM</th>
+                                    <th scope="col">PRODUTO</th>
+                                    <th scope="col">QTD</th>
+                                    <th scope="col">MUDAR</th>
+                                </tr>
+                            </thead>
+                            @foreach ($itens as $key => $item)
+                            @php
+                                $sub_total = $item->preco * $item->quantidade;
+                            @endphp
+                            <tbody>
+                                <tr>
+                                    <input type="hidden" name="codigo_barra" value="{{ $item->codigo_barra }}" />
+                                    <input type="hidden" name="preco" value="{{ $item->preco }}" />
+                                    <th scope="row">{{ $item->id }}</th>
+                                    <td>{{ $item->nome }}</td>
+                                    <td><input type="number" name="quantidade" value="{{ $item->quantidade }}" class="form-control" /></td>
+                                    <td>
+                                        <button type="submit" class="btn btn-success" id="confirmar">
+                                            Adicionar Item
+                                        </button>    
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </form>
+                    @else
+                    <h3 class="text-center">Nenhum Item na Venda</h3>
+                    @endif
                 </div>
             </div>
 
@@ -25,11 +52,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     Fechar
                 </button>
-                <button type="submit" class="btn btn-success">
-                    Adicionar Item
-                </button>
             </div>
-            </form>
         </div>
     </div>
 </div>

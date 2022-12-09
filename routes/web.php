@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovimentaController;
 use App\Http\Controllers\NFeController;
 use App\Http\Controllers\PagamentoController;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\VendaController;
 
 
@@ -23,6 +24,7 @@ Route::prefix('caixa')->group(function () {
 });
 
 Route::prefix('item')->group(function () {
+    Route::put('/alterar/quantidade', [ItemController::class, 'alterarQuantidadeItem'])->name('mudar');
     Route::get('/deletar/{itemId}', [ItemController::class, 'removerItem'])->name('remover');
 });
 
@@ -34,4 +36,8 @@ Route::prefix('pagamento')->group(function () {
 Route::prefix('nfe')->group(function () {
     Route::get('/', [NFeController::class, 'criarNFe'])->name('nfe');
     Route::get('/{vendaId}', [NFeController::class, 'gerarNFe'])->name('gerarnfe');
+});
+
+Route::prefix('cliente')->group(function () {
+    Route::post('/identificar', [UsuarioController::class, 'identificarCliente'])->name('identificar');
 });

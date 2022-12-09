@@ -40,8 +40,10 @@ class NFeController extends Controller
 
     private function encerrarSessao()
     {
-        session()->forget('total');
+        session()->forget('usuarioId');
         session()->forget('valorPago');
         session()->forget('vendaId');
+        session()->forget('total');
+        session()->forget('cpf');
     }
 }
