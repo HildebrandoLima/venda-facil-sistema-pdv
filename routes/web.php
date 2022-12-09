@@ -17,15 +17,15 @@ Route::get('/sair', [LoginController::class, 'logout'])->name('sair');
 
 Route::prefix('caixa')->group(function () {
     Route::get('/', [CaixaController::class, 'caixa'])->name('caixa');
-    Route::post('/buscar', [CaixaController::class, 'adicionarItem'])->name('buscar');
     Route::post('/venda/salvar', [VendaController::class, 'criarVenda'])->name('venda');
     Route::post('/movimentar/abrirCaixa', [MovimentaController::class, 'abrirCaixa'])->name('abrir');
     Route::put('/movimentar/fecharCaixa', [MovimentaController::class, 'fecharCaixa'])->name('fechar');
 });
 
 Route::prefix('item')->group(function () {
-    Route::put('/alterar/quantidade', [ItemController::class, 'alterarQuantidadeItem'])->name('mudar');
     Route::get('/deletar/{itemId}', [ItemController::class, 'removerItem'])->name('remover');
+    Route::put('/alterar/quantidade', [ItemController::class, 'alterarQuantidadeItem'])->name('mudar');
+    Route::post('/buscar', [ItemController::class, 'adicionarItem'])->name('buscar');
 });
 
 Route::prefix('pagamento')->group(function () {

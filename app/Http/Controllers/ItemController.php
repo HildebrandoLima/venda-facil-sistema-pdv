@@ -20,9 +20,7 @@ class ItemController extends Controller
     public function adicionarItem(Request $request)
     {
         $produto = $this->itemRepository->getProduto($request);
-        if($produto):
-           $this->itemRepository->bipagemProduto($produto);
-        endif;
+        $this->itemRepository->bipagemProduto($produto);
         return redirect()->route('caixa');
     }
 

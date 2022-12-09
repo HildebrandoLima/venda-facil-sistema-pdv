@@ -43,12 +43,6 @@ class MovimentacaoRepository
         return true;
     }
 
-    private function abrirCaixaa(): int
-    {
-        $this->movimentacaoId = $this->abrirCaixaDb->abrirCaixa($this->request);
-        return $this->movimentacaoId;
-    }
-
     public function fecharCaixa(Request $request): bool
     {
         $this->request = $request;
@@ -56,6 +50,22 @@ class MovimentacaoRepository
         $this->fecharCaixaDb->fecharCaixa($request, $movimentacaoId);
         $this->statusCaixa();
         return true;
+    }
+
+    public function recuperarSaldoAnteior(int $caixaId)
+    {
+        return $this->recuperarSaldoAnteriorDb->recuperarSaldoAnterior($caixaId);
+    }
+
+    public function recuperarMovimentacao(int $caixaId)
+    {
+        return $this->recuperarMovimentacaoDb->recuperarMovimentacao($caixaId);
+    }
+
+    private function abrirCaixaa(): int
+    {
+        $this->movimentacaoId = $this->abrirCaixaDb->abrirCaixa($this->request);
+        return $this->movimentacaoId;
     }
 
     private function recuperarUltimaMovimentacao(): void
@@ -75,15 +85,5 @@ class MovimentacaoRepository
             $status = "Fechado";
             $this->statusCaixaDb->statusCaixa($caixaId, $status);
         endif;
-    }
-
-    public function recuperarSaldoAnteior(int $caixaId)
-    {
-        return $this->recuperarSaldoAnteriorDb->recuperarSaldoAnterior($caixaId);
-    }
-
-    public function recuperarMovimentacao(int $caixaId)
-    {
-        return $this->recuperarMovimentacaoDb->recuperarMovimentacao($caixaId);
     }
 }
