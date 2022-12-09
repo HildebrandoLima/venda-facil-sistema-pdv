@@ -87,4 +87,10 @@ class ItemRepository
     {
         return $this->removerVendaItemTemporarioDb->removerVendaItemTemporario($itemId);
     }
+
+    public function quantidadeItem(Request $request): bool
+    {
+        $subTotal = $request->preco * $request->quantidade;
+        return $this->quantidadeItemDb->quantidadeItem($request, $request->quantidade, $subTotal);
+    }
 }

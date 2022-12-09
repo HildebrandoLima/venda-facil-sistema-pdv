@@ -19,7 +19,7 @@
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Acrescentar Valor: R$</span>
-                    <input type="number" name="acrescentar_valor" placeholder="Acrescentar Valor" class="form-control" required />
+                    <input type="number" name="acrescentar_valor" placeholder="Acrescentar Valor" class="form-control" />
                 </div>
             </div>
 

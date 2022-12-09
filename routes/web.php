@@ -24,6 +24,7 @@ Route::prefix('caixa')->group(function () {
 });
 
 Route::prefix('item')->group(function () {
+    Route::put('/alterar/quantidade', [ItemController::class, 'alterarQuantidadeItem'])->name('mudar');
     Route::get('/deletar/{itemId}', [ItemController::class, 'removerItem'])->name('remover');
 });
 
