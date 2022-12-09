@@ -48,7 +48,7 @@
 
                 <div class="input-group mb-3">
                     <span class="input-group-text">Valor Atual em Caixa: R$</span>
-                    <input type="number" name="saldo_atual" placeholder="Informe o Valor Atual em Caixa" value="{{ $movimentacao->total_venda_real ?? 0 }}"  class="form-control" required />
+                    <input type="number" name="saldo_atual" placeholder="Informe o Valor Atual em Caixa" value="{{ $saldo_final ?? 0 }}"  class="form-control" required />
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Fundo do Caixa para o Próximo Dia: R$</span>

@@ -5,7 +5,8 @@ namespace App\Infra\Database\Dao\MovimentaCaixa;
 use Illuminate\Http\Request;
 use App\Infra\Database\Config\DbBase;
 
-class FecharCaixaDb extends DbBase {
+class FecharCaixaDb extends DbBase
+{
     public function fecharCaixa(Request $request, int $movimentacaoId)
     {
         return $this->db
