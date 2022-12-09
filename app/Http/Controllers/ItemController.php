@@ -17,6 +17,15 @@ class ItemController extends Controller
         $this->itemRepository = $itemRepository;
     }
 
+    public function adicionarItem(Request $request)
+    {
+        $produto = $this->itemRepository->getProduto($request);
+        if($produto):
+           $this->itemRepository->bipagemProduto($produto);
+        endif;
+        return redirect()->route('caixa');
+    }
+
     public function alterarQuantidadeItem(Request $request)
     {
         $this->itemRepository->quantidadeItem($request);

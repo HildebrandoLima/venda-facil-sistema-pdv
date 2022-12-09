@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Infra\Repositories\Caixa\CaixaRepository;
 use App\Infra\Repositories\Item\ItemRepository;
 use App\Infra\Repositories\MovimentarCaixa\MovimentacaoRepository;
-use Illuminate\Http\Request;
 
 class CaixaController extends Controller
 {
@@ -45,14 +44,5 @@ class CaixaController extends Controller
         else:
             return redirect()->route('login')->with('msg', 'É preciso estar logado.');
         endif;
-    }
-
-    public function adicionarItem(Request $request)
-    {
-        $produto = $this->itemRepository->getProduto($request);
-        if($produto):
-           $this->itemRepository->bipagemProduto($produto);
-        endif;
-        return redirect()->route('caixa');
     }
 }
