@@ -7,14 +7,14 @@ use App\Infra\Database\Config\DbBase;
 
 class QuantidadeItemDb extends DbBase
 {
-    public function quantidadeItem(Request $request, $quantidade, $subtotal): bool
+    public function quantidadeItem(string $codigoBarra, int $quantidade, float $subTotal): bool
     {
       return $this->db
       ->table('venda_item_temporario')
-      ->where('codigo_barra', $request->codigo_barra)
+      ->where('codigo_barra', $codigoBarra)
       ->update([
         'quantidade' => $quantidade,
-        'sub_total'=> $subtotal
+        'sub_total'=> $subTotal
       ]);
     }
 }

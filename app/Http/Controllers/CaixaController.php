@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Infra\Repositories\Caixa\CaixaRepository;
 use App\Infra\Repositories\Item\ItemRepository;
 use App\Infra\Repositories\MovimentarCaixa\MovimentacaoRepository;
-use Illuminate\Http\Request;
 
 class CaixaController extends Controller
 {
