@@ -32,8 +32,16 @@ class CaixaController extends Controller
             $caixa = $this->caixaRepository->buscaCaixa($caixaId)->toArray();
             $item = $this->itemRepository->listarVendaItemTemporario($caixaId)->toArray();
             $movimentacao = $this->movimentacaoRepository->recuperarMovimentacao($caixaId);
+            $saldoAnterior = $this->movimentacaoRepository->recuperarSaldoAnteior($caixaId);
 
-            return view('caixa', ['caixa' => $caixa[0]->id, 'status' => $caixa[0]->status, 'descricao' => @end($item)->descricao, 'imagem' => @end($item)->imagem, 'itens' => $item, 'movimentacao' => $movimentacao[0]]);
+            $data = collect([
+                'status' => $caixa[0]->status,
+                'descricao' => @end($item)->descricao,
+                'imagem' => @end($item)->imagem,
+                'quantidade' => @end($item)->quantidade,
+                'preco' => @end($item)->preco
+            ])->toArray();
+            return view('caixa', ['data' => $data, 'itens' => $item, 'movimentacao' => @$movimentacao[0], 'saldoAnterior' => $saldoAnterior[0]]);
         else:
             return redirect()->route('login')->with('msg', 'É preciso estar logado.');
         endif;

@@ -5,7 +5,8 @@ namespace App\Infra\Database\Dao\MovimentaCaixa;
 use Illuminate\Http\Request;
 use App\Infra\Database\Config\DbBase;
 
-class AbrirCaixaDb extends DbBase {
+class AbrirCaixaDb extends DbBase
+{
     public function abrirCaixa(Request $request): int
     {
         return $this->db
@@ -13,7 +14,7 @@ class AbrirCaixaDb extends DbBase {
         ->insertGetId([
             'data_abertura' => date("Y-m-d H:i:s"),
             'data_fechamento' => date("Y-m-d H:i:s"),
-            'saldo_inicial' => $request->saldo_inicial,
+            'saldo_inicial' => isset($request->acrescentar_valor) ? $request->saldo_inicial + $request->acrescentar_valor : $request->saldo_inicial,
             'saldo_final' => 0,
             'total_venda' => 0,
             'total_venda_real' => 0,

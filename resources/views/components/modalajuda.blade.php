@@ -35,7 +35,7 @@
                       <td>Navegar</td>
                       <td>TAB</td>
                     </tr>
-                    @if($status == 'Fechado')
+                    @if($data['status'] == 'Fechado')
                     <tr>
                       <td>Abrir Caixa</td>
                       <td>Shif+a</td>

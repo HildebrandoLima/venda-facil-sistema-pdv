@@ -14,8 +14,12 @@
                 <input type="hidden" name="status" value="Aberto" />
 
                 <div class="input-group mb-3">
-                    <span class="input-group-text">R$</span>
-                    <input type="number" name="saldo_inicial" placeholder="Saldo inicial" class="form-control" required />
+                    <span class="input-group-text">Valor Atual em Caixa: R$</span>
+                    <input type="number" name="saldo_inicial" value="{{ $saldoAnterior->saldoProximoDia }}" placeholder="Informe o Valor Atual em Caixa"  class="form-control" required />
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Acrescentar Valor: R$</span>
+                    <input type="number" name="acrescentar_valor" placeholder="Acrescentar Valor" class="form-control" required />
                 </div>
             </div>
 
