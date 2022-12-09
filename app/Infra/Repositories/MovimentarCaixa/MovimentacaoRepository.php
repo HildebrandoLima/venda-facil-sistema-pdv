@@ -39,7 +39,7 @@ class MovimentacaoRepository
         $this->request = $request;
         $this->abrirCaixaa();
         $this->recuperarUltimaMovimentacao();
-        $this->statusCaixa($request->caixa_id, $request->status);
+        $this->statusCaixa();
         return true;
     }
 
@@ -51,9 +51,10 @@ class MovimentacaoRepository
 
     public function fecharCaixa(Request $request): bool
     {
+        $this->request = $request;
         $movimentacaoId = session()->get('movimentacaoId');
         $this->fecharCaixaDb->fecharCaixa($request, $movimentacaoId);
-        $this->statusCaixa($request->caixa_id, $request->status);
+        $this->statusCaixa();
         return true;
     }
 
@@ -64,12 +65,13 @@ class MovimentacaoRepository
         ]);
     }
 
-    private function statusCaixa(int $caixaId, string $status): void
+    private function statusCaixa(): void
     {
-        if ($status === "Aberto"):
+        $caixaId = $this->request->caixa_id;
+        if ($this->request->status === "Aberto"):
             $status = "Aberto";
             $this->statusCaixaDb->statusCaixa($caixaId, $status);
-        elseif ($status === "Fechado"):
+        elseif ($this->request->status === "Fechado"):
             $status = "Fechado";
             $this->statusCaixaDb->statusCaixa($caixaId, $status);
         endif;

@@ -14,6 +14,7 @@
             @endphp
             <input type="hidden" name="caixa_id" value="{{ session()->get('caixaId') }}" />
             <input type="hidden" name="usuario_id" value="{{ session()->get('matricula') }}" />
+            <input type="hidden" name="user_created_at" value="{{ session()->get('matricula') }}" />
             <input type="hidden" name="status" value="Fechado" />
 
             <div class="modal-body">
