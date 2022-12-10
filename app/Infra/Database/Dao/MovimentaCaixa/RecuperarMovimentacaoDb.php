@@ -45,8 +45,8 @@ class RecuperarMovimentacaoDb extends DbBase
         ->selectRaw($this->totalDevolucaoReais() . 'as total_devolucao_real')
         ->selectRaw($this->totalTroca() . 'as total_troca')
         ->selectRaw($this->totalTrocaReais() . 'as total_troca_real')
-        ->where('v.created_at', 'like', '%' . $this->data_atual . '%')
-        ->where('v.caixa_id', $this->caixaId)
+        ->where('m.created_at', 'like', '%' . $this->data_atual . '%')
+        ->where('m.caixa_id', $this->caixaId)
         ->groupBy('m.saldo_inicial')
         ->get();
     }

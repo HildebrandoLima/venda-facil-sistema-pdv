@@ -29,7 +29,7 @@
                         <span><b>Total de Vendas em PIX: </b></span><input type="hidden" name="total_venda_pix" value="{{ $movimentacao->total_venda_pix ?? 0 }}" />{{ $movimentacao->total_venda_pix ?? 0 }}<br />
                         <span><b>Total de Vendas em Cartão de Crédito: </b></span><input type="hidden" name="total_venda_cartao_credito" value="{{ $movimentacao->total_venda_cartao_credito ?? 0 }}" />{{ $movimentacao->total_venda_cartao_credito ?? 0 }}<br />
                         <span><b>Total de Vendas em Cartão de Débito: </b></span><input type="hidden" name="total_venda_cartao_debito" value="{{ $movimentacao->total_venda_cartao_debito ?? 0 }}" />{{ $movimentacao->total_venda_cartao_debito ?? 0 }}<br />
-                        <span><b>Saldo Final: </b></span><input type="hidden" name="" value="1.00" />R$1,00<br />
+                        <br />
                     </div>
                     <div class="col">
                         <span><b>Saldo Inicial: </b></span><input type="hidden" name="saldo_inicial" value="{{ $movimentacao->saldo_inicial ?? 0 }}" />R${{ number_format($movimentacao->saldo_inicial ?? 0, 2, ',', ' ') }} (+)<br />
@@ -38,10 +38,10 @@
                         <span><b>Devolução(ões): </b></span><input type="hidden" name="total_devolucao_real" value="{{ $movimentacao->total_devolucao_real ?? 0 }}" />R${{ number_format($movimentacao->total_devolucao_real ?? 0, 2, ',', ' ') }} (+/-)<br />
                         <span><b>Troca(s): </b></span><input type="hidden" name="total_troca_real" value="{{ $movimentacao->total_troca_real ?? 0 }}" />R${{ number_format($movimentacao->total_troca_real ?? 0, 2, ',', ' ') }} (+/-)<br />
                         <span><b>Total de Vendas em Dinheiro: </b></span><input type="hidden" name="total_venda_dinheiro_real" value="{{ $movimentacao->total_venda_dinheiro_real ?? 0 }}" />R${{ number_format($movimentacao->total_venda_dinheiro_real ?? 0, 2, ',', ' ') }} (+)<br />
-                        <span><b>Total de Vendas em PIX: </b></span><input type="hidden" name="total_venda_pix_real" value="{{ $movimentacao->total_venda_pix_real ?? 0 }}" />R${{ number_format($movimentacao->total_venda_pix_real ?? 0, 2, ',', ' ') ?? 0 }} (+)<br />
+                        <span><b>Total de Vendas em PIX: </b></span><input type="hidden" name="total_venda_pix_real" value="{{ $movimentacao->total_venda_pix_real ?? 0 }}" />R${{ number_format($movimentacao->total_venda_pix_real ?? 0, 2, ',', ' ') }} (+)<br />
                         <span><b>Total de Vendas em Cartão de Crédito: </b></span><input type="hidden" name="total_venda_cartao_credito_real" value="{{ $movimentacao->total_venda_cartao_credito_real ?? 0 }}" />R${{ number_format($movimentacao->total_venda_cartao_credito_real ?? 0, 2, ',', ' ') }} (+)<br />
                         <span><b>Total de Vendas em Cartão de Débito: </b></span><input type="hidden" name="total_venda_cartao_debito_real" value="{{ $movimentacao->total_venda_cartao_debito_real ?? 0 }}" />R${{ number_format($movimentacao->total_venda_cartao_debito_real ?? 0, 2, ',', ' ') }} (+)<br />
-                        <span><b>Saldo Final: </b></span><input type="hidden" name="saldo_final" value="{{ $saldo_final ?? 0 }}" />R${{ number_format($saldo_final, 2, ',', ' ') ?? 0 }}<br />
+                        <span><b>Saldo Final: </b></span><input type="hidden" name="saldo_final" value="{{ $saldo_final ?? 0 }}" />R${{ number_format($saldo_final ?? 0, 2, ',', ' ') }}<br />
                     </div>
                 </div>
 

@@ -36,7 +36,13 @@ class MovimentaController extends Controller
         $pdf->stream('00' . $request->caixa_id .'_fechamento_caixa.pdf');
         $pdf->save('00' . $request->caixa_id .'_fechamento_caixa.pdf'); 
         Storage::disk('local');
-        session()->forget('movimentacaoId');
+        $this->encerrarSessao();
         return redirect()->route('caixa')->with('msg', 'Caixa Fechado com Sucesso!!!');
+    }
+
+    private function encerrarSessao()
+    {
+        session()->forget('movimentacaoId');
+        session()->forget('saldoAnterior');
     }
 }

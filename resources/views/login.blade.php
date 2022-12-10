@@ -16,7 +16,7 @@
         </div>
         @endif
 
-        <h3 class="text-center">Login</h3>
+        <h3 class="text-center">Login</h3><hr />
 
         <form action="{{ route('logar') }}" method="post" class="row g-3 needs-validation mt-3" novalidate >
         @csrf
@@ -42,7 +42,7 @@
             </div>
 
             <button type="submit" class="btn btn-success">
-                <span class="icon fa fa-check"></span>
+                <span class="icon fa fa-arrow-right"></span>
                 Entrar
             </button>
         </form>
