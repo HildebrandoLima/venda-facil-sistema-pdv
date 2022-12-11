@@ -9,7 +9,7 @@ class MapeadorCodigoItem
     public function mapeadorCodigoItem($itens): array
     {
         foreach ($itens as $item):
-                array_push($this->codigoItens, $item->id);
+            array_push($this->codigoItens, $item->id);
         endforeach;
         return $this->codigoItens;
     }

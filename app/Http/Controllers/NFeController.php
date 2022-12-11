@@ -24,7 +24,7 @@ class NFeController extends Controller
         $vendaId = session()->get('vendaId');
         $matricula = session()->get('matricula');
         $this->nfeRepository->criarNFe($vendaId, $matricula);
-        return redirect()->route('gerarnfe', $vendaId);
+        return redirect()->route('gerar.nfe', $vendaId);
     }
 
     public function gerarNFe(Request $request)
@@ -35,7 +35,7 @@ class NFeController extends Controller
         $pdf->stream($request->vendaId .'_nfe.pdf');
         $pdf->save($request->vendaId .'_nfe.pdf'); 
         Storage::disk('local');
-        return redirect()->route('caixa')->with('msg', 'Venda Finalizada com Sucesso.');
+        return redirect()->route('view.caixa')->with('msg', 'Venda Finalizada com Sucesso.');
     }
 
     private function encerrarSessao()

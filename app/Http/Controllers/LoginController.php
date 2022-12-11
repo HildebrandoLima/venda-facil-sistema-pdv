@@ -30,22 +30,13 @@ class LoginController extends Controller
         $credenciais = ['matricula' => $matricula, 'password' => $senha];
 
         if (Auth::attempt($credenciais)):
+            $request->session()->regenerate();
+            $this->loginRepository->login($request);
 
-            if (Auth::check()):
-                $request->session()->regenerate();
-                $dados = $this->loginRepository->login($request);
-
-                session()->put([
-                    'matricula' => $dados[0]->matricula,
-                    'caixaId' => $dados[0]->caixa_id,
-                    'descricao' => $dados[0]->descricao
-                ]);
-
-                if (session()->get('descricao') === 'Operador de Caixa'):
-                    return redirect()->intended('caixa');
-                else:
-                    return redirect()->intended('admin');
-                endif;
+            if (session()->get('descricao') === 'Operador de Caixa'):
+                return redirect()->intended('caixa');
+            else:
+                return redirect()->intended('admin');
             endif;
         else:
             return redirect()->route('login')->with('error', 'incorreta.');

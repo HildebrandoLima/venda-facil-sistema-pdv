@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form action="{{ route('identificar') }}" method="post">
+            <form action="{{ route('identificar.cliente') }}" method="post">
             @csrf
 
             <div class="modal-body">

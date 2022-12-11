@@ -17,8 +17,20 @@ class LoginRepository
         $this->loginDb = $loginDb;
     }
 
-    public function login(Request $request)
+    public function login(Request $request): bool
     {
-        return $this->loginDb->login($request);
+        $this->request = $request;
+        $this->dadosOperador();
+        return true;
+    }
+
+    private function dadosOperador(): void
+    {
+        $dados = $this->loginDb->login($this->request);
+        session()->put([
+            'matricula' => $dados[0]->matricula,
+            'caixaId' => $dados[0]->caixa_id,
+            'descricao' => $dados[0]->descricao
+        ]);
     }
 }

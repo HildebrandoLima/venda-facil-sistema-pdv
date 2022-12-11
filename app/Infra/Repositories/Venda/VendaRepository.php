@@ -6,7 +6,6 @@ use App\Infra\Database\Dao\Venda\CriarVendaDb;
 use App\Infra\Database\Dao\Item\CriarItemDb;
 use App\Infra\Database\Dao\Item\ListarVendaItemTemporarioDb;
 use App\Infra\Database\Dao\Item\RemoverVendaItemTemporarioDb;
-use App\Support\Helpers\MapeadorCodigoItem;
 use Illuminate\Http\Request;
 
 class VendaRepository
@@ -15,7 +14,6 @@ class VendaRepository
     private CriarItemDb $criarItemDb;
     private ListarVendaItemTemporarioDb $listarVendaItemTemporarioDb;
     private RemoverVendaItemTemporarioDb $removerVendaItemTemporarioDb;
-    private MapeadorCodigoItem $mapeadorCodigoItem;
     private array $itens = [];
     private array $codigoItens = [];
     private int $vendaId;
@@ -26,14 +24,12 @@ class VendaRepository
         CriarItemDb $criarItemDb,
         ListarVendaItemTemporarioDb $listarVendaItemTemporarioDb,
         RemoverVendaItemTemporarioDb $removerVendaItemTemporarioDb,
-        MapeadorCodigoItem $mapeadorCodigoItem
     )
     {
         $this->criarVendaDb = $criarVendaDb;
         $this->criarItemDb = $criarItemDb;
         $this->listarVendaItemTemporarioDb = $listarVendaItemTemporarioDb;
         $this->removerVendaItemTemporarioDb = $removerVendaItemTemporarioDb;
-        $this->mapeadorCodigoItem = $mapeadorCodigoItem;
     }
 
     public function criarVenda(Request $request): bool
@@ -56,7 +52,9 @@ class VendaRepository
 
     private function mapeadorCodigoItem(): array
     {
-        $this->codigoItens = $this->mapeadorCodigoItem->mapeadorCodigoItem($this->itens);
+        foreach ($this->itens as $item):
+            array_push($this->codigoItens, $item->id);
+        endforeach;
         return $this->codigoItens;
     }
 
@@ -68,8 +66,7 @@ class VendaRepository
 
     private function criarItem(): void
     {
-        $userCreatedAt = $this->request->user_created_at;
-        $this->criarItemDb->criarItem($this->itens, $this->vendaId, $userCreatedAt);
+        $this->criarItemDb->criarItem($this->itens, $this->vendaId, $this->request->user_created_at);
     }
 
     private function removerItem(): void

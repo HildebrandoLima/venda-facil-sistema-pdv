@@ -13,6 +13,7 @@ class MapeadorProduto
                 array_push($this->produto, $value);
             endforeach;
         endforeach;
+        dd($data, $this->produto);
         return $this->produto;
     }
 }

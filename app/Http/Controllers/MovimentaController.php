@@ -26,7 +26,7 @@ class MovimentaController extends Controller
         $pdf->stream('00' . $request->caixa_id .'_abertura_caixa.pdf');
         $pdf->save('00' . $request->caixa_id .'_abertura_caixa.pdf'); 
         Storage::disk('local');
-        return redirect()->route('caixa')->with('msg', 'Caixa Aberto com Sucesso');
+        return redirect()->route('view.caixa')->with('msg', 'Caixa Aberto com Sucesso');
     }
 
     public function fecharCaixa(Request $request)
@@ -36,7 +36,13 @@ class MovimentaController extends Controller
         $pdf->stream('00' . $request->caixa_id .'_fechamento_caixa.pdf');
         $pdf->save('00' . $request->caixa_id .'_fechamento_caixa.pdf'); 
         Storage::disk('local');
+        $this->encerrarSessao();
+        return redirect()->route('view.caixa')->with('msg', 'Caixa Fechado com Sucesso!!!');
+    }
+
+    private function encerrarSessao()
+    {
         session()->forget('movimentacaoId');
-        return redirect()->route('caixa')->with('msg', 'Caixa Fechado com Sucesso!!!');
+        session()->forget('saldoAnterior');
     }
 }

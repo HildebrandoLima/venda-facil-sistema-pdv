@@ -4,8 +4,6 @@ namespace App\Infra\Repositories\MovimentarCaixa;
 
 use App\Infra\Database\Dao\MovimentaCaixa\AbrirCaixaDb;
 use App\Infra\Database\Dao\MovimentaCaixa\FecharCaixaDb;
-use App\Infra\Database\Dao\MovimentaCaixa\RecuperarMovimentacaoDb;
-use App\Infra\Database\Dao\MovimentaCaixa\RecuperarSaldoAnteriorDb;
 use App\Infra\Database\Dao\Caixa\StatusCaixaDb;
 use Illuminate\Http\Request;
 
@@ -14,39 +12,27 @@ class MovimentacaoRepository
     private AbrirCaixaDb $abrirCaixaDb;
     private FecharCaixaDb $fecharCaixaDb;
     private StatusCaixaDb $statusCaixaDb;
-    private RecuperarMovimentacaoDb $recuperarMovimentacaoDb;
-    private RecuperarSaldoAnteriorDb $recuperarSaldoAnteriorDb;
     private int $movimentacaoId;
 
     public function __construct
     (
         AbrirCaixaDb $abrirCaixaDb,
         FecharCaixaDb $fecharCaixaDb,
-        StatusCaixaDb $statusCaixaDb,
-        RecuperarMovimentacaoDb $recuperarMovimentacaoDb,
-        RecuperarSaldoAnteriorDb $recuperarSaldoAnteriorDb
+        StatusCaixaDb $statusCaixaDb
     )
     {
         $this->abrirCaixaDb = $abrirCaixaDb;
         $this->fecharCaixaDb = $fecharCaixaDb;
         $this->statusCaixaDb = $statusCaixaDb;
-        $this->recuperarMovimentacaoDb = $recuperarMovimentacaoDb;
-        $this->recuperarSaldoAnteriorDb = $recuperarSaldoAnteriorDb;
     }
 
     public function abrirCaixa(Request $request): bool
     {
         $this->request = $request;
         $this->abrirCaixaa();
-        $this->recuperarUltimaMovimentacao();
         $this->statusCaixa();
+        $this->recuperarUltimaMovimentacao();
         return true;
-    }
-
-    private function abrirCaixaa(): int
-    {
-        $this->movimentacaoId = $this->abrirCaixaDb->abrirCaixa($this->request);
-        return $this->movimentacaoId;
     }
 
     public function fecharCaixa(Request $request): bool
@@ -58,11 +44,10 @@ class MovimentacaoRepository
         return true;
     }
 
-    private function recuperarUltimaMovimentacao(): void
+    private function abrirCaixaa(): int
     {
-        session()->put([
-            'movimentacaoId' => $this->movimentacaoId
-        ]);
+        $this->movimentacaoId = $this->abrirCaixaDb->abrirCaixa($this->request);
+        return $this->movimentacaoId;
     }
 
     private function statusCaixa(): void
@@ -77,13 +62,10 @@ class MovimentacaoRepository
         endif;
     }
 
-    public function recuperarSaldoAnteior(int $caixaId)
+    private function recuperarUltimaMovimentacao(): void
     {
-        return $this->recuperarSaldoAnteriorDb->recuperarSaldoAnterior($caixaId);
-    }
-
-    public function recuperarMovimentacao(int $caixaId)
-    {
-        return $this->recuperarMovimentacaoDb->recuperarMovimentacao($caixaId);
+        session()->put([
+            'movimentacaoId' => $this->movimentacaoId
+        ]);
     }
 }

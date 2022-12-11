@@ -7,7 +7,7 @@
             </div>
 
             <div class="modal-body">
-            <form action="{{ route('abrir') }}" method="post">
+            <form action="{{ route('abrir.caixa') }}" method="post">
                 @csrf
                 <input type="hidden" name="caixa_id" value="{{ session()->get('caixaId') }}" />
                 <input type="hidden" name="user_created_at" value="{{ session()->get('matricula') }}" />
@@ -15,7 +15,7 @@
 
                 <div class="input-group mb-3">
                     <span class="input-group-text">Valor Atual em Caixa: R$</span>
-                    <input type="number" name="saldo_inicial" value="{{ $saldoAnterior->saldoProximoDia }}" placeholder="Informe o Valor Atual em Caixa"  class="form-control" required />
+                    <input type="number" name="saldo_inicial" value="{{ session()->get('saldoAnterior') }}" placeholder="Informe o Valor Atual em Caixa"  class="form-control" required />
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Acrescentar Valor: R$</span>

@@ -1,6 +1,6 @@
 @extends('components.main')
 
-@section('title', 'VendaFácil')
+@section('title', 'Caixa | Venda Fácil - PDV')
 
 @section('body')
 
@@ -8,7 +8,6 @@
 
 @extends('components.modalajuda')
 @extends('components.modalabrircaixa')
-@extends('components.modalfecharcaixa')
 @extends('components.modalidentificarcliente')
 @extends('components.modaladicionarunidade')
 
@@ -85,7 +84,7 @@
                                         <td>R${{ number_format($item->preco, 2, ',', ' ') }}</td>
                                         <td>R${{ number_format($sub_total, 2, ',', ' ') }}</td>
                                         <td>
-                                            <a href="{{ route('remover', $item->id) }}">
+                                            <a href="{{ route('remover.item', $item->id) }}">
                                                 <button type="button" id="removerItem" class="btn btn-danger">X</button>
                                             </a>
                                         </td>
@@ -123,7 +122,7 @@
                                 <h4>Total de Itens: {{ @$produto -1 }}</h4>
                                 <h4>Total a Pagar R${{ number_format(@$total, 2, ',', ' ') }}</h4>
 
-                                <form action="{{ route('venda') }}" method="post">
+                                <form action="{{ route('salvar.venda') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="quantidade_item" value="{{ @$produto -1 }}" />
                                     <input type="hidden" name="total" value="{{ @$total }}" />

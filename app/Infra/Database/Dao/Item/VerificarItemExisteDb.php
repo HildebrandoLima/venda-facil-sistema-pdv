@@ -7,11 +7,11 @@ use App\Infra\Database\Config\DbBase;
 
 class VerificarItemExisteDb extends DbBase
 {
-    public function verificarItemExiste(Request $request): bool
+    public function verificarItemExiste(string $codigo_barra): bool
     {
         $resultado = $this->db
         ->table('venda_item_temporario')
-        ->where('codigo_barra', $request->codigo_barra)
+        ->where('codigo_barra', $codigo_barra)
         ->count('codigo_barra');
 
         if($resultado > 0):

@@ -4,10 +4,12 @@
     Abrir Caixa
 </button>
 @else
-<button class="btn btn-danger col-sm" data-bs-toggle="modal" data-bs-target="#fechaCaixaModal">
-    <span class="icon fa fa-money"></span>
-    Fechar Caixa
-</button>
+<a href="{{ route('view.caixa.fechar') }}">
+    <button class="btn btn-danger col-sm" id="fecharCaixa">
+        <span class="icon fa fa-money"></span>
+        Fechar Caixa
+    </button>
+</a>
 @endif
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <button type="button" class="btn btn-secondary col-sm" data-bs-toggle="modal" data-bs-target="#ajudaModal">
@@ -35,7 +37,7 @@
 </button>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="{{ route('sair') }}">
-    <button id="sair" class="btn btn-danger col-sm">
+    <button id="encerrarSessao" class="btn btn-danger col-sm">
         <span class="icon fa fa-arrow-right"></span>
         Encerrar Sessão
     </button>

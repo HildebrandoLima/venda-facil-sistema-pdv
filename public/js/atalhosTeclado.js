@@ -12,13 +12,6 @@ $(document).bind('keypress', function (event) {
     }
 });
 
-// Shift + f
-$(document).bind('keypress', function (event) {
-    if (event.which === 70 && event.shiftKey) {
-        $("#fechaCaixaModal").modal("show");
-    }
-});
-
 // Shift + i
 $(document).bind('keypress', function (event) {
     if (event.which === 73 && event.shiftKey) {
@@ -54,9 +47,16 @@ $(document).bind('keypress', function (event) {
     }
 });
 
+// Shift + f
+$(document).bind('keypress', function (event) {
+    if (event.which === 70 && event.shiftKey) {
+        $("#fecharCaixa").click();
+    }
+});
+
 // Shift + s
 $(document).bind('keypress', function (event) {
     if (event.which === 83 && event.shiftKey) {
-        $("#sair").click();
+        $("#encerrarSessao").click();
     }
 });

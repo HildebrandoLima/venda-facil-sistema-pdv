@@ -1,4 +1,4 @@
-<form action="{{ route('buscar') }}" method="post">
+<form action="{{ route('buscar.adicionar.item') }}" method="post">
     @csrf
     <div class="input-group">
         @if($data['status'] == 'Fechado')
