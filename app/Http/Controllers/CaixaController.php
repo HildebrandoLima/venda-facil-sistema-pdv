@@ -26,7 +26,6 @@ class CaixaController extends Controller
             $caixaId = session()->get('caixaId');
             $caixa = $this->caixaRepository->buscarCaixa($caixaId)->toArray();
             $itens = $this->itemRepository->listarVendaItemTemporario($caixaId)->toArray();
-            //$movimentacao = $this->caixaRepository->recuperarMovimentacao($caixaId);
 
             $data = collect([
                 'status' => $caixa[0]->status,
@@ -36,6 +35,17 @@ class CaixaController extends Controller
                 'preco' => @end($itens)->preco
             ])->toArray();
             return view('caixa', ['data' => $data, 'itens' => $itens]);
+        else:
+            return redirect()->route('login')->with('msg', 'É preciso estar logado.');
+        endif;
+    }
+
+    public function fechar()
+    {
+        if (session()->exists('matricula')):
+            $caixaId = session()->get('caixaId');
+            $movimentacao = $this->caixaRepository->recuperarMovimentacao($caixaId);
+            return view('fecharcaixa', ['movimentacao' => $movimentacao]);
         else:
             return redirect()->route('login')->with('msg', 'É preciso estar logado.');
         endif;

@@ -1,6 +1,6 @@
 @extends('components.main')
 
-@section('title', 'Pagamento')
+@section('title', 'Pagamento | Venda Fácil - PDV')
 
 @section('body')
 

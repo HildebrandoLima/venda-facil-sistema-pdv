@@ -17,6 +17,7 @@ Route::get('/sair', [LoginController::class, 'logout'])->name('sair');
 
 Route::prefix('caixa')->group(function () {
     Route::get('/', [CaixaController::class, 'caixa'])->name('caixa');
+    Route::get('/fechar', [CaixaController::class, 'fechar'])->name('view.caixa.fechar');
     Route::post('/venda/salvar', [VendaController::class, 'criarVenda'])->name('venda');
     Route::post('/movimentar/abrirCaixa', [MovimentaController::class, 'abrirCaixa'])->name('abrir');
     Route::put('/movimentar/fecharCaixa', [MovimentaController::class, 'fecharCaixa'])->name('fechar');

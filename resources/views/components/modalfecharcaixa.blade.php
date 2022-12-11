@@ -1,8 +1,8 @@
-<div class="modal fade" id="fechaCaixaModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="fecharCaixaModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="">Fechamento do Caixa {{ session()->get('caixaId') }} @php echo ' | ' . date('d-m-Y') @endphp</h1>
+                <h1 class="modal-title fs-5" id="">Fechamento do Caixa {{ session()->get('caixaId') }} @php echo ' | ' . date('d-m-Y') @endphp <div class="relogio"></div></h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 

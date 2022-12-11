@@ -1,6 +1,6 @@
 @extends('components.main')
 
-@section('title', 'VendaFácil')
+@section('title', 'Venda Fácil - PDV')
 
 @section('body')
 
@@ -8,7 +8,6 @@
 
 @extends('components.modalajuda')
 @extends('components.modalabrircaixa')
-@extends('components.modalfecharcaixa')
 @extends('components.modalidentificarcliente')
 @extends('components.modaladicionarunidade')
 

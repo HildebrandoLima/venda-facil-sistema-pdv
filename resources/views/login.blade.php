@@ -1,6 +1,6 @@
 @extends('components.main')
 
-@section('title', 'Login')
+@section('title', 'Login | Venda Fácil - PDV')
 
 @section('body')
 
