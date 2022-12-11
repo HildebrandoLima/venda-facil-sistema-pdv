@@ -34,7 +34,7 @@ class LoginController extends Controller
             $this->loginRepository->login($request);
 
             if (session()->get('descricao') === 'Operador de Caixa'):
-                return redirect()->intended('view.caixa');
+                return redirect()->intended('caixa');
             else:
                 return redirect()->intended('admin');
             endif;
