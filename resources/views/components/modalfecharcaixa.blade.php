@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form action="{{ route('fechar') }}" method="post">
+            <form action="{{ route('fechar.caixa') }}" method="post">
             @csrf
             @method('PUT')
             @php

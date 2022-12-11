@@ -24,6 +24,6 @@ class UsuarioController extends Controller
             'usuarioId' => $usuarioId[0]->id,
             'cpf' => $request->cpf
         ]);
-        return redirect()->route('caixa');
+        return redirect()->route('view.caixa');
     }
 }

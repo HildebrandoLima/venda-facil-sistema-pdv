@@ -25,18 +25,18 @@ class ItemController extends Controller
     {
         $produto = $this->produtoRepository->bipagemProduto($request);
         $this->itemRepository->criarVendaItemTemporario($produto);
-        return redirect()->route('caixa');
+        return redirect()->route('view.caixa');
     }
 
     public function alterarQuantidadeItem(Request $request)
     {
         $this->itemRepository->quantidadeItem($request);
-        return redirect()->route('caixa');
+        return redirect()->route('view.caixa');
     }
 
     public function removerItem($itemId)
     {
         $this->itemRepository->removerVendaItemTemporario($itemId);
-        return redirect()->route('caixa');
+        return redirect()->route('view.caixa');
     }
 }

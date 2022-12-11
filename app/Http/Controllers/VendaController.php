@@ -20,6 +20,6 @@ class VendaController extends Controller
     public function criarVenda(Request $request)
     {
         $this->vendaRepository->criarVenda($request);
-        return redirect()->route('pagamento');
+        return redirect()->route('view.pagamento');
     }
 }

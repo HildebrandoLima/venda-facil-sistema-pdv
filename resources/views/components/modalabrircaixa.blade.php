@@ -7,7 +7,7 @@
             </div>
 
             <div class="modal-body">
-            <form action="{{ route('abrir') }}" method="post">
+            <form action="{{ route('abrir.caixa') }}" method="post">
                 @csrf
                 <input type="hidden" name="caixa_id" value="{{ session()->get('caixaId') }}" />
                 <input type="hidden" name="user_created_at" value="{{ session()->get('matricula') }}" />

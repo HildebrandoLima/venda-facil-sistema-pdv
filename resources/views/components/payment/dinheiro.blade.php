@@ -1,6 +1,6 @@
 <h5 class="card-title text-center">Método Escolhido - Dinheiro</h5>
 <hr />
-<form action="{{ route('salvarpagamento') }}" method="post">
+<form action="{{ route('salvar.pagamento') }}" method="post">
     @csrf
     <input type="hidden" name="venda_id" value="{{ session()->get('vendaId') }}" />
     <input type="hidden" name="user_created_at" value="{{ session()->get('matricula') }}" />

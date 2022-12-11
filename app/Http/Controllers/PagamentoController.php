@@ -29,6 +29,6 @@ class PagamentoController extends Controller
     public function criarPagamento(Request $request)
     {
         $this->pagamentoRepository->criarPagamento($request);
-        return redirect()->route('nfe');
+        return redirect()->route('salvar.nfe');
     }
 }

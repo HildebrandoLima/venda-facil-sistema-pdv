@@ -9,7 +9,7 @@
             <div class="modal-body">
                 <div class="table-response table-overflow">
                     @if (isset($itens) && count($itens) > 0)
-                    <form action="{{ route('mudar') }}" method="post">
+                    <form action="{{ route('alterar.quantidade.item') }}" method="post">
                         @csrf
                         @method('PUT')
                         <table class="table">
