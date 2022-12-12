@@ -2,57 +2,52 @@
 
 namespace App\Http\Controllers;
 
-use App\Infra\Repositorios\Caixa\CaixaRepositorio;
-use App\Infra\Repositorios\Produto\ProdutoRepositorio;
-use Illuminate\Http\Request;
+use App\Infra\Repositories\Caixa\CaixaRepository;
+use App\Infra\Repositories\Item\ItemRepository;
 
 class CaixaController extends Controller
 {
-    private CaixaRepositorio $caixaRepositorio;
-    private ProdutoRepositorio $produtoRepositorio;
+    private CaixaRepository $caixaRepository;
+    private ItemRepository $itemRepository;
 
     public function __construct
     (
-        CaixaRepositorio $caixaRepositorio,
-        ProdutoRepositorio $produtoRepositorio
+        CaixaRepository $caixaRepository,
+        ItemRepository $itemRepository,
     )
     {
-        $this->caixaRepositorio = $caixaRepositorio;
-        $this->produtoRepositorio = $produtoRepositorio;
+        $this->caixaRepository = $caixaRepository;
+        $this->itemRepository = $itemRepository;
     }
 
-    public function home()
+    public function caixa()
     {
-        $caixa = $this->caixaRepositorio->getCaixa()->toArray();
-        $item = session('itens', []);
-        $itens = ['itens' => $item];
-        return view('caixa', ['itens' => $itens, 'terminal' => $caixa[0]->id, 'status' => $caixa[0]->status]);
-    }
+        if (session()->exists('matricula')):
+            $caixaId = session()->get('caixaId');
+            $caixa = $this->caixaRepository->buscarCaixa($caixaId)->toArray();
+            $itens = $this->itemRepository->listarVendaItemTemporario($caixaId)->toArray();
 
-    public function index(Request $request)
-    {
-        $codigo_barra = $request->codigo_barra;
-        $produto = $this->produtoRepositorio->getProdutoCaixa($codigo_barra);
-        if($produto):
-            $item = session('itens', []);
-            array_push($item, $produto);
-            session(['itens' => $item]);
+            $data = collect([
+                'status' => $caixa[0]->status,
+                'descricao' => @end($itens)->descricao,
+                'imagem' => @end($itens)->imagem,
+                'quantidade' => @end($itens)->quantidade,
+                'preco' => @end($itens)->preco
+            ])->toArray();
+            return view('caixa', ['data' => $data, 'itens' => $itens]);
+        else:
+            return redirect()->route('login')->with('msg', 'É preciso estar logado.');
         endif;
-        return $this->home();
     }
 
-    public function update()
+    public function fechar()
     {
-
-    }
-
-    public function destroy($produtoId)
-    {
-        $item = session('itens', []);
-        if(isset($item[$produtoId])):
-            unset($item[$produtoId]);
+        if (session()->exists('matricula')):
+            $caixaId = session()->get('caixaId');
+            $movimentacao = $this->caixaRepository->recuperarMovimentacao($caixaId);
+            return view('fecharcaixa', ['movimentacao' => $movimentacao]);
+        else:
+            return redirect()->route('login')->with('msg', 'É preciso estar logado.');
         endif;
-        session(['itens' => $item]);
-        return $this->home();
     }
 }

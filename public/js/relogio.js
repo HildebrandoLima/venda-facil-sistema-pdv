@@ -12,4 +12,4 @@ const getHours = () => {
 
 setInterval(() => {
     getHours()
-}, 1000)
+}, 1000);
