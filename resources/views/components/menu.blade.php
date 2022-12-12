@@ -17,10 +17,10 @@
     Ajuda
 </button>
 
-<button class="btn btn-warning col-sm">
+<!-- <button class="btn btn-warning col-sm">
     <span class="icon fa fa-search"></span>
     Consultar Preço
-</button>
+</button> -->
 
 <button type="button" class="btn btn-info col-sm" data-bs-toggle="modal" data-bs-target="#itentificarClienteModal">
     <span class="icon fa fa-user"></span>
