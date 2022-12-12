@@ -1,9 +1,9 @@
-@extends('components.main')
+@extends('operador.components.main')
 
 @section('title', 'Fechar Caixa | Venda Fácil - PDV')
 
 @section('body')
 
-@extends('components.modalfecharcaixa')
+@extends('operador.components.modalfecharcaixa')
 
 @endsection

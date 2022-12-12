@@ -26,7 +26,7 @@
     <div class="row mb-4">
         <div class="col mb-3">
             <div class="input-group">
-                <select name="metodo_pagamento_id" onchange='mostraCampo(this)' class="form-select">
+                <select name="metodo_pagamento_id" onchange='mostraCampo(this)' class="form-select" required >
                     <option value="" selected>Tipo de Cartão</option>
                     <option value="1">Crédito</option>
                     <option value="3">Débito</option>

@@ -42,7 +42,7 @@ class CaixaRepository
 
     public function recuperarMovimentacao($caixaId)
     {
-        $this->movimentacao = $this->recuperarMovimentacaoDb->recuperarMovimentacao($caixaId)->toArray()[0];
+        $this->movimentacao = $this->recuperarMovimentacaoDb->recuperarMovimentacao($caixaId)->toArray();
         return $this->movimentacao;
     }
 }

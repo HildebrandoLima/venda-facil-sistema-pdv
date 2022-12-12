@@ -50,7 +50,7 @@
                     <tr>
                         <td><b>TOTAL:</b></td>
                         <td></td><td></td><td></td><td></td><td></td>
-                        <td><b>R${{ number_format($data['nfe']->total ?? 0, 2, ',', ' ') }}</b></td>
+                        <td><b>R${{ number_format($data['nfe']->total, 2, ',', ' ') }}</b></td>
                     </tr>
                 </tbody>
             </table>
@@ -65,9 +65,9 @@
                     </tr>
                     <tbody>
                         <td>{{ isset($data['nfe']->numero_cartao) ? 'CARTÃO' : 'DINHEIRO' }}</td>
-                        <td>R${{ number_format($data['nfe']->valor_pago ?? 0, 2, ',', ' ') }}</td>
-                        <td>R${{ number_format($data['nfe']->troco ?? 0, 2, ',', ' ') }}</td>
-                        <td>R${{ number_format($data['nfe']->total ?? 0, 2, ',', ' ') }}</td>
+                        <td>R${{ number_format($data['nfe']->valor_pago, 2, ',', ' ') }}</td>
+                        <td>R${{ number_format($data['nfe']->troco, 2, ',', ' ') }}</td>
+                        <td>R${{ number_format($data['nfe']->total, 2, ',', ' ') }}</td>
                     </tbody>
                 </thead>
             </table>
@@ -85,8 +85,8 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <center><b>N°: {{ $data['nfe']->numero ?? 0 }} SÉRIE: {{ $data['nfe']->serie ?? 0 }}</b></center>
-                        <center><b>{{ date_format(new DateTime($data['nfe']->data_emissao ?? ''), 'd-m-Y H:m:s') }}</b></center>
+                        <center><b>N°: {{ $data['nfe']->numero }} SÉRIE: {{ $data['nfe']->serie }}</b></center>
+                        <center><b>{{ date_format(new DateTime($data['nfe']->data_emissao), 'd-m-Y H:m:s') }}</b></center>
                     </tr>
                     <tr>
                         <center>ATENÇÃO: ESTÁ NOTA NÃO É FISCAL</center>
@@ -108,10 +108,10 @@
                         <th scope="col">TOTAL</th>
                     </tr>
                     <tbody>
-                        <td>{{ $data['nfe']->numero_cartao ? 'CARTÃO' : 'DINHEIRO' }} {{ $data['nfe']->parcela }}X</td>
+                        <td>{{ isset($data['nfe']->numero_cartao) ? 'CARTÃO' : 'DINHEIRO' }} {{ $data['nfe']->parcela }}X</td>
                         <td>R$00,00</td>
                         <td>R$00,00</td>
-                        <td>R${{ number_format($data['nfe']->total ?? 0, 2, ',', ' ') }}</td>
+                        <td>R${{ number_format($data['nfe']->total, 2, ',', ' ') }}</td>
                     </tbody>
                 </thead>
             </table>

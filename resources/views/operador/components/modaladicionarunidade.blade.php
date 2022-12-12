@@ -17,14 +17,11 @@
                                 <tr>
                                     <th scope="col">ITEM</th>
                                     <th scope="col">PRODUTO</th>
-                                    <th scope="col">QTD</th>
-                                    <th scope="col">MUDAR</th>
+                                    <th scope="col">QUANTIDADE</th>
+                                    <th scope="col">ADICIONAR</th>
                                 </tr>
                             </thead>
                             @foreach ($itens as $key => $item)
-                            @php
-                                $sub_total = $item->preco * $item->quantidade;
-                            @endphp
                             <tbody>
                                 <tr>
                                     <input type="hidden" name="codigo_barra" value="{{ $item->codigo_barra }}" />
@@ -34,8 +31,8 @@
                                     <td><input type="number" name="quantidade" value="{{ $item->quantidade }}" class="form-control" /></td>
                                     <td>
                                         <button type="submit" class="btn btn-success" id="confirmar">
-                                            Adicionar Item
-                                        </button>    
+                                            <span class="icon fa fa-plus"></span>
+                                        </button> 
                                     </td>
                                 </tr>
                                 @endforeach
