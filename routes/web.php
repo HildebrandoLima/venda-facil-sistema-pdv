@@ -15,30 +15,24 @@ Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('/logar', [LoginController::class, 'logar'])->name('logar');
 Route::get('/sair', [LoginController::class, 'logout'])->name('sair');
 
-Route::prefix('caixa')->group(function () {
+Route::prefix('operador')->group(function () {
     Route::get('/', [CaixaController::class, 'caixa'])->name('view.caixa');
-    Route::get('/fechar', [CaixaController::class, 'fechar'])->name('view.caixa.fechar');
+    Route::get('/caixa/fechar', [CaixaController::class, 'fechar'])->name('view.caixa.fechar');
+
     Route::post('/venda/salvar', [VendaController::class, 'criarVenda'])->name('salvar.venda');
-    Route::post('/movimentar/abrirCaixa', [MovimentaController::class, 'abrirCaixa'])->name('abrir.caixa');
-    Route::put('/movimentar/fecharCaixa', [MovimentaController::class, 'fecharCaixa'])->name('fechar.caixa');
-});
 
-Route::prefix('item')->group(function () {
-    Route::get('/deletar/{itemId}', [ItemController::class, 'removerItem'])->name('remover.item');
-    Route::put('/alterar/quantidade', [ItemController::class, 'alterarQuantidadeItem'])->name('alterar.quantidade.item');
-    Route::post('/buscar', [ItemController::class, 'adicionarItem'])->name('buscar.adicionar.item');
-});
+    Route::post('/movimento/abrir/caixa', [MovimentaController::class, 'abrirCaixa'])->name('abrir.caixa');
+    Route::put('/movimento/fechar/caixa', [MovimentaController::class, 'fecharCaixa'])->name('fechar.caixa');
 
-Route::prefix('pagamento')->group(function () {
-    Route::get('/', [PagamentoController::class, 'pagamento'])->name('view.pagamento');
-    Route::post('venda/pagar', [PagamentoController::class, 'criarPagamento'])->name('salvar.pagamento');
-});
+    Route::get('/item/deletar/{itemId}', [ItemController::class, 'removerItem'])->name('remover.item');
+    Route::put('/item/alterar/quantidade', [ItemController::class, 'alterarQuantidadeItem'])->name('alterar.quantidade.item');
+    Route::post('/item/buscar', [ItemController::class, 'adicionarItem'])->name('buscar.adicionar.item');
 
-Route::prefix('nfe')->group(function () {
-    Route::get('/', [NFeController::class, 'criarNFe'])->name('salvar.nfe');
-    Route::get('/{vendaId}', [NFeController::class, 'gerarNFe'])->name('gerar.nfe');
-});
+    Route::get('/pagamento', [PagamentoController::class, 'pagamento'])->name('view.pagamento');
+    Route::post('/pagamento/salvar', [PagamentoController::class, 'criarPagamento'])->name('salvar.pagamento');
 
-Route::prefix('cliente')->group(function () {
-    Route::post('/identificar', [UsuarioController::class, 'identificarCliente'])->name('identificar.cliente');
+    Route::get('/nfe/salvar', [NFeController::class, 'criarNFe'])->name('salvar.nfe');
+    Route::get('/nfe/{vendaId}', [NFeController::class, 'gerarNFe'])->name('gerar.nfe');
+
+    Route::post('/cliente/identificar', [UsuarioController::class, 'identificarCliente'])->name('identificar.cliente');
 });

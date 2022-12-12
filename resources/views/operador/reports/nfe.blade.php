@@ -108,7 +108,7 @@
                         <th scope="col">TOTAL</th>
                     </tr>
                     <tbody>
-                        <td>{{ isset($data['nfe']->numero_cartao) ? 'CARTÃO' : 'DINHEIRO' }} {{ $data['nfe']->parcela ?? 0 }}X</td>
+                        <td>{{ $data['nfe']->numero_cartao ? 'CARTÃO' : 'DINHEIRO' }} {{ $data['nfe']->parcela }}X</td>
                         <td>R$00,00</td>
                         <td>R$00,00</td>
                         <td>R${{ number_format($data['nfe']->total ?? 0, 2, ',', ' ') }}</td>
