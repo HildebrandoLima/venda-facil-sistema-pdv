@@ -40,4 +40,5 @@ Route::prefix('operador')->group(function () {
 
 Route::prefix('supervisor')->group(function () {
     Route::get('/', [DashboardController::class, 'admin'])->name('view.admin');
+    Route::get('/movimentacao', [MovimentaController::class, 'movimentacao'])->name('view.movimentacao');
 });

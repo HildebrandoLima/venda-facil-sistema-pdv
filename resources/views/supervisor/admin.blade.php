@@ -1,6 +1,6 @@
 @extends('supervisor.components.main')
 
-@section('title', 'Admin | Venda Fácil - PDV')
+@section('title', 'Dashboard | Venda Fácil - PDV')
 
 @section('body')
 
