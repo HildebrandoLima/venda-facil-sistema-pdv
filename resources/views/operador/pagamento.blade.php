@@ -1,4 +1,4 @@
-@extends('components.main')
+@extends('operador.components.main')
 
 @section('title', 'Pagamento | Venda Fácil - PDV')
 
@@ -18,9 +18,9 @@
                 <div class="card shadow rounded">
                     <div class="card-body">
                         @if(isset($valorPago))
-                            @include('components.payment.dinheiro', [$troco])
+                            @include('operador.components.payment.dinheiro', [$troco])
                         @else
-                            @include('components.payment.cartao')
+                            @include('operador.components.payment.cartao')
                         @endif
                     </div>
                 </div>

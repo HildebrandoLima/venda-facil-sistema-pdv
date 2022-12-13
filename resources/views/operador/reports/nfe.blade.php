@@ -64,10 +64,10 @@
                         <th scope="col">TOTAL</th>
                     </tr>
                     <tbody>
-                        <td>{{ $data['nfe']->numero_cartao ? 'CARTÃO' : 'DINHEIRO' }}</td>
-                        <td>R${{ $data['nfe']->valor_pago ? number_format($data['nfe']->valor_pago, 2, ',', ' ') : '00,00' }}</td>
-                        <td>R${{ $data['nfe']->troco ? number_format($data['nfe']->troco, 2, ',', ' ') : '00,00' }}</td>
-                        <td>R${{ $data['nfe']->total ? number_format($data['nfe']->total, 2, ',', ' ') : '00,00' }}</td>
+                        <td>{{ isset($data['nfe']->numero_cartao) ? 'CARTÃO' : 'DINHEIRO' }}</td>
+                        <td>R${{ number_format($data['nfe']->valor_pago, 2, ',', ' ') }}</td>
+                        <td>R${{ number_format($data['nfe']->troco, 2, ',', ' ') }}</td>
+                        <td>R${{ number_format($data['nfe']->total, 2, ',', ' ') }}</td>
                     </tbody>
                 </thead>
             </table>
@@ -108,7 +108,7 @@
                         <th scope="col">TOTAL</th>
                     </tr>
                     <tbody>
-                        <td>{{ $data['nfe']->numero_cartao ? 'CARTÃO' : 'DINHEIRO' }} {{ $data['nfe']->parcela }}X</td>
+                        <td>{{ isset($data['nfe']->numero_cartao) ? 'CARTÃO' : 'DINHEIRO' }} {{ $data['nfe']->parcela }}X</td>
                         <td>R$00,00</td>
                         <td>R$00,00</td>
                         <td>R${{ number_format($data['nfe']->total, 2, ',', ' ') }}</td>

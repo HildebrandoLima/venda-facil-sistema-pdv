@@ -31,9 +31,9 @@ class NFeController extends Controller
     {
         $this->encerrarSessao();
         $data = $this->nfeRepository->listarNFe($request->vendaId);
-        $pdf = PDF::loadView('reports.nfe', ['data' => $data]);
+        $pdf = PDF::loadView('operador.reports.nfe', ['data' => $data]);
         $pdf->stream($request->vendaId .'_nfe.pdf');
-        $pdf->save($request->vendaId .'_nfe.pdf'); 
+        $pdf->save($request->vendaId .'_nfe.pdf');
         Storage::disk('local');
         return redirect()->route('view.caixa')->with('msg', 'Venda Finalizada com Sucesso.');
     }

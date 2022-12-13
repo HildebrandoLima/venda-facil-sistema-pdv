@@ -20,7 +20,7 @@ class PagamentoController extends Controller
     public function pagamento()
     {
         if (session()->exists('matricula')):
-            return view('pagamento');
+            return view('operador.pagamento');
         else:
             return redirect()->route('login')->with('msg', 'É preciso estar logado.');
         endif;

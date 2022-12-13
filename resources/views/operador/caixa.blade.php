@@ -1,15 +1,15 @@
-@extends('components.main')
+@extends('operador.components.main')
 
 @section('title', 'Caixa | Venda Fácil - PDV')
 
 @section('body')
 
-@include('components.cabecalho')
+@include('operador.components.cabecalho')
 
-@extends('components.modalajuda')
-@extends('components.modalabrircaixa')
-@extends('components.modalidentificarcliente')
-@extends('components.modaladicionarunidade')
+@extends('operador.components.modalajuda')
+@extends('operador.components.modalabrircaixa')
+@extends('operador.components.modalidentificarcliente')
+@extends('operador.components.modaladicionarunidade')
 
 @php
     $produto = 1;
@@ -23,7 +23,7 @@
             <div class="card-body">
                 <div class="card shadow rounded">
                     <div class="card-body">
-                        @include('components.bipagemproduto')
+                        @include('operador.components.bipagemproduto')
                     </div>
                 </div>
 
@@ -150,7 +150,7 @@
 <div class="card shadow rounded mt-3">
     <div class="card-body">
        <center>
-            @include('components.menu')
+            @include('operador.components.menu')
        </center>
     </div>
 </div>

@@ -19,6 +19,11 @@ class MovimentaController extends Controller
         $this->movimentacaoRepository = $movimentacaoRepository;
     }
 
+    public function movimentacao()
+    {
+        return view('supervisor.movimentacao');
+    }
+
     public function abrirCaixa(Request $request)
     {
         $this->movimentacaoRepository->abrirCaixa($request);

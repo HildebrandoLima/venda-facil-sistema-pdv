@@ -1,4 +1,4 @@
-@extends('components.main')
+@extends('operador.components.main')
 
 @section('title', 'Login | Venda Fácil - PDV')
 
