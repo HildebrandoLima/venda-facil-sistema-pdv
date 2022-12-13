@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CaixaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovimentaController;
@@ -35,4 +36,8 @@ Route::prefix('operador')->group(function () {
     Route::get('/nfe/{vendaId}', [NFeController::class, 'gerarNFe'])->name('gerar.nfe');
 
     Route::post('/cliente/identificar', [UsuarioController::class, 'identificarCliente'])->name('identificar.cliente');
+});
+
+Route::prefix('supervisor')->group(function () {
+    Route::get('/', [DashboardController::class, 'admin'])->name('view.admin');
 });

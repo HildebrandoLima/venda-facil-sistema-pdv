@@ -36,7 +36,7 @@ class LoginController extends Controller
             if (session()->get('descricao') === 'Operador de Caixa'):
                 return redirect()->intended('operador');
             else:
-                return redirect()->intended('admin');
+                return redirect()->intended('supervisor');
             endif;
         else:
             return redirect()->route('login')->with('error', 'incorreta.');
